@@ -1,113 +1,144 @@
-# EWAS Catalog CpG Extractor
-# Input: cpgs.txt
-# Output: cpg_associations_full.json + summary CSV
+# EWAS Atlas CpG Extractor
 
-if (!require("devtools", quietly = TRUE)) install.packages("devtools")
-if (!require("ewascatalog", quietly = TRUE)) devtools::install_github("MRCIEU/ewascatalog-r")
+if (!require("httr", quietly = TRUE)) install.packages("httr")
 if (!require("jsonlite", quietly = TRUE)) install.packages("jsonlite")
 if (!require("dplyr", quietly = TRUE)) install.packages("dplyr")
 
-library(ewascatalog)
+library(httr)
 library(jsonlite)
 library(dplyr)
 
-# Read CpG list from file
-cpg_file <- "cpgs.txt"
-if (!file.exists(cpg_file)) {
-  stop("cpgs.txt not found. Create a file with one CpG ID per line.")
-}
-cpg_list <- readLines(cpg_file) %>% trimws() %>% .[. != ""]
+API_ROOT <- "https://ngdc.cncb.ac.cn/ewas/rest"
 
-cat(sprintf("Loaded %d CpGs from %s\n", length(cpg_list), cpg_file))
-
-# Query function
-query_cpg <- function(cpg_id, p_threshold = 0.001) {
+# Extract probe data
+extract_probe <- function(probe_id) {
+  url <- sprintf("%s/probe?probeId=%s", API_ROOT, probe_id)
+  
   tryCatch({
-    result <- ewascatalog(cpg_id, "cpg")
+    response <- GET(url, timeout(30))
     
-    if (is.null(result) || nrow(result) == 0) {
-      return(list(
-        cpg_id = cpg_id,
-        total_associations = 0,
-        associations = list()
-      ))
+    if (status_code(response) != 200) {
+      return(list(probe_id = probe_id, error = sprintf("HTTP %d", status_code(response))))
     }
     
-    # Filter by p-value if column exists
-    if ("p" %in% names(result) && is.numeric(result$p)) {
-      result <- result %>% filter(p < p_threshold)
+    result <- fromJSON(content(response, "text", encoding = "UTF-8"))
+    
+    if (result$code != 0 || is.null(result$data)) {
+      return(list(probe_id = probe_id, error = "No data returned"))
     }
     
-    # Convert to clean list format
-    associations <- result %>%
-      mutate(across(where(is.factor), as.character)) %>%
-      as.list() %>%
-      lapply(function(x) if(length(x) == 1) x else list(x))
+    d <- result$data
     
+    # Extract correlation counts
+    assoc <- d$associationList
+    corr_counts <- if (!is.null(assoc) && nrow(assoc) > 0) {
+      table(assoc$correlation)
+    } else {
+      c(hyper = 0, hypo = 0, NR = 0)
+    }
+    
+    # Extract unique genes
+    genes <- if (!is.null(d$relatedTranscription) && nrow(d$relatedTranscription) > 0) {
+      unique(d$relatedTranscription$geneName)
+    } else {
+      character(0)
+    }
+    
+    # Extract traits
+    traits <- if (!is.null(assoc) && nrow(assoc) > 0) {
+      unique(assoc$trait)
+    } else {
+      character(0)
+    }
+    
+    # Build result
     list(
-      cpg_id = cpg_id,
-      total_associations = nrow(result),
-      associations = result
+      probe_id = probe_id,
+      chr = d$chrHg19,
+      pos = d$posHg19,
+      cpg_island = d$cpgIsland,
+      n_studies = if (!is.null(assoc)) nrow(assoc) else 0,
+      correlations = list(
+        hyper = as.integer(corr_counts["pos"] %||% 0),
+        hypo = as.integer(corr_counts["neg"] %||% 0),
+        NR = as.integer(corr_counts["NR"] %||% 0)
+      ),
+      related_genes = genes,
+      related_traits = traits,
+      studies = if (!is.null(assoc)) assoc else data.frame()
     )
     
   }, error = function(e) {
-    warning(sprintf("Error querying %s: %s", cpg_id, e$message))
-    list(
-      cpg_id = cpg_id,
-      total_associations = 0,
-      associations = list(),
-      error = e$message
-    )
+    list(probe_id = probe_id, error = e$message)
   })
 }
 
-# Process all CpGs
-cat("\nQuerying EWAS Catalog...\n")
-results <- list()
-pb <- txtProgressBar(min = 0, max = length(cpg_list), style = 3)
-
-for (i in seq_along(cpg_list)) {
-  cpg <- cpg_list[i]
-  results[[cpg]] <- query_cpg(cpg)
-  setTxtProgressBar(pb, i)
-  Sys.sleep(0.3)  # Rate limiting
+# Process multiple CpGs
+process_cpgs <- function(cpg_list) {
+  results <- list()
+  pb <- txtProgressBar(min = 0, max = length(cpg_list), style = 3)
+  
+  for (i in seq_along(cpg_list)) {
+    cpg <- cpg_list[i]
+    results[[cpg]] <- extract_probe(cpg)
+    setTxtProgressBar(pb, i)
+    Sys.sleep(0.1)  # Polite rate limiting
+  }
+  
+  close(pb)
+  return(results)
 }
-close(pb)
 
-# Build metadata
-metadata <- list(
-  analysis_date = Sys.time(),
-  total_cpgs = length(cpg_list),
-  cpgs_with_results = sum(sapply(results, function(x) x$total_associations > 0)),
-  database = "EWAS Catalog",
-  p_threshold = 0.001
-)
+# Main execution
+cat("EWAS Atlas CpG Extractor\n\n")
 
-# Compile final output
+cpg_file <- "cpgs.txt"
+if (!file.exists(cpg_file)) {
+  stop("cpgs.txt not found")
+}
+
+cpg_list <- readLines(cpg_file) %>% trimws() %>% .[. != ""]
+cat(sprintf("Loaded %d CpGs\n\n", length(cpg_list)))
+
+cat("Querying EWAS Atlas API...\n")
+results <- process_cpgs(cpg_list)
+
+# Build output
 output <- list(
-  metadata = metadata,
+  metadata = list(
+    analysis_date = Sys.time(),
+    total_cpgs = length(cpg_list),
+    api_source = "EWAS Atlas",
+    api_root = API_ROOT
+  ),
   results = results
 )
 
 # Save JSON
-json_file <- "cpg_associations_full.json"
-write_json(output, json_file, pretty = TRUE, auto_unbox = TRUE)
-cat(sprintf("\nSaved: %s\n", json_file))
+write_json(output, "cpg_associations_full.json", pretty = TRUE, auto_unbox = TRUE)
+cat("\nSaved: cpg_associations_full.json\n")
 
 # Create summary CSV
-summary_df <- data.frame(
-  cpg_id = names(results),
-  total_associations = sapply(results, function(x) x$total_associations),
-  has_data = sapply(results, function(x) x$total_associations > 0)
-)
+summary_df <- lapply(results, function(r) {
+  data.frame(
+    cpg_id = r$probe_id,
+    chr = r$chr %||% NA,
+    pos = r$pos %||% NA,
+    cpg_island = r$cpg_island %||% NA,
+    n_studies = r$n_studies %||% 0,
+    hyper = r$correlations$hyper %||% 0,
+    hypo = r$correlations$hypo %||% 0,
+    NR = r$correlations$NR %||% 0,
+    n_genes = length(r$related_genes %||% character(0)),
+    genes = paste(r$related_genes %||% character(0), collapse = ", "),
+    n_traits = length(r$related_traits %||% character(0)),
+    error = !is.null(r$error)
+  )
+}) %>% bind_rows()
 
-csv_file <- "cpg_associations_summary.csv"
-write.csv(summary_df, csv_file, row.names = FALSE)
-cat(sprintf("Saved: %s\n", csv_file))
+write.csv(summary_df, "cpg_associations_summary.csv", row.names = FALSE)
+cat("Saved: cpg_associations_summary.csv\n")
 
-# Print summary
-cat(sprintf("\n=== SUMMARY ===\n"))
-cat(sprintf("Total CpGs queried: %d\n", metadata$total_cpgs))
-cat(sprintf("CpGs with associations: %d\n", metadata$cpgs_with_results))
-cat(sprintf("CpGs with no data: %d\n", sum(!summary_df$has_data)))
-cat(sprintf("Total associations: %d\n", sum(summary_df$total_associations)))
+cat(sprintf("\nProcessed %d CpGs\n", nrow(summary_df)))
+cat(sprintf("With associations: %d\n", sum(summary_df$n_studies > 0)))
+cat(sprintf("Errors: %d\n", sum(summary_df$error)))
