@@ -10,7 +10,7 @@ def plot_disease_heatmap(df: pd.DataFrame,
                          output_path: str = "disease_heatmap.png",
                          title: str = "Gene-Disease Association Heatmap",
                          cmap: str = "viridis",
-                         figsize: tuple = (12, 10),
+                         figsize: tuple = None,
                          font_scale: float = 1.0):
     """
     Generates a publication-quality heatmap showing associations between genes and diseases.
@@ -58,26 +58,38 @@ def plot_disease_heatmap(df: pd.DataFrame,
     
     # 3. Plotting (Academic & Clean style)
     sns.set_theme(style="white", font_scale=font_scale)
+    
+    # Dynamically adjust figsize if not provided
+    if figsize is None:
+        width = max(12, pivot_df.shape[1] * 0.3)
+        height = max(10, pivot_df.shape[0] * 0.3)
+        figsize = (width, height)
+
     plt.figure(figsize=figsize)
+    
+    # Create a mask for 0 values to make them appear blank
+    mask = pivot_df == 0
     
     # Use specified cmap (default viridis is color-blind friendly)
     ax = sns.heatmap(pivot_df, 
+                     mask=mask,
                      annot=False, 
                      cmap=cmap, 
                      linewidths=.5, 
-                     cbar_kws={'label': 'DisGeNET Association Score'})
+                     cbar_kws={'label': 'DisGeNET Association Score'},
+                     facecolor='white') # Blank cells are white
     
     plt.title(title, fontsize=16 * font_scale, pad=20)
     plt.xlabel("Disease", fontsize=12 * font_scale)
     plt.ylabel("Gene", fontsize=12 * font_scale)
     
     # Rotate labels for readability
-    plt.xticks(rotation=45, ha='right')
-    plt.yticks(rotation=0)
+    plt.xticks(rotation=45, ha='right', fontsize=8 * font_scale)
+    plt.yticks(rotation=0, fontsize=8 * font_scale)
     
     plt.tight_layout()
     
-    # Save output
-    plt.savefig(output_path, dpi=300)
+    # Save output with high DPI for zooming
+    plt.savefig(output_path, dpi=600)
     plt.close()
-    print(f"[VIZ] Heatmap saved to: {output_path}")
+    print(f"[VIZ] Heatmap saved to: {output_path} (DPI: 600)")
