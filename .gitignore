@@ -1,0 +1,15 @@
+# python
+.venv
+__pycache__
+
+# R
+.Rhistory
+.RData
+.Rproj.user
+renv/
+
+# Secrets
+.env
+
+# EWAS Catalog results too large
+/ewas-catalog/ewascatalog-results.txt

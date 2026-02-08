@@ -1,0 +1,225 @@
+cpg,genes,cpg_island,trait,correlation,p,rank,pmid,total_associations
+cg07252486,AP003039.3;NTM,Other,,,,,,
+cg22084806,,Shelf,Alzheimer's disease (AD),pos,3.2e-06,220,30712078,848
+cg02255242,FMN1,Other,infertility,pos,n,,25753583,2751
+cg18595228,,Other,ancestry,neg,2.3e-10,2592,30563547,8847
+cg18595228,,Other,chronic beryllium disease,neg,3.2e-05,1226,30141971,3437
+cg06928226,NTM,Other,prenatal perfluorohexane sulfonate (PFHxS) exposure,pos,7.3e-05,282,35266797,1895
+cg16253887,TBC1D22B,Other,,,,,,
+cg17176698,BCR,Other,,,,,,
+cg10578777,,Island,hydroxytyrosol treatment in Caco-2 cells,neg,3.3e-06,12,36528246,20
+cg10578777,,Island,Alzheimer's disease (AD),neg,3.6e-05,1496,37388929,31488
+cg10578777,,Island,Alzheimer’s Disease,pos,8.6e-06,18452,37388929,31488
+cg10578777,,Island,ER negative breast tumors,neg,n,12,37293596,96
+cg09420691,PRDM15,Island,body mass index (BMI),pos,1.3e-05,68,33239103,547
+cg12790145,RP11-283I3.2;SLC6A12,Island,early onset intracranial atherosclerotic stenosis,pos,n,213,31142690,318
+cg09506675,GPR85,Other,maternal smoking,pos,2.1e-06,1118,27040690,3094
+cg09506675,GPR85,Other,perinatally-acquired HIV,pos,8.8e-04,637,31324826,1309
+cg09506675,GPR85,Other,maternal smoking,pos,1.6e-06,1119,31536415,15547
+cg09506675,GPR85,Other,Alzheimer’s Disease,pos,6.9e-10,15896,37388929,31488
+cg09506675,GPR85,Other,mild cognitive impairment,pos,6.8e-08,5491,37388929,31488
+cg26509731,,Other,,,,,,
+cg02780130,RP11-283I3.2;SLC6A12,Island,Alzheimer’s Disease,pos,5.9e-07,18458,37388929,31488
+cg25329573,RP11-283I3.2;SLC6A12,Island,,,,,,
+cg15702905,,Other,,,,,,
+cg16063718,,Other,,,,,,
+cg09911534,RP11-622C24.2,Other,,,,,,
+cg01159980,FAM134B,Other,,,,,,
+cg16469117,AC007092.1,Other,,,,,,
+cg17240725,AC073846.5,Shelf,papillary thyroid carcinoma,neg,1.6e-13,2945,28938489,10343
+cg17240725,AC073846.5,Shelf,leukoaraiosis (LA),neg,n,146,29875652,606
+cg17240725,AC073846.5,Shelf,papillary thyroid carcinoma,neg,1.4e-14,2297,28469731,6070
+cg17240725,AC073846.5,Shelf,ancestry,neg,1.8e-05,7731,30563547,8847
+cg17240725,AC073846.5,Shelf,colorectal laterally spreading tumor,neg,1.1e-08,8174,30183087,24775
+cg17240725,AC073846.5,Shelf,ancestry,NA,n,,31399127,1845
+cg17240725,AC073846.5,Shelf,papillary thyroid carcinoma,neg,n,,31328658,2149
+cg17240725,AC073846.5,Shelf,Alzheimer’s Disease,neg,7.1e-05,1599,37388929,31488
+cg04070200,AC007879.5,Other,,,,,,
+cg16185115,GSE1,Other,,,,,,
+cg23359644,THSD7A,Other,,,,,,
+cg12365675,CAD,Other,,,,,,
+cg19063834,FAM134B,Other,mammographic density measure,neg,6.9e-05,19,30694562,110
+cg19063834,FAM134B,Other,inflammatory bowel disease,pos,1.1e-13,1071,32281463,4205
+cg03039387,,Shelf,Behcet's disease,neg,5.7e-06,3131,30863869,4332
+cg14320625,PRKCG,Shore,ancestry,pos,2.2e-05,7864,30563547,8847
+cg14320625,PRKCG,Shore,large for gestational age (LGA),pos,7.0e-05,244,36585686,294
+cg17429772,PTPRN2,Other,hepatocellular carcinoma (HCC),neg,3.9e-20,735,23208076,4617
+cg17429772,PTPRN2,Other,Alzheimer’s Disease,neg,9.5e-07,5819,37388929,31488
+cg16874583,,Island,down syndrome,neg,1.8e-06,1512,29601581,14649
+cg16874583,,Island,Alzheimer's disease (AD),neg,1.2e-05,1285,37388929,31488
+cg16874583,,Island,Alzheimer’s Disease,pos,8.8e-06,15990,37388929,31488
+cg06981941,,Other,,,,,,
+cg08287302,,Other,,,,,,
+cg14906510,,Island,down syndrome,neg,8.3e-04,13760,29601581,14649
+cg14906510,,Island,ancestry,pos,3.7e-05,8202,30563547,8847
+cg14906510,,Island,bariatric surgery,pos,n,23,37834223,52
+cg14906510,,Island,bariatric surgery,pos,n,23,37834223,52
+cg14906510,,Island,Alzheimer's disease (AD),neg,3.8e-11,210,37388929,31488
+cg14906510,,Island,Alzheimer’s Disease,pos,6.3e-12,19474,37388929,31488
+cg22481960,IQSEC1,Island,,,,,,
+cg19432846,,Other,escitalopram treatment,pos,1.2e-07,5,37701547,351
+cg07103846,B3GNTL1,Island,,,,,,
+cg03526776,TREML2,Other,Alzheimer's disease (AD),neg,7.1e-19,10,32789163,20
+cg01528832,JMJD1C;JMJD1C-AS1,Island,type 2 diabetes (T2D),pos,7.8e-07,9,29228058,24
+cg01528832,JMJD1C;JMJD1C-AS1,Island,type 2 diabetes (T2D),pos,n,,26977391,7926
+cg07553182,,Other,,,,,,
+cg06941159,RP11-22P6.2;SH2B1,Island,,,,,,
+cg05554000,VIPR2,Shore,pre- and post-lenalidomide treatment in patients with myelodysplastic syndrome with isolated deletion (5q),NA,n,,33903952,1758
+cg05554000,VIPR2,Shore,Alzheimer’s Disease,pos,1.1e-13,19291,37388929,31488
+cg05554000,VIPR2,Shore,mild cognitive impairment,pos,1.3e-15,474,37388929,31488
+cg13689053,AP000688.14,Other,,,,,,
+cg12658972,RP11-95P2.3,Island,,,,,,
+cg12751644,,Shelf,,,,,,
+cg25828445,,Shore,bariatric surgery,pos,n,18,37834223,52
+cg25828445,,Shore,bariatric surgery,pos,n,18,37834223,52
+cg25828445,,Shore,Alzheimer’s Disease,pos,2.1e-05,18996,37388929,31488
+cg25828445,,Shore,ER negative breast tumors,neg,n,7,37293596,96
+cg19336497,RRAS2,Shore,ankylosing spondylitis,neg,4.3e-05,24,31128893,226
+cg01267120,AL157871.2;RP11-638I2.6,Shore,Alzheimer’s Disease,neg,1.7e-11,972,37388929,31488
+cg01267120,AL157871.2;RP11-638I2.6,Shore,mild cognitive impairment,neg,8.7e-09,4274,37388929,31488
+cg16896144,CRIM1,Other,,,,,,
+cg22939563,DNAJB6,Other,,,,,,
+cg26363053,,Other,sexually dimorphic,pos,3.8e-09,4199,37608375,11774
+cg26363053,,Other,Alzheimer’s Disease,pos,2.7e-05,12360,37388929,31488
+cg01049884,SPIDR,Other,,,,,,
+cg04528565,,Other,,,,,,
+cg04732357,ANKRD36C,Island,,,,,,
+cg02834909,PRSS50;RP11-316F12.1,Island,,,,,,
+cg15035382,CNTD2,Shelf,gestational diabetes mellitus,pos,n,945,29596946,4485
+cg15035382,CNTD2,Shelf,gender,neg,9.1e-08,299,26553366,2658
+cg15035382,CNTD2,Shelf,infant sex,neg,7.2e-09,286,34569420,3263
+cg15035382,CNTD2,Shelf,infant sex,neg,4.0e-13,196,34569420,3263
+cg15035382,CNTD2,Shelf,sexually dimorphic,pos,1.1e-12,1893,37608375,11774
+cg15035382,CNTD2,Shelf,Sex-specific DNA methylation,pos,8.7e-40,385,37300819,1018
+cg15035382,CNTD2,Shelf,Sex-specific DNA methylation,pos,1.3e-37,395,37300819,1018
+cg09756125,PTPRN2,Shore,prenatal perfluoroalkyl substance exposure,pos,2.4e-04,165,29544137,1454
+cg09756125,PTPRN2,Shore,Alzheimer’s Disease,neg,1.4e-13,155,37388929,31488
+cg09756125,PTPRN2,Shore,mild cognitive impairment,neg,1.4e-08,4571,37388929,31488
+cg05406088,RP11-321F6.1,Shore,down syndrome,neg,8.0e-05,6041,29601581,14649
+cg05406088,RP11-321F6.1,Shore,ancestry,neg,3.8e-10,2741,30563547,8847
+cg05406088,RP11-321F6.1,Shore,ancestry,pos,7.1e-05,589,33108347,660
+cg05406088,RP11-321F6.1,Shore,pre- and post-lenalidomide treatment in patients with myelodysplastic syndrome with isolated deletion (5q),NA,n,,33903952,1758
+cg11115468,SCAMP1,Other,Alzheimer’s Disease,neg,1.6e-08,9431,37388929,31488
+cg02282594,PRMT5;RP11-298I3.1,Shore,,,,,,
+cg05860956,RP11-283I3.2;SLC6A12,Island,,,,,,
+cg13598480,LZTS3,Island,sexually dimorphic,neg,7.6e-11,2770,37608375,11774
+cg01334824,RP11-100M12.3,Shore,prenatal arsenic exposure,pos,3.1e-04,2754,25304211,4771
+cg24468780,RP11-112J1.2,Other,,,,,,
+cg23084506,PRAMEF23,Other,Kabuki syndrome (KS),neg,1.5e-05,1387,28933623,1486
+cg11478335,WIPF3,Other,,,,,,
+cg15587955,RP11-1080G15.1,Other,,,,,,
+cg05372993,,Other,,,,,,
+cg21088344,SLFN12L,Other,,,,,,
+cg24947255,HCP5;XXbac-BPG181B23.6,Other,down syndrome,neg,1.7e-04,7973,29601581,14649
+cg25290307,COL26A1,Island,Gulf War Illness,pos,8.8e-04,1838,30920300,10717
+cg25290307,COL26A1,Island,Alzheimer’s Disease,pos,7.0e-12,17682,37388929,31488
+cg25290307,COL26A1,Island,mild cognitive impairment,pos,3.2e-06,8039,37388929,31488
+cg26308704,MIR595;PTPRN2,Other,Alzheimer’s Disease,pos,9.5e-06,13592,37388929,31488
+cg14545602,AC005498.3;ZFP28,Island,,,,,,
+cg06604206,RARS,Shore,hepatitis B virus (HBV)-related liver disease progression,NA,n,4390,32513305,7888
+cg23102195,CTD-2269E23.4,Island,sperm viability,NA,n,889,27529490,910
+cg16744531,B3GNT3,Island,aging,neg,6.5e-46,7247,29064478,7632
+cg16744531,B3GNT3,Island,respiratory allergies (RA),neg,n,,26999364,701
+cg16744531,B3GNT3,Island,perinatally-acquired HIV,pos,2.1e-02,1300,31324826,1309
+cg16744531,B3GNT3,Island,pre- and post-lenalidomide treatment in patients with myelodysplastic syndrome with isolated deletion (5q),NA,n,,33903952,1758
+cg16744531,B3GNT3,Island,acute myelocytic leukemia (AML),neg,7.8e-11,1382,39052947,2551
+cg10260205,PCBP3;PRED62,Shelf,ancestry,neg,7.0e-05,8614,30563547,8847
+cg10260205,PCBP3;PRED62,Shelf,brain health,pos,7.1e-18,2401,35945220,2928
+cg23229777,FAM83D,Shore,,,,,,
+cg12080266,CLIC6,Other,In vitro fertilization (IVF),neg,2.8e-05,832,39702541,6768
+cg20910361,RNF150,Other,blood C-reactive protein level,pos,9.3e-05,107,31910897,1398
+cg26456563,CNTD2,Island,gender,neg,9.2e-06,738,26553366,2658
+cg26456563,CNTD2,Island,infant sex,neg,2.9e-06,567,34569420,3263
+cg26456563,CNTD2,Island,infant sex,neg,1.4e-05,986,34569420,3263
+cg26456563,CNTD2,Island,sexually dimorphic,pos,3.7e-08,5208,37608375,11774
+cg16101574,,Other,,,,,,
+cg16910670,NADSYN1,Other,ancestry,NA,n,,31399127,1845
+cg23473493,,Other,,,,,,
+cg11340603,RP1-78O14.1;SYT1,Other,breast cancer,pos,4.2e-05,1081,29776342,2044
+cg11340603,RP1-78O14.1;SYT1,Other,systemic lupus erythematosus (SLE),pos,n,19,30301579,207
+cg11340603,RP1-78O14.1;SYT1,Other,atopy,neg,9.4e-09,1010,30584054,6228
+cg23184739,AC110781.3;MAD1L1;MIR4655,Shelf,,,,,,
+cg24786658,GPR85,Other,perinatally-acquired HIV,pos,1.9e-05,251,31324826,1309
+cg24786658,GPR85,Other,maternal smoking,pos,5.6e-06,1483,31536415,15547
+cg07386121,UGT1A10;UGT1A8,Other,,,,,,
+cg10638439,HCP5;MICA;Y_RNA,Shelf,preeclampsia,pos,4.2e-06,133,31230546,1464
+cg23032677,FBXW10,Other,Papuan ancestry proportions,NA,1.2e-08,481,32453742,1000
+cg23032677,FBXW10,Other,mild cognitive impairment,pos,1.7e-15,495,37388929,31488
+cg22744928,TTC21A,Other,,,,,,
+cg21897367,OR6W1P,Other,,,,,,
+cg13303179,PRSS50;RP11-316F12.1,Island,ancestry,neg,1.8e-06,6372,30563547,8847
+cg13303179,PRSS50;RP11-316F12.1,Island,ischemic stroke,NA,n,,35480311,462
+cg13303179,PRSS50;RP11-316F12.1,Island,Alzheimer’s Disease,pos,9.5e-06,14939,37388929,31488
+cg14148441,C5AR1,Other,,,,,,
+cg10075163,RP11-283I3.2;SLC6A12,Island,,,,,,
+cg20188212,RP11-283I3.2;SLC6A12,Island,household socioeconomic status in childhood,pos,n,224,30351206,629
+cg27031099,,Other,air pollution (NO2),pos,1.6e-04,2325,29410382,4980
+cg27031099,,Other,systemic lupus erythematosus (SLE),neg,8.9e-35,6576,29437559,7625
+cg27031099,,Other,Parkinson's disease (PD),neg,7.6e-08,95,28851441,121
+cg27031099,,Other,systemic lupus erythematosus (SLE),neg,8.9e-35,6576,31428085,8175
+cg27031099,,Other,smoking,neg,6.7e-12,825,31552803,4864
+cg06159004,,Other,ancestry,neg,6.9e-10,2922,30563547,8847
+cg06159004,,Other,ancestry,pos,7.1e-07,162,33108347,660
+cg17361163,COL26A1,Island,ancestry,neg,3.3e-10,2697,30563547,8847
+cg17361163,COL26A1,Island,aging,pos,2.3e-10,2752,30626398,10460
+cg17361163,COL26A1,Island,Alzheimer’s Disease,pos,3.0e-09,12203,37388929,31488
+cg15501526,RP11-526P5.2,Island,,,,,,
+cg10478549,,Other,ancestry,neg,6.6e-08,4720,30563547,8847
+cg21960279,B3GNT3,Island,respiratory allergies (RA),neg,n,,26999364,701
+cg21960279,B3GNT3,Island,atopy,neg,1.6e-05,4071,30584054,6228
+cg21960279,B3GNT3,Island,inflamed Crohn's disease (CD),pos,n,817,32251296,1620
+cg16680214,KCNN3,Other,food allergy,neg,n,61,24762976,130
+cg16680214,KCNN3,Other,ancestry,neg,1.4e-05,7609,30563547,8847
+cg16680214,KCNN3,Other,Alzheimer’s Disease,pos,3.4e-05,14361,37388929,31488
+cg21679753,,Other,,,,,,
+cg02305391,ADARB2,Other,Alzheimer’s Disease,neg,1.4e-14,559,37388929,31488
+cg02305391,ADARB2,Other,mild cognitive impairment,neg,1.2e-12,1240,37388929,31488
+cg22191299,NEDD4L,Other,,,,,,
+cg15178291,SPIDR,Other,,,,,,
+cg15525848,FAM134B,Other,down syndrome,pos,8.9e-04,14076,29601581,14649
+cg15525848,FAM134B,Other,preterm birth,pos,n,,28428831,11210
+cg15525848,FAM134B,Other,respiratory allergies (RA),pos,n,,26999364,701
+cg26175789,,Other,type 2 diabetes (T2D),pos,7.6e-04,745,26823690,1846
+cg26175789,,Other,Alzheimer's disease (AD),pos,3.9e-08,537,37388929,31488
+cg26175789,,Other,Alzheimer’s Disease,neg,1.5e-05,5267,37388929,31488
+cg05715076,RP11-543C4.1,Other,ancestry,pos,1.6e-15,718,30563547,8847
+cg05715076,RP11-543C4.1,Other,ankylosing spondylitis,pos,1.1e-05,15,31128893,226
+cg05715076,RP11-543C4.1,Other,ancestry,neg,1.9e-06,213,33108347,660
+cg05715076,RP11-543C4.1,Other,Alzheimer’s Disease,pos,8.6e-08,19160,37388929,31488
+cg05715076,RP11-543C4.1,Other,mild cognitive impairment,pos,1.3e-09,3317,37388929,31488
+cg09535960,LOXL2;RP11-177H13.2,Other,prostate cancer,pos,1.1e-21,1160,29740534,6167
+cg09535960,LOXL2;RP11-177H13.2,Other,papillary thyroid carcinoma,neg,9.5e-20,2096,28938489,10343
+cg09535960,LOXL2;RP11-177H13.2,Other,papillary thyroid carcinoma,neg,8.7e-16,1599,28469731,6070
+cg09535960,LOXL2;RP11-177H13.2,Other,alcohol consumption,pos,8.9e-08,354,27843151,590
+cg09535960,LOXL2;RP11-177H13.2,Other,adenoma,neg,1.6e-16,5540,30183087,24775
+cg09535960,LOXL2;RP11-177H13.2,Other,papillary thyroid carcinoma,neg,n,,31328658,2149
+cg18026197,CHCHD6,Shore,ancestry,neg,1.4e-12,1510,30563547,8847
+cg00240732,WBSCR17,Other,follicular thyroid carcinoma,pos,1.5e-17,699,28938489,10343
+cg00240732,WBSCR17,Other,rheumatoid arthritis (RA),pos,4.6e-08,364,27585642,1202
+cg12580445,LOX,Shore,leukoaraiosis (LA),neg,n,59,29875652,606
+cg12580445,LOX,Shore,triiodothyronine (T3) treatment,neg,n,,35327410,845
+cg12580445,LOX,Shore,Alzheimer's disease (AD),neg,8.7e-08,605,37388929,31488
+cg04905079,LZTS3,Shelf,clonal hematopoiesis of indeterminate potential,neg,5.6e-15,620,36097025,4848
+cg04905079,LZTS3,Shelf,sexually dimorphic,neg,1.4e-09,3718,37608375,11774
+cg24315757,MAGI1;MAGI1-AS1;MAGI1-IT1,Other,,,,,,
+cg13327258,,Other,polybrominated biphenyl exposure,neg,3.6e-05,839,30676242,1719
+cg03258508,GRAMD4,Shore,night shift work,pos,5.5e-08,873,36457290,3675
+cg21770758,RBM20,Other,Alzheimer's disease (AD),neg,1.5e-08,458,37388929,31488
+cg21770758,RBM20,Other,Alzheimer’s Disease,pos,1.9e-08,19311,37388929,31488
+cg00922271,UGT1A10;UGT1A8,Other,,,,,,
+cg14865086,COPS3,Other,ancestry,neg,2.8e-06,6619,30563547,8847
+cg13796823,SAMD3;TMEM200A,Island,hepatocellular carcinoma (HCC),pos,9.6e-11,2898,23208076,4617
+cg13796823,SAMD3;TMEM200A,Island,hepatocellular carcinoma (HCC),pos,n,6343,29988590,6510
+cg13796823,SAMD3;TMEM200A,Island,ancestry,NA,n,,31399127,1845
+cg13796823,SAMD3;TMEM200A,Island,gastric cardiac intraepithelial neoplasia,pos,3.1e-06,11221,38258659,30508
+cg06094757,KLRC4;KLRC4-KLRK1,Other,glucocorticoid exposure,neg,1.2e-07,10,30821055,3468
+cg05921509,EFEMP1,Other,,,,,,
+cg10957166,AC084018.1;RHOF;RP11-347I19.7;RP11-347I19.8,Shelf,,,,,,
+cg26655517,,Shelf,childhood obesity,neg,n,263,30909978,277
+cg16553589,,Other,smoking,pos,5.5e-05,117,32731254,310
+cg25857471,DPCR1;SFTA2,Other,prenatal bisphenol A (BPA) exposure,pos,2.1e-05,9,31451752,605
+cg25857471,DPCR1;SFTA2,Other,prenatal bisphenol A (BPA) exposure,pos,5.7e-06,38,31451752,605
+cg09205595,AGAP3,Shore,oral squamous cell carcinoma (OSCC),pos,9.8e-04,10107,28890207,14091
+cg09205595,AGAP3,Shore,asthma,pos,5.2e-06,6766,27942592,13485
+cg09205595,AGAP3,Shore,gastric cardiac intraepithelial neoplasia,pos,3.8e-05,23491,38258659,30508
+cg23918315,PCDHB3,Shelf,colorectal laterally spreading tumor,neg,7.6e-10,4938,30183087,24775

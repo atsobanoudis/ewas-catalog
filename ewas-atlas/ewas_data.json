@@ -1,0 +1,4935 @@
+[
+  {
+    "probeId": "cg07252486",
+    "chrHg19": 11,
+    "posHg19": 131533199,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "NTM",
+        "posToTss": 292826,
+        "ensemblTranscriptId": "ENST00000374791.7"
+      },
+      {
+        "geneName": "NTM",
+        "posToTss": 292678,
+        "ensemblTranscriptId": "ENST00000436745.5"
+      },
+      {
+        "geneName": "NTM",
+        "posToTss": 207842,
+        "ensemblTranscriptId": "ENST00000550167.5"
+      },
+      {
+        "geneName": "AP003039.3",
+        "posToTss": 278,
+        "ensemblTranscriptId": "ENST00000416725.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg22084806",
+    "chrHg19": 2,
+    "posHg19": 114261270,
+    "cpgIsland": "Shelf",
+    "relatedTranscription": [],
+    "associationList": [
+      {
+        "studyId": "ES01129",
+        "trait": "Alzheimer's disease (AD)",
+        "correlation": "pos",
+        "rank": 220,
+        "pmid": 30712078
+      }
+    ]
+  },
+  {
+    "probeId": "cg02255242",
+    "chrHg19": 15,
+    "posHg19": 33420912,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "FMN1",
+        "posToTss": 66022,
+        "ensemblTranscriptId": "ENST00000616417.4"
+      },
+      {
+        "geneName": "FMN1",
+        "posToTss": 26329,
+        "ensemblTranscriptId": "ENST00000561249.5"
+      },
+      {
+        "geneName": "FMN1",
+        "posToTss": 26203,
+        "ensemblTranscriptId": "ENST00000559047.5"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00256",
+        "trait": "infertility",
+        "correlation": "pos",
+        "rank": null,
+        "pmid": 25753583
+      }
+    ]
+  },
+  {
+    "probeId": "cg18595228",
+    "chrHg19": 15,
+    "posHg19": 67193261,
+    "cpgIsland": "Other",
+    "relatedTranscription": [],
+    "associationList": [
+      {
+        "studyId": "ES01048",
+        "trait": "ancestry",
+        "correlation": "neg",
+        "rank": 2592,
+        "pmid": 30563547
+      },
+      {
+        "studyId": "ES01121",
+        "trait": "chronic beryllium disease",
+        "correlation": "neg",
+        "rank": 1226,
+        "pmid": 30141971
+      }
+    ]
+  },
+  {
+    "probeId": "cg06928226",
+    "chrHg19": 11,
+    "posHg19": 131514367,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "NTM",
+        "posToTss": 273994,
+        "ensemblTranscriptId": "ENST00000374791.7"
+      },
+      {
+        "geneName": "NTM",
+        "posToTss": 273846,
+        "ensemblTranscriptId": "ENST00000436745.5"
+      },
+      {
+        "geneName": "NTM",
+        "posToTss": 273843,
+        "ensemblTranscriptId": "ENST00000477098.1"
+      },
+      {
+        "geneName": "NTM",
+        "posToTss": 189010,
+        "ensemblTranscriptId": "ENST00000550167.5"
+      },
+      {
+        "geneName": "NTM",
+        "posToTss": 62462,
+        "ensemblTranscriptId": "ENST00000416661.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01879",
+        "trait": "prenatal perfluorohexane sulfonate (PFHxS) exposure",
+        "correlation": "pos",
+        "rank": 282,
+        "pmid": 35266797
+      }
+    ]
+  },
+  {
+    "probeId": "cg16253887",
+    "chrHg19": 6,
+    "posHg19": 37269563,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "TBC1D22B",
+        "posToTss": 44015,
+        "ensemblTranscriptId": "ENST00000373491.3"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg17176698",
+    "chrHg19": 22,
+    "posHg19": 23577002,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "BCR",
+        "posToTss": 55111,
+        "ensemblTranscriptId": "ENST00000479188.5"
+      },
+      {
+        "geneName": "BCR",
+        "posToTss": 54605,
+        "ensemblTranscriptId": "ENST00000305877.12"
+      },
+      {
+        "geneName": "BCR",
+        "posToTss": 54450,
+        "ensemblTranscriptId": "ENST00000359540.7"
+      },
+      {
+        "geneName": "BCR",
+        "posToTss": 36562,
+        "ensemblTranscriptId": "ENST00000463770.5"
+      },
+      {
+        "geneName": "BCR",
+        "posToTss": 36483,
+        "ensemblTranscriptId": "ENST00000487679.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg10578777",
+    "chrHg19": 12,
+    "posHg19": 7781093,
+    "cpgIsland": "Island",
+    "relatedTranscription": [],
+    "associationList": [
+      {
+        "studyId": "ES01921",
+        "trait": "hydroxytyrosol treatment in Caco-2 cells",
+        "correlation": "neg",
+        "rank": 12,
+        "pmid": 36528246
+      },
+      {
+        "studyId": "ES02209",
+        "trait": "Alzheimer's disease (AD)",
+        "correlation": "neg",
+        "rank": 1496,
+        "pmid": 37388929
+      },
+      {
+        "studyId": "ES02211",
+        "trait": "Alzheimer's Disease",
+        "correlation": "pos",
+        "rank": 18452,
+        "pmid": 37388929
+      },
+      {
+        "studyId": "ES02216",
+        "trait": "ER negative breast tumors",
+        "correlation": "neg",
+        "rank": 12,
+        "pmid": 37293596
+      }
+    ]
+  },
+  {
+    "probeId": "cg09420691",
+    "chrHg19": 21,
+    "posHg19": 43229483,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "PRDM15",
+        "posToTss": 1339,
+        "ensemblTranscriptId": "ENST00000470586.5"
+      },
+      {
+        "geneName": "PRDM15",
+        "posToTss": 5835,
+        "ensemblTranscriptId": "ENST00000486812.5"
+      },
+      {
+        "geneName": "PRDM15",
+        "posToTss": 53928,
+        "ensemblTranscriptId": "ENST00000447016.6"
+      },
+      {
+        "geneName": "PRDM15",
+        "posToTss": 70099,
+        "ensemblTranscriptId": "ENST00000422911.5"
+      },
+      {
+        "geneName": "PRDM15",
+        "posToTss": 70099,
+        "ensemblTranscriptId": "ENST00000441787.5"
+      },
+      {
+        "geneName": "PRDM15",
+        "posToTss": 70099,
+        "ensemblTranscriptId": "ENST00000449395.5"
+      },
+      {
+        "geneName": "PRDM15",
+        "posToTss": 70099,
+        "ensemblTranscriptId": "ENST00000398548.5"
+      },
+      {
+        "geneName": "PRDM15",
+        "posToTss": 70108,
+        "ensemblTranscriptId": "ENST00000433067.5"
+      },
+      {
+        "geneName": "PRDM15",
+        "posToTss": 51004,
+        "ensemblTranscriptId": "ENST00000447207.6"
+      },
+      {
+        "geneName": "PRDM15",
+        "posToTss": 70108,
+        "ensemblTranscriptId": "ENST00000269844.4"
+      },
+      {
+        "geneName": "PRDM15",
+        "posToTss": 10656,
+        "ensemblTranscriptId": "ENST00000495217.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01669",
+        "trait": "body mass index (BMI)",
+        "correlation": "pos",
+        "rank": 68,
+        "pmid": 33239103
+      }
+    ]
+  },
+  {
+    "probeId": "cg12790145",
+    "chrHg19": 12,
+    "posHg19": 312737,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 7034,
+        "ensemblTranscriptId": "ENST00000397296.6"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 10126,
+        "ensemblTranscriptId": "ENST00000359674.8"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 9767,
+        "ensemblTranscriptId": "ENST00000424061.6"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 10549,
+        "ensemblTranscriptId": "ENST00000536824.5"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": -64,
+        "ensemblTranscriptId": "ENST00000538272.5"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": -757,
+        "ensemblTranscriptId": "ENST00000540094.1"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": -789,
+        "ensemblTranscriptId": "ENST00000538580.1"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 9974,
+        "ensemblTranscriptId": "ENST00000536116.5"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 7645,
+        "ensemblTranscriptId": "ENST00000537793.1"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 10519,
+        "ensemblTranscriptId": "ENST00000535347.5"
+      },
+      {
+        "geneName": "RP11-283I3.2",
+        "posToTss": -71,
+        "ensemblTranscriptId": "ENST00000539568.2"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01215",
+        "trait": "early onset intracranial atherosclerotic stenosis",
+        "correlation": "pos",
+        "rank": 213,
+        "pmid": 31142690
+      }
+    ]
+  },
+  {
+    "probeId": "cg09506675",
+    "chrHg19": 7,
+    "posHg19": 112727914,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "GPR85",
+        "posToTss": -104,
+        "ensemblTranscriptId": "ENST00000297146.7"
+      },
+      {
+        "geneName": "GPR85",
+        "posToTss": -1372,
+        "ensemblTranscriptId": "ENST00000424100.1"
+      },
+      {
+        "geneName": "GPR85",
+        "posToTss": -1490,
+        "ensemblTranscriptId": "ENST00000449735.1"
+      },
+      {
+        "geneName": "GPR85",
+        "posToTss": -1445,
+        "ensemblTranscriptId": "ENST00000438062.5"
+      },
+      {
+        "geneName": "GPR85",
+        "posToTss": -81,
+        "ensemblTranscriptId": "ENST00000487573.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00174",
+        "trait": "maternal smoking",
+        "correlation": "pos",
+        "rank": 1118,
+        "pmid": 27040690
+      },
+      {
+        "studyId": "ES01251",
+        "trait": "perinatally-acquired HIV",
+        "correlation": "pos",
+        "rank": 637,
+        "pmid": 31324826
+      },
+      {
+        "studyId": "ES01296",
+        "trait": "maternal smoking",
+        "correlation": "pos",
+        "rank": 1119,
+        "pmid": 31536415
+      },
+      {
+        "studyId": "ES02211",
+        "trait": "Alzheimer's Disease",
+        "correlation": "pos",
+        "rank": 15896,
+        "pmid": 37388929
+      },
+      {
+        "studyId": "ES02210",
+        "trait": "mild cognitive impairment",
+        "correlation": "pos",
+        "rank": 5491,
+        "pmid": 37388929
+      }
+    ]
+  },
+  {
+    "probeId": "cg26509731",
+    "chrHg19": 6,
+    "posHg19": 80578590,
+    "cpgIsland": "Other",
+    "relatedTranscription": [],
+    "associationList": []
+  },
+  {
+    "probeId": "cg02780130",
+    "chrHg19": 12,
+    "posHg19": 312753,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 7018,
+        "ensemblTranscriptId": "ENST00000397296.6"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 10110,
+        "ensemblTranscriptId": "ENST00000359674.8"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 9751,
+        "ensemblTranscriptId": "ENST00000424061.6"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 10533,
+        "ensemblTranscriptId": "ENST00000536824.5"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": -80,
+        "ensemblTranscriptId": "ENST00000538272.5"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": -773,
+        "ensemblTranscriptId": "ENST00000540094.1"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": -805,
+        "ensemblTranscriptId": "ENST00000538580.1"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 9958,
+        "ensemblTranscriptId": "ENST00000536116.5"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 7629,
+        "ensemblTranscriptId": "ENST00000537793.1"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 10503,
+        "ensemblTranscriptId": "ENST00000535347.5"
+      },
+      {
+        "geneName": "RP11-283I3.2",
+        "posToTss": -55,
+        "ensemblTranscriptId": "ENST00000539568.2"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES02211",
+        "trait": "Alzheimer's Disease",
+        "correlation": "pos",
+        "rank": 18458,
+        "pmid": 37388929
+      }
+    ]
+  },
+  {
+    "probeId": "cg25329573",
+    "chrHg19": 12,
+    "posHg19": 312742,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 7029,
+        "ensemblTranscriptId": "ENST00000397296.6"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 10121,
+        "ensemblTranscriptId": "ENST00000359674.8"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 9762,
+        "ensemblTranscriptId": "ENST00000424061.6"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 10544,
+        "ensemblTranscriptId": "ENST00000536824.5"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": -69,
+        "ensemblTranscriptId": "ENST00000538272.5"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": -762,
+        "ensemblTranscriptId": "ENST00000540094.1"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": -794,
+        "ensemblTranscriptId": "ENST00000538580.1"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 9969,
+        "ensemblTranscriptId": "ENST00000536116.5"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 7640,
+        "ensemblTranscriptId": "ENST00000537793.1"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 10514,
+        "ensemblTranscriptId": "ENST00000535347.5"
+      },
+      {
+        "geneName": "RP11-283I3.2",
+        "posToTss": -66,
+        "ensemblTranscriptId": "ENST00000539568.2"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg15702905",
+    "chrHg19": 5,
+    "posHg19": 137937438,
+    "cpgIsland": "Other",
+    "relatedTranscription": [],
+    "associationList": []
+  },
+  {
+    "probeId": "cg16063718",
+    "chrHg19": 1,
+    "posHg19": 77291614,
+    "cpgIsland": "Other",
+    "relatedTranscription": [],
+    "associationList": []
+  },
+  {
+    "probeId": "cg09911534",
+    "chrHg19": 15,
+    "posHg19": 67153556,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "RP11-622C24.2",
+        "posToTss": 915,
+        "ensemblTranscriptId": "ENST00000617013.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg01159980",
+    "chrHg19": 5,
+    "posHg19": 16509017,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "FAM134B",
+        "posToTss": 90,
+        "ensemblTranscriptId": "ENST00000399793.6"
+      },
+      {
+        "geneName": "FAM134B",
+        "posToTss": 108150,
+        "ensemblTranscriptId": "ENST00000306320.9"
+      },
+      {
+        "geneName": "FAM134B",
+        "posToTss": 528,
+        "ensemblTranscriptId": "ENST00000509977.1"
+      },
+      {
+        "geneName": "FAM134B",
+        "posToTss": -222,
+        "ensemblTranscriptId": "ENST00000506441.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg16469117",
+    "chrHg19": 2,
+    "posHg19": 59070198,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "AC007092.1",
+        "posToTss": 415264,
+        "ensemblTranscriptId": "ENST00000422723.5"
+      },
+      {
+        "geneName": "AC007092.1",
+        "posToTss": 414725,
+        "ensemblTranscriptId": "ENST00000429095.5"
+      },
+      {
+        "geneName": "AC007092.1",
+        "posToTss": 414725,
+        "ensemblTranscriptId": "ENST00000429664.5"
+      },
+      {
+        "geneName": "AC007092.1",
+        "posToTss": 414725,
+        "ensemblTranscriptId": "ENST00000452840.5"
+      },
+      {
+        "geneName": "AC007092.1",
+        "posToTss": 414678,
+        "ensemblTranscriptId": "ENST00000449448.6"
+      },
+      {
+        "geneName": "AC007092.1",
+        "posToTss": 322310,
+        "ensemblTranscriptId": "ENST00000427421.5"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg17240725",
+    "chrHg19": 7,
+    "posHg19": 73149356,
+    "cpgIsland": "Shelf",
+    "relatedTranscription": [
+      {
+        "geneName": "AC073846.5",
+        "posToTss": -12,
+        "ensemblTranscriptId": "ENST00000427153.2"
+      },
+      {
+        "geneName": "AC073846.5",
+        "posToTss": -381,
+        "ensemblTranscriptId": "ENST00000641969.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00705",
+        "trait": "papillary thyroid carcinoma",
+        "correlation": "neg",
+        "rank": 2945,
+        "pmid": 28938489
+      },
+      {
+        "studyId": "ES00711",
+        "trait": "leukoaraiosis (LA)",
+        "correlation": "neg",
+        "rank": 146,
+        "pmid": 29875652
+      },
+      {
+        "studyId": "ES00828",
+        "trait": "papillary thyroid carcinoma",
+        "correlation": "neg",
+        "rank": 2297,
+        "pmid": 28469731
+      },
+      {
+        "studyId": "ES01048",
+        "trait": "ancestry",
+        "correlation": "neg",
+        "rank": 7731,
+        "pmid": 30563547
+      },
+      {
+        "studyId": "ES01091",
+        "trait": "colorectal laterally spreading tumor",
+        "correlation": "neg",
+        "rank": 8174,
+        "pmid": 30183087
+      },
+      {
+        "studyId": "ES01245",
+        "trait": "ancestry",
+        "correlation": "NA",
+        "rank": null,
+        "pmid": 31399127
+      },
+      {
+        "studyId": "ES01252",
+        "trait": "papillary thyroid carcinoma",
+        "correlation": "neg",
+        "rank": null,
+        "pmid": 31328658
+      },
+      {
+        "studyId": "ES02211",
+        "trait": "Alzheimer's Disease",
+        "correlation": "neg",
+        "rank": 1599,
+        "pmid": 37388929
+      }
+    ]
+  },
+  {
+    "probeId": "cg04070200",
+    "chrHg19": 2,
+    "posHg19": 208281957,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "AC007879.5",
+        "posToTss": 112558,
+        "ensemblTranscriptId": "ENST00000418850.1"
+      },
+      {
+        "geneName": "AC007879.5",
+        "posToTss": 112562,
+        "ensemblTranscriptId": "ENST00000412387.5"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg16185115",
+    "chrHg19": 16,
+    "posHg19": 85456440,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "GSE1",
+        "posToTss": 253309,
+        "ensemblTranscriptId": "ENST00000637419.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg23359644",
+    "chrHg19": 7,
+    "posHg19": 11660897,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "THSD7A",
+        "posToTss": 210927,
+        "ensemblTranscriptId": "ENST00000423059.8"
+      },
+      {
+        "geneName": "THSD7A",
+        "posToTss": 210927,
+        "ensemblTranscriptId": "ENST00000617773.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg12365675",
+    "chrHg19": 2,
+    "posHg19": 27450199,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "CAD",
+        "posToTss": 9941,
+        "ensemblTranscriptId": "ENST00000264705.8"
+      },
+      {
+        "geneName": "CAD",
+        "posToTss": 9923,
+        "ensemblTranscriptId": "ENST00000403525.5"
+      },
+      {
+        "geneName": "CAD",
+        "posToTss": 1107,
+        "ensemblTranscriptId": "ENST00000491891.1"
+      },
+      {
+        "geneName": "CAD",
+        "posToTss": -170,
+        "ensemblTranscriptId": "ENST00000464159.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg19063834",
+    "chrHg19": 5,
+    "posHg19": 16509047,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "FAM134B",
+        "posToTss": 60,
+        "ensemblTranscriptId": "ENST00000399793.6"
+      },
+      {
+        "geneName": "FAM134B",
+        "posToTss": 108120,
+        "ensemblTranscriptId": "ENST00000306320.9"
+      },
+      {
+        "geneName": "FAM134B",
+        "posToTss": 498,
+        "ensemblTranscriptId": "ENST00000509977.1"
+      },
+      {
+        "geneName": "FAM134B",
+        "posToTss": -252,
+        "ensemblTranscriptId": "ENST00000506441.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01123",
+        "trait": "mammographic density measure",
+        "correlation": "neg",
+        "rank": 19,
+        "pmid": 30694562
+      },
+      {
+        "studyId": "ES01467",
+        "trait": "inflammatory bowel disease",
+        "correlation": "pos",
+        "rank": 1071,
+        "pmid": 32281463
+      }
+    ]
+  },
+  {
+    "probeId": "cg03039387",
+    "chrHg19": 6,
+    "posHg19": 31364895,
+    "cpgIsland": "Shelf",
+    "relatedTranscription": [],
+    "associationList": [
+      {
+        "studyId": "ES01197",
+        "trait": "Behcet's disease",
+        "correlation": "neg",
+        "rank": 3131,
+        "pmid": 30863869
+      }
+    ]
+  },
+  {
+    "probeId": "cg14320625",
+    "chrHg19": 19,
+    "posHg19": 54384186,
+    "cpgIsland": "Shore",
+    "relatedTranscription": [
+      {
+        "geneName": "PRKCG",
+        "posToTss": 1742,
+        "ensemblTranscriptId": "ENST00000479081.5"
+      },
+      {
+        "geneName": "PRKCG",
+        "posToTss": -852,
+        "ensemblTranscriptId": "ENST00000474397.5"
+      },
+      {
+        "geneName": "PRKCG",
+        "posToTss": -1281,
+        "ensemblTranscriptId": "ENST00000263431.3"
+      },
+      {
+        "geneName": "PRKCG",
+        "posToTss": -1297,
+        "ensemblTranscriptId": "ENST00000419486.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01048",
+        "trait": "ancestry",
+        "correlation": "pos",
+        "rank": 7864,
+        "pmid": 30563547
+      },
+      {
+        "studyId": "ES01940",
+        "trait": "large for gestational age (LGA)",
+        "correlation": "pos",
+        "rank": 244,
+        "pmid": 36585686
+      }
+    ]
+  },
+  {
+    "probeId": "cg17429772",
+    "chrHg19": 7,
+    "posHg19": 158269409,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "PTPRN2",
+        "posToTss": 111056,
+        "ensemblTranscriptId": "ENST00000389413.7"
+      },
+      {
+        "geneName": "PTPRN2",
+        "posToTss": 111071,
+        "ensemblTranscriptId": "ENST00000409483.5"
+      },
+      {
+        "geneName": "PTPRN2",
+        "posToTss": 110994,
+        "ensemblTranscriptId": "ENST00000389416.8"
+      },
+      {
+        "geneName": "PTPRN2",
+        "posToTss": 110962,
+        "ensemblTranscriptId": "ENST00000389418.8"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00435",
+        "trait": "hepatocellular carcinoma (HCC)",
+        "correlation": "neg",
+        "rank": 735,
+        "pmid": 23208076
+      },
+      {
+        "studyId": "ES02211",
+        "trait": "Alzheimer's Disease",
+        "correlation": "neg",
+        "rank": 5819,
+        "pmid": 37388929
+      }
+    ]
+  },
+  {
+    "probeId": "cg16874583",
+    "chrHg19": 12,
+    "posHg19": 7781004,
+    "cpgIsland": "Island",
+    "relatedTranscription": [],
+    "associationList": [
+      {
+        "studyId": "ES00578",
+        "trait": "down syndrome",
+        "correlation": "neg",
+        "rank": 1512,
+        "pmid": 29601581
+      },
+      {
+        "studyId": "ES02209",
+        "trait": "Alzheimer's disease (AD)",
+        "correlation": "neg",
+        "rank": 1285,
+        "pmid": 37388929
+      },
+      {
+        "studyId": "ES02211",
+        "trait": "Alzheimer's Disease",
+        "correlation": "pos",
+        "rank": 15990,
+        "pmid": 37388929
+      }
+    ]
+  },
+  {
+    "probeId": "cg06981941",
+    "chrHg19": 14,
+    "posHg19": 101115496,
+    "cpgIsland": "Other",
+    "relatedTranscription": [],
+    "associationList": []
+  },
+  {
+    "probeId": "cg08287302",
+    "chrHg19": 22,
+    "posHg19": 25950247,
+    "cpgIsland": "Other",
+    "relatedTranscription": [],
+    "associationList": []
+  },
+  {
+    "probeId": "cg14906510",
+    "chrHg19": 12,
+    "posHg19": 7781169,
+    "cpgIsland": "Island",
+    "relatedTranscription": [],
+    "associationList": [
+      {
+        "studyId": "ES00578",
+        "trait": "down syndrome",
+        "correlation": "neg",
+        "rank": 13760,
+        "pmid": 29601581
+      },
+      {
+        "studyId": "ES01048",
+        "trait": "ancestry",
+        "correlation": "pos",
+        "rank": 8202,
+        "pmid": 30563547
+      },
+      {
+        "studyId": "ES02195",
+        "trait": "bariatric surgery",
+        "correlation": "pos",
+        "rank": 23,
+        "pmid": 37834223
+      },
+      {
+        "studyId": "ES02194",
+        "trait": "bariatric surgery",
+        "correlation": "pos",
+        "rank": 23,
+        "pmid": 37834223
+      },
+      {
+        "studyId": "ES02209",
+        "trait": "Alzheimer's disease (AD)",
+        "correlation": "neg",
+        "rank": 210,
+        "pmid": 37388929
+      },
+      {
+        "studyId": "ES02211",
+        "trait": "Alzheimer's Disease",
+        "correlation": "pos",
+        "rank": 19474,
+        "pmid": 37388929
+      }
+    ]
+  },
+  {
+    "probeId": "cg22481960",
+    "chrHg19": 3,
+    "posHg19": 13008800,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "IQSEC1",
+        "posToTss": 368,
+        "ensemblTranscriptId": "ENST00000273221.8"
+      },
+      {
+        "geneName": "IQSEC1",
+        "posToTss": 55296,
+        "ensemblTranscriptId": "ENST00000646269.1"
+      },
+      {
+        "geneName": "IQSEC1",
+        "posToTss": 19736,
+        "ensemblTranscriptId": "ENST00000618604.4"
+      },
+      {
+        "geneName": "IQSEC1",
+        "posToTss": 105817,
+        "ensemblTranscriptId": "ENST00000613206.1"
+      },
+      {
+        "geneName": "IQSEC1",
+        "posToTss": 75140,
+        "ensemblTranscriptId": "ENST00000647458.1"
+      },
+      {
+        "geneName": "IQSEC1",
+        "posToTss": 27826,
+        "ensemblTranscriptId": "ENST00000473088.1"
+      },
+      {
+        "geneName": "IQSEC1",
+        "posToTss": 160,
+        "ensemblTranscriptId": "ENST00000474467.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg19432846",
+    "chrHg19": 6,
+    "posHg19": 40663073,
+    "cpgIsland": "Other",
+    "relatedTranscription": [],
+    "associationList": [
+      {
+        "studyId": "ES02203",
+        "trait": "escitalopram treatment",
+        "correlation": "pos",
+        "rank": 5,
+        "pmid": 37701547
+      }
+    ]
+  },
+  {
+    "probeId": "cg07103846",
+    "chrHg19": 17,
+    "posHg19": 80970159,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "B3GNTL1",
+        "posToTss": 36499,
+        "ensemblTranscriptId": "ENST00000570947.5"
+      },
+      {
+        "geneName": "B3GNTL1",
+        "posToTss": 36883,
+        "ensemblTranscriptId": "ENST00000576599.5"
+      },
+      {
+        "geneName": "B3GNTL1",
+        "posToTss": 39527,
+        "ensemblTranscriptId": "ENST00000320865.3"
+      },
+      {
+        "geneName": "B3GNTL1",
+        "posToTss": 36857,
+        "ensemblTranscriptId": "ENST00000571954.5"
+      },
+      {
+        "geneName": "B3GNTL1",
+        "posToTss": 36501,
+        "ensemblTranscriptId": "ENST00000573629.5"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg03526776",
+    "chrHg19": 6,
+    "posHg19": 41159608,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "TREML2",
+        "posToTss": 9324,
+        "ensemblTranscriptId": "ENST00000483722.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01603",
+        "trait": "Alzheimer's disease (AD)",
+        "correlation": "neg",
+        "rank": 10,
+        "pmid": 32789163
+      }
+    ]
+  },
+  {
+    "probeId": "cg01528832",
+    "chrHg19": 10,
+    "posHg19": 65225240,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "JMJD1C",
+        "posToTss": 401,
+        "ensemblTranscriptId": "ENST00000399262.6"
+      },
+      {
+        "geneName": "JMJD1C",
+        "posToTss": 56370,
+        "ensemblTranscriptId": "ENST00000633035.1"
+      },
+      {
+        "geneName": "JMJD1C-AS1",
+        "posToTss": 251,
+        "ensemblTranscriptId": "ENST00000609436.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00635",
+        "trait": "type 2 diabetes (T2D)",
+        "correlation": "pos",
+        "rank": 9,
+        "pmid": 29228058
+      },
+      {
+        "studyId": "ES00502",
+        "trait": "type 2 diabetes (T2D)",
+        "correlation": "pos",
+        "rank": null,
+        "pmid": 26977391
+      }
+    ]
+  },
+  {
+    "probeId": "cg07553182",
+    "chrHg19": 2,
+    "posHg19": 228293852,
+    "cpgIsland": "Other",
+    "relatedTranscription": [],
+    "associationList": []
+  },
+  {
+    "probeId": "cg06941159",
+    "chrHg19": 16,
+    "posHg19": 28875210,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "SH2B1",
+        "posToTss": 17289,
+        "ensemblTranscriptId": "ENST00000563591.5"
+      },
+      {
+        "geneName": "SH2B1",
+        "posToTss": 17246,
+        "ensemblTranscriptId": "ENST00000567536.5"
+      },
+      {
+        "geneName": "SH2B1",
+        "posToTss": 17200,
+        "ensemblTranscriptId": "ENST00000322610.12"
+      },
+      {
+        "geneName": "SH2B1",
+        "posToTss": 1085,
+        "ensemblTranscriptId": "ENST00000337120.9"
+      },
+      {
+        "geneName": "SH2B1",
+        "posToTss": 859,
+        "ensemblTranscriptId": "ENST00000566209.1"
+      },
+      {
+        "geneName": "SH2B1",
+        "posToTss": 330,
+        "ensemblTranscriptId": "ENST00000545570.5"
+      },
+      {
+        "geneName": "SH2B1",
+        "posToTss": 132,
+        "ensemblTranscriptId": "ENST00000618521.4"
+      },
+      {
+        "geneName": "SH2B1",
+        "posToTss": 84,
+        "ensemblTranscriptId": "ENST00000359285.9"
+      },
+      {
+        "geneName": "SH2B1",
+        "posToTss": 83,
+        "ensemblTranscriptId": "ENST00000538342.5"
+      },
+      {
+        "geneName": "SH2B1",
+        "posToTss": 11,
+        "ensemblTranscriptId": "ENST00000563674.1"
+      },
+      {
+        "geneName": "SH2B1",
+        "posToTss": -86,
+        "ensemblTranscriptId": "ENST00000395532.8"
+      },
+      {
+        "geneName": "RP11-22P6.2",
+        "posToTss": -549,
+        "ensemblTranscriptId": "ENST00000567731.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg05554000",
+    "chrHg19": 7,
+    "posHg19": 158905015,
+    "cpgIsland": "Shore",
+    "relatedTranscription": [
+      {
+        "geneName": "VIPR2",
+        "posToTss": 32634,
+        "ensemblTranscriptId": "ENST00000262178.6"
+      },
+      {
+        "geneName": "VIPR2",
+        "posToTss": 32536,
+        "ensemblTranscriptId": "ENST00000402066.5"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01687",
+        "trait": "pre- and post-lenalidomide treatment in patients with myelodysplastic syndrome with isolated deletion (5q)",
+        "correlation": "NA",
+        "rank": null,
+        "pmid": 33903952
+      },
+      {
+        "studyId": "ES02211",
+        "trait": "Alzheimer's Disease",
+        "correlation": "pos",
+        "rank": 19291,
+        "pmid": 37388929
+      },
+      {
+        "studyId": "ES02210",
+        "trait": "mild cognitive impairment",
+        "correlation": "pos",
+        "rank": 474,
+        "pmid": 37388929
+      }
+    ]
+  },
+  {
+    "probeId": "cg13689053",
+    "chrHg19": 21,
+    "posHg19": 37494988,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "AP000688.14",
+        "posToTss": 3950,
+        "ensemblTranscriptId": "ENST00000535199.5"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg12658972",
+    "chrHg19": 16,
+    "posHg19": 4233595,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "RP11-95P2.3",
+        "posToTss": -79,
+        "ensemblTranscriptId": "ENST00000573220.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg12751644",
+    "chrHg19": 20,
+    "posHg19": 60527061,
+    "cpgIsland": "Shelf",
+    "relatedTranscription": [],
+    "associationList": []
+  },
+  {
+    "probeId": "cg25828445",
+    "chrHg19": 12,
+    "posHg19": 7781288,
+    "cpgIsland": "Shore",
+    "relatedTranscription": [],
+    "associationList": [
+      {
+        "studyId": "ES02195",
+        "trait": "bariatric surgery",
+        "correlation": "pos",
+        "rank": 18,
+        "pmid": 37834223
+      },
+      {
+        "studyId": "ES02194",
+        "trait": "bariatric surgery",
+        "correlation": "pos",
+        "rank": 18,
+        "pmid": 37834223
+      },
+      {
+        "studyId": "ES02211",
+        "trait": "Alzheimer's Disease",
+        "correlation": "pos",
+        "rank": 18996,
+        "pmid": 37388929
+      },
+      {
+        "studyId": "ES02216",
+        "trait": "ER negative breast tumors",
+        "correlation": "neg",
+        "rank": 7,
+        "pmid": 37293596
+      }
+    ]
+  },
+  {
+    "probeId": "cg19336497",
+    "chrHg19": 11,
+    "posHg19": 14380999,
+    "cpgIsland": "Shore",
+    "relatedTranscription": [
+      {
+        "geneName": "RRAS2",
+        "posToTss": 5053,
+        "ensemblTranscriptId": "ENST00000537760.5"
+      },
+      {
+        "geneName": "RRAS2",
+        "posToTss": 5053,
+        "ensemblTranscriptId": "ENST00000529237.5"
+      },
+      {
+        "geneName": "RRAS2",
+        "posToTss": -269,
+        "ensemblTranscriptId": "ENST00000256196.8"
+      },
+      {
+        "geneName": "RRAS2",
+        "posToTss": -968,
+        "ensemblTranscriptId": "ENST00000526063.5"
+      },
+      {
+        "geneName": "RRAS2",
+        "posToTss": -968,
+        "ensemblTranscriptId": "ENST00000532814.5"
+      },
+      {
+        "geneName": "RRAS2",
+        "posToTss": -306,
+        "ensemblTranscriptId": "ENST00000532950.5"
+      },
+      {
+        "geneName": "RRAS2",
+        "posToTss": -298,
+        "ensemblTranscriptId": "ENST00000526717.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01209",
+        "trait": "ankylosing spondylitis",
+        "correlation": "neg",
+        "rank": 24,
+        "pmid": 31128893
+      }
+    ]
+  },
+  {
+    "probeId": "cg01267120",
+    "chrHg19": 14,
+    "posHg19": 100757365,
+    "cpgIsland": "Shore",
+    "relatedTranscription": [
+      {
+        "geneName": "AL157871.2",
+        "posToTss": 428,
+        "ensemblTranscriptId": "ENST00000553954.1"
+      },
+      {
+        "geneName": "RP11-638I2.6",
+        "posToTss": -89,
+        "ensemblTranscriptId": "ENST00000555428.1"
+      },
+      {
+        "geneName": "RP11-638I2.6",
+        "posToTss": -90,
+        "ensemblTranscriptId": "ENST00000556458.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES02211",
+        "trait": "Alzheimer's Disease",
+        "correlation": "neg",
+        "rank": 972,
+        "pmid": 37388929
+      },
+      {
+        "studyId": "ES02210",
+        "trait": "mild cognitive impairment",
+        "correlation": "neg",
+        "rank": 4274,
+        "pmid": 37388929
+      }
+    ]
+  },
+  {
+    "probeId": "cg16896144",
+    "chrHg19": 2,
+    "posHg19": 36705618,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "CRIM1",
+        "posToTss": 122549,
+        "ensemblTranscriptId": "ENST00000280527.6"
+      },
+      {
+        "geneName": "CRIM1",
+        "posToTss": -1068,
+        "ensemblTranscriptId": "ENST00000481321.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg22939563",
+    "chrHg19": 7,
+    "posHg19": 157162115,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "DNAJB6",
+        "posToTss": 34040,
+        "ensemblTranscriptId": "ENST00000441561.5"
+      },
+      {
+        "geneName": "DNAJB6",
+        "posToTss": 32455,
+        "ensemblTranscriptId": "ENST00000429029.6"
+      },
+      {
+        "geneName": "DNAJB6",
+        "posToTss": 32455,
+        "ensemblTranscriptId": "ENST00000262177.8"
+      },
+      {
+        "geneName": "DNAJB6",
+        "posToTss": 32417,
+        "ensemblTranscriptId": "ENST00000486083.6"
+      },
+      {
+        "geneName": "DNAJB6",
+        "posToTss": 32411,
+        "ensemblTranscriptId": "ENST00000417758.5"
+      },
+      {
+        "geneName": "DNAJB6",
+        "posToTss": 32398,
+        "ensemblTranscriptId": "ENST00000459889.5"
+      },
+      {
+        "geneName": "DNAJB6",
+        "posToTss": 32396,
+        "ensemblTranscriptId": "ENST00000443280.5"
+      },
+      {
+        "geneName": "DNAJB6",
+        "posToTss": 32375,
+        "ensemblTranscriptId": "ENST00000441291.5"
+      },
+      {
+        "geneName": "DNAJB6",
+        "posToTss": 31896,
+        "ensemblTranscriptId": "ENST00000412557.5"
+      },
+      {
+        "geneName": "DNAJB6",
+        "posToTss": 10848,
+        "ensemblTranscriptId": "ENST00000634080.1"
+      },
+      {
+        "geneName": "DNAJB6",
+        "posToTss": 813,
+        "ensemblTranscriptId": "ENST00000468928.5"
+      },
+      {
+        "geneName": "DNAJB6",
+        "posToTss": 620,
+        "ensemblTranscriptId": "ENST00000465908.5"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg26363053",
+    "chrHg19": 10,
+    "posHg19": 119478684,
+    "cpgIsland": "Other",
+    "relatedTranscription": [],
+    "associationList": [
+      {
+        "studyId": "ES02007",
+        "trait": "sexually dimorphic",
+        "correlation": "pos",
+        "rank": 4199,
+        "pmid": 37608375
+      },
+      {
+        "studyId": "ES02211",
+        "trait": "Alzheimer's Disease",
+        "correlation": "pos",
+        "rank": 12360,
+        "pmid": 37388929
+      }
+    ]
+  },
+  {
+    "probeId": "cg01049884",
+    "chrHg19": 8,
+    "posHg19": 48418189,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "SPIDR",
+        "posToTss": 245022,
+        "ensemblTranscriptId": "ENST00000297423.8"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 244719,
+        "ensemblTranscriptId": "ENST00000541342.2"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 244666,
+        "ensemblTranscriptId": "ENST00000518074.5"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 244655,
+        "ensemblTranscriptId": "ENST00000521550.5"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 244644,
+        "ensemblTranscriptId": "ENST00000524126.5"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 244642,
+        "ensemblTranscriptId": "ENST00000519661.5"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 244642,
+        "ensemblTranscriptId": "ENST00000524141.5"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 244641,
+        "ensemblTranscriptId": "ENST00000524033.5"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 244641,
+        "ensemblTranscriptId": "ENST00000522117.5"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 244632,
+        "ensemblTranscriptId": "ENST00000524006.5"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 228764,
+        "ensemblTranscriptId": "ENST00000521214.5"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 65226,
+        "ensemblTranscriptId": "ENST00000519401.5"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg04528565",
+    "chrHg19": 20,
+    "posHg19": 5866730,
+    "cpgIsland": "Other",
+    "relatedTranscription": [],
+    "associationList": []
+  },
+  {
+    "probeId": "cg04732357",
+    "chrHg19": 2,
+    "posHg19": 96658324,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "ANKRD36C",
+        "posToTss": -783,
+        "ensemblTranscriptId": "ENST00000456556.5"
+      },
+      {
+        "geneName": "ANKRD36C",
+        "posToTss": -783,
+        "ensemblTranscriptId": "ENST00000528268.5"
+      },
+      {
+        "geneName": "ANKRD36C",
+        "posToTss": -745,
+        "ensemblTranscriptId": "ENST00000619511.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg02834909",
+    "chrHg19": 3,
+    "posHg19": 46759438,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "PRSS50",
+        "posToTss": -41,
+        "ensemblTranscriptId": "ENST00000315170.12"
+      },
+      {
+        "geneName": "RP11-316F12.1",
+        "posToTss": 94626,
+        "ensemblTranscriptId": "ENST00000460241.2"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg15035382",
+    "chrHg19": 19,
+    "posHg19": 40728255,
+    "cpgIsland": "Shelf",
+    "relatedTranscription": [
+      {
+        "geneName": "CNTD2",
+        "posToTss": 4342,
+        "ensemblTranscriptId": "ENST00000430325.6"
+      },
+      {
+        "geneName": "CNTD2",
+        "posToTss": 4349,
+        "ensemblTranscriptId": "ENST00000599263.6"
+      },
+      {
+        "geneName": "CNTD2",
+        "posToTss": 1216,
+        "ensemblTranscriptId": "ENST00000593335.1"
+      },
+      {
+        "geneName": "CNTD2",
+        "posToTss": 4309,
+        "ensemblTranscriptId": "ENST00000221818.5"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00365",
+        "trait": "gestational diabetes mellitus",
+        "correlation": "pos",
+        "rank": 945,
+        "pmid": 29596946
+      },
+      {
+        "studyId": "ES00486",
+        "trait": "gender",
+        "correlation": "neg",
+        "rank": 299,
+        "pmid": 26553366
+      },
+      {
+        "studyId": "ES01772",
+        "trait": "infant sex",
+        "correlation": "neg",
+        "rank": 286,
+        "pmid": 34569420
+      },
+      {
+        "studyId": "ES01774",
+        "trait": "infant sex",
+        "correlation": "neg",
+        "rank": 196,
+        "pmid": 34569420
+      },
+      {
+        "studyId": "ES02011",
+        "trait": "sexually dimorphic",
+        "correlation": "pos",
+        "rank": 1893,
+        "pmid": 37608375
+      },
+      {
+        "studyId": "ES02087",
+        "trait": "Sex-specific DNA methylation",
+        "correlation": "pos",
+        "rank": 385,
+        "pmid": 37300819
+      },
+      {
+        "studyId": "ES02088",
+        "trait": "Sex-specific DNA methylation",
+        "correlation": "pos",
+        "rank": 395,
+        "pmid": 37300819
+      }
+    ]
+  },
+  {
+    "probeId": "cg09756125",
+    "chrHg19": 7,
+    "posHg19": 158250978,
+    "cpgIsland": "Shore",
+    "relatedTranscription": [
+      {
+        "geneName": "PTPRN2",
+        "posToTss": 129487,
+        "ensemblTranscriptId": "ENST00000389413.7"
+      },
+      {
+        "geneName": "PTPRN2",
+        "posToTss": 129502,
+        "ensemblTranscriptId": "ENST00000409483.5"
+      },
+      {
+        "geneName": "PTPRN2",
+        "posToTss": 129425,
+        "ensemblTranscriptId": "ENST00000389416.8"
+      },
+      {
+        "geneName": "PTPRN2",
+        "posToTss": 129393,
+        "ensemblTranscriptId": "ENST00000389418.8"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00568",
+        "trait": "prenatal perfluoroalkyl substance exposure",
+        "correlation": "pos",
+        "rank": 165,
+        "pmid": 29544137
+      },
+      {
+        "studyId": "ES02211",
+        "trait": "Alzheimer's Disease",
+        "correlation": "neg",
+        "rank": 155,
+        "pmid": 37388929
+      },
+      {
+        "studyId": "ES02210",
+        "trait": "mild cognitive impairment",
+        "correlation": "neg",
+        "rank": 4571,
+        "pmid": 37388929
+      }
+    ]
+  },
+  {
+    "probeId": "cg05406088",
+    "chrHg19": 15,
+    "posHg19": 66947617,
+    "cpgIsland": "Shore",
+    "relatedTranscription": [
+      {
+        "geneName": "RP11-321F6.1",
+        "posToTss": 73089,
+        "ensemblTranscriptId": "ENST00000558797.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00578",
+        "trait": "down syndrome",
+        "correlation": "neg",
+        "rank": 6041,
+        "pmid": 29601581
+      },
+      {
+        "studyId": "ES01048",
+        "trait": "ancestry",
+        "correlation": "neg",
+        "rank": 2741,
+        "pmid": 30563547
+      },
+      {
+        "studyId": "ES01529",
+        "trait": "ancestry",
+        "correlation": "pos",
+        "rank": 589,
+        "pmid": 33108347
+      },
+      {
+        "studyId": "ES01687",
+        "trait": "pre- and post-lenalidomide treatment in patients with myelodysplastic syndrome with isolated deletion (5q)",
+        "correlation": "NA",
+        "rank": null,
+        "pmid": 33903952
+      }
+    ]
+  },
+  {
+    "probeId": "cg11115468",
+    "chrHg19": 5,
+    "posHg19": 77763802,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "SCAMP1",
+        "posToTss": 107395,
+        "ensemblTranscriptId": "ENST00000621999.4"
+      },
+      {
+        "geneName": "SCAMP1",
+        "posToTss": 107367,
+        "ensemblTranscriptId": "ENST00000614488.4"
+      },
+      {
+        "geneName": "SCAMP1",
+        "posToTss": 107367,
+        "ensemblTranscriptId": "ENST00000618166.4"
+      },
+      {
+        "geneName": "SCAMP1",
+        "posToTss": 51375,
+        "ensemblTranscriptId": "ENST00000320280.8"
+      },
+      {
+        "geneName": "SCAMP1",
+        "posToTss": 10186,
+        "ensemblTranscriptId": "ENST00000506858.2"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES02211",
+        "trait": "Alzheimer's Disease",
+        "correlation": "neg",
+        "rank": 9431,
+        "pmid": 37388929
+      }
+    ]
+  },
+  {
+    "probeId": "cg02282594",
+    "chrHg19": 14,
+    "posHg19": 23399066,
+    "cpgIsland": "Shore",
+    "relatedTranscription": [
+      {
+        "geneName": "PRMT5",
+        "posToTss": -272,
+        "ensemblTranscriptId": "ENST00000324366.12"
+      },
+      {
+        "geneName": "PRMT5",
+        "posToTss": -456,
+        "ensemblTranscriptId": "ENST00000397441.6"
+      },
+      {
+        "geneName": "PRMT5",
+        "posToTss": -501,
+        "ensemblTranscriptId": "ENST00000397440.8"
+      },
+      {
+        "geneName": "PRMT5",
+        "posToTss": -466,
+        "ensemblTranscriptId": "ENST00000216350.12"
+      },
+      {
+        "geneName": "PRMT5",
+        "posToTss": -492,
+        "ensemblTranscriptId": "ENST00000553915.5"
+      },
+      {
+        "geneName": "PRMT5",
+        "posToTss": -449,
+        "ensemblTranscriptId": "ENST00000553897.5"
+      },
+      {
+        "geneName": "PRMT5",
+        "posToTss": -465,
+        "ensemblTranscriptId": "ENST00000553550.5"
+      },
+      {
+        "geneName": "PRMT5",
+        "posToTss": -492,
+        "ensemblTranscriptId": "ENST00000554716.5"
+      },
+      {
+        "geneName": "PRMT5",
+        "posToTss": -484,
+        "ensemblTranscriptId": "ENST00000553787.5"
+      },
+      {
+        "geneName": "PRMT5",
+        "posToTss": -506,
+        "ensemblTranscriptId": "ENST00000553641.5"
+      },
+      {
+        "geneName": "PRMT5",
+        "posToTss": -481,
+        "ensemblTranscriptId": "ENST00000554867.5"
+      },
+      {
+        "geneName": "PRMT5",
+        "posToTss": -465,
+        "ensemblTranscriptId": "ENST00000557415.5"
+      },
+      {
+        "geneName": "PRMT5",
+        "posToTss": -481,
+        "ensemblTranscriptId": "ENST00000556616.5"
+      },
+      {
+        "geneName": "PRMT5",
+        "posToTss": -776,
+        "ensemblTranscriptId": "ENST00000554910.5"
+      },
+      {
+        "geneName": "PRMT5",
+        "posToTss": -489,
+        "ensemblTranscriptId": "ENST00000421938.2"
+      },
+      {
+        "geneName": "PRMT5",
+        "posToTss": -506,
+        "ensemblTranscriptId": "ENST00000556032.1"
+      },
+      {
+        "geneName": "PRMT5",
+        "posToTss": -496,
+        "ensemblTranscriptId": "ENST00000627278.1"
+      },
+      {
+        "geneName": "PRMT5",
+        "posToTss": -463,
+        "ensemblTranscriptId": "ENST00000557015.1"
+      },
+      {
+        "geneName": "PRMT5",
+        "posToTss": -481,
+        "ensemblTranscriptId": "ENST00000556426.1"
+      },
+      {
+        "geneName": "RP11-298I3.1",
+        "posToTss": 248,
+        "ensemblTranscriptId": "ENST00000548819.5"
+      },
+      {
+        "geneName": "RP11-298I3.1",
+        "posToTss": 212,
+        "ensemblTranscriptId": "ENST00000548322.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg05860956",
+    "chrHg19": 12,
+    "posHg19": 312595,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 7176,
+        "ensemblTranscriptId": "ENST00000397296.6"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 10268,
+        "ensemblTranscriptId": "ENST00000359674.8"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 9909,
+        "ensemblTranscriptId": "ENST00000424061.6"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 10691,
+        "ensemblTranscriptId": "ENST00000536824.5"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 78,
+        "ensemblTranscriptId": "ENST00000538272.5"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": -615,
+        "ensemblTranscriptId": "ENST00000540094.1"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": -647,
+        "ensemblTranscriptId": "ENST00000538580.1"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 10116,
+        "ensemblTranscriptId": "ENST00000536116.5"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 7787,
+        "ensemblTranscriptId": "ENST00000537793.1"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 10661,
+        "ensemblTranscriptId": "ENST00000535347.5"
+      },
+      {
+        "geneName": "RP11-283I3.2",
+        "posToTss": -213,
+        "ensemblTranscriptId": "ENST00000539568.2"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg13598480",
+    "chrHg19": 20,
+    "posHg19": 3145356,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "LZTS3",
+        "posToTss": 3851,
+        "ensemblTranscriptId": "ENST00000329152.7"
+      },
+      {
+        "geneName": "LZTS3",
+        "posToTss": 8836,
+        "ensemblTranscriptId": "ENST00000360342.7"
+      },
+      {
+        "geneName": "LZTS3",
+        "posToTss": 8836,
+        "ensemblTranscriptId": "ENST00000645462.1"
+      },
+      {
+        "geneName": "LZTS3",
+        "posToTss": 8882,
+        "ensemblTranscriptId": "ENST00000337576.6"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES02011",
+        "trait": "sexually dimorphic",
+        "correlation": "neg",
+        "rank": 2770,
+        "pmid": 37608375
+      }
+    ]
+  },
+  {
+    "probeId": "cg01334824",
+    "chrHg19": 15,
+    "posHg19": 27787650,
+    "cpgIsland": "Shore",
+    "relatedTranscription": [
+      {
+        "geneName": "RP11-100M12.3",
+        "posToTss": -1307,
+        "ensemblTranscriptId": "ENST00000556642.1"
+      },
+      {
+        "geneName": "RP11-100M12.3",
+        "posToTss": -513,
+        "ensemblTranscriptId": "ENST00000557170.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00191",
+        "trait": "prenatal arsenic exposure",
+        "correlation": "pos",
+        "rank": 2754,
+        "pmid": 25304211
+      }
+    ]
+  },
+  {
+    "probeId": "cg24468780",
+    "chrHg19": 14,
+    "posHg19": 59349559,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "RP11-112J1.2",
+        "posToTss": 54607,
+        "ensemblTranscriptId": "ENST00000553762.1"
+      },
+      {
+        "geneName": "RP11-112J1.2",
+        "posToTss": 54553,
+        "ensemblTranscriptId": "ENST00000555378.5"
+      },
+      {
+        "geneName": "RP11-112J1.2",
+        "posToTss": 54553,
+        "ensemblTranscriptId": "ENST00000556815.5"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg23084506",
+    "chrHg19": 1,
+    "posHg19": 13111908,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "PRAMEF23",
+        "posToTss": 771,
+        "ensemblTranscriptId": "ENST00000605221.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00485",
+        "trait": "Kabuki syndrome (KS)",
+        "correlation": "neg",
+        "rank": 1387,
+        "pmid": 28933623
+      }
+    ]
+  },
+  {
+    "probeId": "cg11478335",
+    "chrHg19": 7,
+    "posHg19": 29918861,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "WIPF3",
+        "posToTss": 72759,
+        "ensemblTranscriptId": "ENST00000409123.5"
+      },
+      {
+        "geneName": "WIPF3",
+        "posToTss": 72691,
+        "ensemblTranscriptId": "ENST00000242140.9"
+      },
+      {
+        "geneName": "WIPF3",
+        "posToTss": 44520,
+        "ensemblTranscriptId": "ENST00000409290.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg15587955",
+    "chrHg19": 8,
+    "posHg19": 19026658,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "RP11-1080G15.1",
+        "posToTss": 90321,
+        "ensemblTranscriptId": "ENST00000520920.5"
+      },
+      {
+        "geneName": "RP11-1080G15.1",
+        "posToTss": 76341,
+        "ensemblTranscriptId": "ENST00000517949.5"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg05372993",
+    "chrHg19": 8,
+    "posHg19": 8430507,
+    "cpgIsland": "Other",
+    "relatedTranscription": [],
+    "associationList": []
+  },
+  {
+    "probeId": "cg21088344",
+    "chrHg19": 17,
+    "posHg19": 33795734,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "SLFN12L",
+        "posToTss": 9754,
+        "ensemblTranscriptId": "ENST00000587436.1"
+      },
+      {
+        "geneName": "SLFN12L",
+        "posToTss": 9511,
+        "ensemblTranscriptId": "ENST00000590802.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg24947255",
+    "chrHg19": 6,
+    "posHg19": 31430921,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "HCP5",
+        "posToTss": 62442,
+        "ensemblTranscriptId": "ENST00000414046.2"
+      },
+      {
+        "geneName": "HCP5",
+        "posToTss": -38,
+        "ensemblTranscriptId": "ENST00000541196.2"
+      },
+      {
+        "geneName": "HCP5",
+        "posToTss": -41,
+        "ensemblTranscriptId": "ENST00000460889.5"
+      },
+      {
+        "geneName": "HCP5",
+        "posToTss": -41,
+        "ensemblTranscriptId": "ENST00000467369.1"
+      },
+      {
+        "geneName": "XXbac-BPG181B23.6",
+        "posToTss": 192,
+        "ensemblTranscriptId": "ENST00000440087.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00578",
+        "trait": "down syndrome",
+        "correlation": "neg",
+        "rank": 7973,
+        "pmid": 29601581
+      }
+    ]
+  },
+  {
+    "probeId": "cg25290307",
+    "chrHg19": 7,
+    "posHg19": 101005910,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "COL26A1",
+        "posToTss": -191,
+        "ensemblTranscriptId": "ENST00000313669.11"
+      },
+      {
+        "geneName": "COL26A1",
+        "posToTss": -248,
+        "ensemblTranscriptId": "ENST00000613501.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01386",
+        "trait": "Gulf War Illness",
+        "correlation": "pos",
+        "rank": 1838,
+        "pmid": 30920300
+      },
+      {
+        "studyId": "ES02211",
+        "trait": "Alzheimer's Disease",
+        "correlation": "pos",
+        "rank": 17682,
+        "pmid": 37388929
+      },
+      {
+        "studyId": "ES02210",
+        "trait": "mild cognitive impairment",
+        "correlation": "pos",
+        "rank": 8039,
+        "pmid": 37388929
+      }
+    ]
+  },
+  {
+    "probeId": "cg26308704",
+    "chrHg19": 7,
+    "posHg19": 158325586,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "PTPRN2",
+        "posToTss": 54879,
+        "ensemblTranscriptId": "ENST00000389413.7"
+      },
+      {
+        "geneName": "PTPRN2",
+        "posToTss": 54894,
+        "ensemblTranscriptId": "ENST00000409483.5"
+      },
+      {
+        "geneName": "PTPRN2",
+        "posToTss": 54817,
+        "ensemblTranscriptId": "ENST00000389416.8"
+      },
+      {
+        "geneName": "PTPRN2",
+        "posToTss": 54785,
+        "ensemblTranscriptId": "ENST00000389418.8"
+      },
+      {
+        "geneName": "MIR595",
+        "posToTss": -81,
+        "ensemblTranscriptId": "ENST00000384905.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES02211",
+        "trait": "Alzheimer's Disease",
+        "correlation": "pos",
+        "rank": 13592,
+        "pmid": 37388929
+      }
+    ]
+  },
+  {
+    "probeId": "cg14545602",
+    "chrHg19": 19,
+    "posHg19": 57050141,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "AC005498.3",
+        "posToTss": -354,
+        "ensemblTranscriptId": "ENST00000590579.5"
+      },
+      {
+        "geneName": "AC005498.3",
+        "posToTss": -457,
+        "ensemblTranscriptId": "ENST00000601933.5"
+      },
+      {
+        "geneName": "AC005498.3",
+        "posToTss": -397,
+        "ensemblTranscriptId": "ENST00000587920.5"
+      },
+      {
+        "geneName": "AC005498.3",
+        "posToTss": -197,
+        "ensemblTranscriptId": "ENST00000590613.1"
+      },
+      {
+        "geneName": "AC005498.3",
+        "posToTss": -341,
+        "ensemblTranscriptId": "ENST00000593218.1"
+      },
+      {
+        "geneName": "ZFP28",
+        "posToTss": -176,
+        "ensemblTranscriptId": "ENST00000301318.7"
+      },
+      {
+        "geneName": "ZFP28",
+        "posToTss": -181,
+        "ensemblTranscriptId": "ENST00000591844.5"
+      },
+      {
+        "geneName": "ZFP28",
+        "posToTss": -297,
+        "ensemblTranscriptId": "ENST00000594386.1"
+      },
+      {
+        "geneName": "ZFP28",
+        "posToTss": -358,
+        "ensemblTranscriptId": "ENST00000589836.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg06604206",
+    "chrHg19": 5,
+    "posHg19": 167912465,
+    "cpgIsland": "Shore",
+    "relatedTranscription": [
+      {
+        "geneName": "RARS",
+        "posToTss": -985,
+        "ensemblTranscriptId": "ENST00000231572.7"
+      },
+      {
+        "geneName": "RARS",
+        "posToTss": -991,
+        "ensemblTranscriptId": "ENST00000524082.5"
+      },
+      {
+        "geneName": "RARS",
+        "posToTss": -1010,
+        "ensemblTranscriptId": "ENST00000521329.5"
+      },
+      {
+        "geneName": "RARS",
+        "posToTss": -1022,
+        "ensemblTranscriptId": "ENST00000522834.5"
+      },
+      {
+        "geneName": "RARS",
+        "posToTss": -1026,
+        "ensemblTranscriptId": "ENST00000521939.5"
+      },
+      {
+        "geneName": "RARS",
+        "posToTss": -1031,
+        "ensemblTranscriptId": "ENST00000520013.5"
+      },
+      {
+        "geneName": "RARS",
+        "posToTss": -1039,
+        "ensemblTranscriptId": "ENST00000626454.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01628",
+        "trait": "hepatitis B virus (HBV)-related liver disease progression",
+        "correlation": "NA",
+        "rank": 4390,
+        "pmid": 32513305
+      }
+    ]
+  },
+  {
+    "probeId": "cg23102195",
+    "chrHg19": 5,
+    "posHg19": 28927606,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "CTD-2269E23.4",
+        "posToTss": -40,
+        "ensemblTranscriptId": "ENST00000614250.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00199",
+        "trait": "sperm viability",
+        "correlation": "NA",
+        "rank": 889,
+        "pmid": 27529490
+      }
+    ]
+  },
+  {
+    "probeId": "cg16744531",
+    "chrHg19": 19,
+    "posHg19": 17905626,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "B3GNT3",
+        "posToTss": -11,
+        "ensemblTranscriptId": "ENST00000599265.5"
+      },
+      {
+        "geneName": "B3GNT3",
+        "posToTss": -293,
+        "ensemblTranscriptId": "ENST00000318683.6"
+      },
+      {
+        "geneName": "B3GNT3",
+        "posToTss": -319,
+        "ensemblTranscriptId": "ENST00000600777.1"
+      },
+      {
+        "geneName": "B3GNT3",
+        "posToTss": -340,
+        "ensemblTranscriptId": "ENST00000595387.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00731",
+        "trait": "aging",
+        "correlation": "neg",
+        "rank": 7247,
+        "pmid": 29064478
+      },
+      {
+        "studyId": "ES00270",
+        "trait": "respiratory allergies (RA)",
+        "correlation": "neg",
+        "rank": null,
+        "pmid": 26999364
+      },
+      {
+        "studyId": "ES01251",
+        "trait": "perinatally-acquired HIV",
+        "correlation": "pos",
+        "rank": 1300,
+        "pmid": 31324826
+      },
+      {
+        "studyId": "ES01687",
+        "trait": "pre- and post-lenalidomide treatment in patients with myelodysplastic syndrome with isolated deletion (5q)",
+        "correlation": "NA",
+        "rank": null,
+        "pmid": 33903952
+      },
+      {
+        "studyId": "ES02161",
+        "trait": "acute myelocytic leukemia (AML)",
+        "correlation": "neg",
+        "rank": 1382,
+        "pmid": 39052947
+      }
+    ]
+  },
+  {
+    "probeId": "cg10260205",
+    "chrHg19": 21,
+    "posHg19": 47347742,
+    "cpgIsland": "Shelf",
+    "relatedTranscription": [
+      {
+        "geneName": "PCBP3",
+        "posToTss": 284134,
+        "ensemblTranscriptId": "ENST00000400314.5"
+      },
+      {
+        "geneName": "PCBP3",
+        "posToTss": 79665,
+        "ensemblTranscriptId": "ENST00000400310.5"
+      },
+      {
+        "geneName": "PCBP3",
+        "posToTss": 77867,
+        "ensemblTranscriptId": "ENST00000400309.5"
+      },
+      {
+        "geneName": "PCBP3",
+        "posToTss": 77867,
+        "ensemblTranscriptId": "ENST00000400308.5"
+      },
+      {
+        "geneName": "PCBP3",
+        "posToTss": 77838,
+        "ensemblTranscriptId": "ENST00000449640.5"
+      },
+      {
+        "geneName": "PCBP3",
+        "posToTss": 31558,
+        "ensemblTranscriptId": "ENST00000400305.5"
+      },
+      {
+        "geneName": "PCBP3",
+        "posToTss": 31534,
+        "ensemblTranscriptId": "ENST00000400304.1"
+      },
+      {
+        "geneName": "PCBP3",
+        "posToTss": 26813,
+        "ensemblTranscriptId": "ENST00000468429.5"
+      },
+      {
+        "geneName": "PCBP3",
+        "posToTss": 13790,
+        "ensemblTranscriptId": "ENST00000475402.1"
+      },
+      {
+        "geneName": "PRED62",
+        "posToTss": 4735,
+        "ensemblTranscriptId": "ENST00000593412.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01048",
+        "trait": "ancestry",
+        "correlation": "neg",
+        "rank": 8614,
+        "pmid": 30563547
+      },
+      {
+        "studyId": "ES02259",
+        "trait": "brain health",
+        "correlation": "pos",
+        "rank": 2401,
+        "pmid": 35945220
+      }
+    ]
+  },
+  {
+    "probeId": "cg23229777",
+    "chrHg19": 20,
+    "posHg19": 37553475,
+    "cpgIsland": "Shore",
+    "relatedTranscription": [
+      {
+        "geneName": "FAM83D",
+        "posToTss": -1480,
+        "ensemblTranscriptId": "ENST00000619304.4"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg12080266",
+    "chrHg19": 21,
+    "posHg19": 36060640,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "CLIC6",
+        "posToTss": 18952,
+        "ensemblTranscriptId": "ENST00000360731.7"
+      },
+      {
+        "geneName": "CLIC6",
+        "posToTss": 18952,
+        "ensemblTranscriptId": "ENST00000349499.2"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES02247",
+        "trait": "In vitro fertilization (IVF)",
+        "correlation": "neg",
+        "rank": 832,
+        "pmid": 39702541
+      }
+    ]
+  },
+  {
+    "probeId": "cg20910361",
+    "chrHg19": 4,
+    "posHg19": 141877033,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "RNF150",
+        "posToTss": 176963,
+        "ensemblTranscriptId": "ENST00000515673.6"
+      },
+      {
+        "geneName": "RNF150",
+        "posToTss": 177583,
+        "ensemblTranscriptId": "ENST00000306799.7"
+      },
+      {
+        "geneName": "RNF150",
+        "posToTss": 256998,
+        "ensemblTranscriptId": "ENST00000420921.6"
+      },
+      {
+        "geneName": "RNF150",
+        "posToTss": 177170,
+        "ensemblTranscriptId": "ENST00000507500.5"
+      },
+      {
+        "geneName": "RNF150",
+        "posToTss": 41157,
+        "ensemblTranscriptId": "ENST00000506101.1"
+      },
+      {
+        "geneName": "RNF150",
+        "posToTss": 11991,
+        "ensemblTranscriptId": "ENST00000515057.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01441",
+        "trait": "blood C-reactive protein level",
+        "correlation": "pos",
+        "rank": 107,
+        "pmid": 31910897
+      }
+    ]
+  },
+  {
+    "probeId": "cg26456563",
+    "chrHg19": 19,
+    "posHg19": 40728617,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "CNTD2",
+        "posToTss": 3980,
+        "ensemblTranscriptId": "ENST00000430325.6"
+      },
+      {
+        "geneName": "CNTD2",
+        "posToTss": 3987,
+        "ensemblTranscriptId": "ENST00000599263.6"
+      },
+      {
+        "geneName": "CNTD2",
+        "posToTss": 854,
+        "ensemblTranscriptId": "ENST00000593335.1"
+      },
+      {
+        "geneName": "CNTD2",
+        "posToTss": 3947,
+        "ensemblTranscriptId": "ENST00000221818.5"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00486",
+        "trait": "gender",
+        "correlation": "neg",
+        "rank": 738,
+        "pmid": 26553366
+      },
+      {
+        "studyId": "ES01772",
+        "trait": "infant sex",
+        "correlation": "neg",
+        "rank": 567,
+        "pmid": 34569420
+      },
+      {
+        "studyId": "ES01774",
+        "trait": "infant sex",
+        "correlation": "neg",
+        "rank": 986,
+        "pmid": 34569420
+      },
+      {
+        "studyId": "ES02011",
+        "trait": "sexually dimorphic",
+        "correlation": "pos",
+        "rank": 5208,
+        "pmid": 37608375
+      }
+    ]
+  },
+  {
+    "probeId": "cg16101574",
+    "chrHg19": 7,
+    "posHg19": 7291514,
+    "cpgIsland": "Other",
+    "relatedTranscription": [],
+    "associationList": []
+  },
+  {
+    "probeId": "cg16910670",
+    "chrHg19": 11,
+    "posHg19": 71215361,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "NADSYN1",
+        "posToTss": 6810,
+        "ensemblTranscriptId": "ENST00000525593.5"
+      },
+      {
+        "geneName": "NADSYN1",
+        "posToTss": 5913,
+        "ensemblTranscriptId": "ENST00000527963.1"
+      },
+      {
+        "geneName": "NADSYN1",
+        "posToTss": 770,
+        "ensemblTranscriptId": "ENST00000528211.1"
+      },
+      {
+        "geneName": "NADSYN1",
+        "posToTss": 451,
+        "ensemblTranscriptId": "ENST00000624637.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01245",
+        "trait": "ancestry",
+        "correlation": "NA",
+        "rank": null,
+        "pmid": 31399127
+      }
+    ]
+  },
+  {
+    "probeId": "cg23473493",
+    "chrHg19": 2,
+    "posHg19": 44271479,
+    "cpgIsland": "Other",
+    "relatedTranscription": [],
+    "associationList": []
+  },
+  {
+    "probeId": "cg11340603",
+    "chrHg19": 12,
+    "posHg19": 79816965,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "SYT1",
+        "posToTss": 559192,
+        "ensemblTranscriptId": "ENST00000393240.7"
+      },
+      {
+        "geneName": "SYT1",
+        "posToTss": 558516,
+        "ensemblTranscriptId": "ENST00000261205.8"
+      },
+      {
+        "geneName": "SYT1",
+        "posToTss": 558373,
+        "ensemblTranscriptId": "ENST00000457153.6"
+      },
+      {
+        "geneName": "SYT1",
+        "posToTss": 377554,
+        "ensemblTranscriptId": "ENST00000552744.5"
+      },
+      {
+        "geneName": "RP1-78O14.1",
+        "posToTss": 80211,
+        "ensemblTranscriptId": "ENST00000549527.1"
+      },
+      {
+        "geneName": "RP1-78O14.1",
+        "posToTss": 32275,
+        "ensemblTranscriptId": "ENST00000550268.2"
+      },
+      {
+        "geneName": "RP1-78O14.1",
+        "posToTss": 80177,
+        "ensemblTranscriptId": "ENST00000553165.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00700",
+        "trait": "breast cancer",
+        "correlation": "pos",
+        "rank": 1081,
+        "pmid": 29776342
+      },
+      {
+        "studyId": "ES00910",
+        "trait": "systemic lupus erythematosus (SLE)",
+        "correlation": "pos",
+        "rank": 19,
+        "pmid": 30301579
+      },
+      {
+        "studyId": "ES01031",
+        "trait": "atopy",
+        "correlation": "neg",
+        "rank": 1010,
+        "pmid": 30584054
+      }
+    ]
+  },
+  {
+    "probeId": "cg23184739",
+    "chrHg19": 7,
+    "posHg19": 1884889,
+    "cpgIsland": "Shelf",
+    "relatedTranscription": [
+      {
+        "geneName": "MAD1L1",
+        "posToTss": 27503,
+        "ensemblTranscriptId": "ENST00000481633.1"
+      },
+      {
+        "geneName": "MAD1L1",
+        "posToTss": 385164,
+        "ensemblTranscriptId": "ENST00000265854.11"
+      },
+      {
+        "geneName": "MAD1L1",
+        "posToTss": 387691,
+        "ensemblTranscriptId": "ENST00000402746.5"
+      },
+      {
+        "geneName": "MAD1L1",
+        "posToTss": 387720,
+        "ensemblTranscriptId": "ENST00000399654.6"
+      },
+      {
+        "geneName": "MAD1L1",
+        "posToTss": 387989,
+        "ensemblTranscriptId": "ENST00000406869.5"
+      },
+      {
+        "geneName": "MAD1L1",
+        "posToTss": 135537,
+        "ensemblTranscriptId": "ENST00000450235.5"
+      },
+      {
+        "geneName": "AC110781.3",
+        "posToTss": 6667,
+        "ensemblTranscriptId": "ENST00000402221.4"
+      },
+      {
+        "geneName": "AC110781.3",
+        "posToTss": -47,
+        "ensemblTranscriptId": "ENST00000480694.2"
+      },
+      {
+        "geneName": "MIR4655",
+        "posToTss": -1000,
+        "ensemblTranscriptId": "ENST00000580817.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg24786658",
+    "chrHg19": 7,
+    "posHg19": 112727423,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "GPR85",
+        "posToTss": -1279,
+        "ensemblTranscriptId": "ENST00000610164.1"
+      },
+      {
+        "geneName": "GPR85",
+        "posToTss": 387,
+        "ensemblTranscriptId": "ENST00000297146.7"
+      },
+      {
+        "geneName": "GPR85",
+        "posToTss": -881,
+        "ensemblTranscriptId": "ENST00000424100.1"
+      },
+      {
+        "geneName": "GPR85",
+        "posToTss": -1030,
+        "ensemblTranscriptId": "ENST00000449591.1"
+      },
+      {
+        "geneName": "GPR85",
+        "posToTss": -999,
+        "ensemblTranscriptId": "ENST00000449735.1"
+      },
+      {
+        "geneName": "GPR85",
+        "posToTss": -954,
+        "ensemblTranscriptId": "ENST00000438062.5"
+      },
+      {
+        "geneName": "GPR85",
+        "posToTss": 410,
+        "ensemblTranscriptId": "ENST00000487573.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01251",
+        "trait": "perinatally-acquired HIV",
+        "correlation": "pos",
+        "rank": 251,
+        "pmid": 31324826
+      },
+      {
+        "studyId": "ES01296",
+        "trait": "maternal smoking",
+        "correlation": "pos",
+        "rank": 1483,
+        "pmid": 31536415
+      }
+    ]
+  },
+  {
+    "probeId": "cg07386121",
+    "chrHg19": 2,
+    "posHg19": 234544915,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "UGT1A10",
+        "posToTss": -233,
+        "ensemblTranscriptId": "ENST00000373445.1"
+      },
+      {
+        "geneName": "UGT1A10",
+        "posToTss": -185,
+        "ensemblTranscriptId": "ENST00000344644.9"
+      },
+      {
+        "geneName": "UGT1A8",
+        "posToTss": 18624,
+        "ensemblTranscriptId": "ENST00000373450.4"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg10638439",
+    "chrHg19": 6,
+    "posHg19": 31371271,
+    "cpgIsland": "Shelf",
+    "relatedTranscription": [
+      {
+        "geneName": "MICA",
+        "posToTss": 3710,
+        "ensemblTranscriptId": "ENST00000616296.4"
+      },
+      {
+        "geneName": "MICA",
+        "posToTss": -85,
+        "ensemblTranscriptId": "ENST00000449934.6"
+      },
+      {
+        "geneName": "MICA",
+        "posToTss": -178,
+        "ensemblTranscriptId": "ENST00000421350.1"
+      },
+      {
+        "geneName": "HCP5",
+        "posToTss": 2792,
+        "ensemblTranscriptId": "ENST00000414046.2"
+      },
+      {
+        "geneName": "Y_RNA",
+        "posToTss": -1244,
+        "ensemblTranscriptId": "ENST00000362462.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01219",
+        "trait": "preeclampsia",
+        "correlation": "pos",
+        "rank": 133,
+        "pmid": 31230546
+      }
+    ]
+  },
+  {
+    "probeId": "cg23032677",
+    "chrHg19": 17,
+    "posHg19": 18671452,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "FBXW10",
+        "posToTss": 24115,
+        "ensemblTranscriptId": "ENST00000395665.8"
+      },
+      {
+        "geneName": "FBXW10",
+        "posToTss": 24113,
+        "ensemblTranscriptId": "ENST00000308799.8"
+      },
+      {
+        "geneName": "FBXW10",
+        "posToTss": 24067,
+        "ensemblTranscriptId": "ENST00000574478.1"
+      },
+      {
+        "geneName": "FBXW10",
+        "posToTss": 24064,
+        "ensemblTranscriptId": "ENST00000301938.4"
+      },
+      {
+        "geneName": "FBXW10",
+        "posToTss": -1338,
+        "ensemblTranscriptId": "ENST00000573605.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01502",
+        "trait": "Papuan ancestry proportions",
+        "correlation": "NA",
+        "rank": 481,
+        "pmid": 32453742
+      },
+      {
+        "studyId": "ES02210",
+        "trait": "mild cognitive impairment",
+        "correlation": "pos",
+        "rank": 495,
+        "pmid": 37388929
+      }
+    ]
+  },
+  {
+    "probeId": "cg22744928",
+    "chrHg19": 3,
+    "posHg19": 39176143,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "TTC21A",
+        "posToTss": 26948,
+        "ensemblTranscriptId": "ENST00000431162.6"
+      },
+      {
+        "geneName": "TTC21A",
+        "posToTss": 26923,
+        "ensemblTranscriptId": "ENST00000430597.6"
+      },
+      {
+        "geneName": "TTC21A",
+        "posToTss": 26845,
+        "ensemblTranscriptId": "ENST00000440121.1"
+      },
+      {
+        "geneName": "TTC21A",
+        "posToTss": 3131,
+        "ensemblTranscriptId": "ENST00000472866.6"
+      },
+      {
+        "geneName": "TTC21A",
+        "posToTss": 1931,
+        "ensemblTranscriptId": "ENST00000493856.5"
+      },
+      {
+        "geneName": "TTC21A",
+        "posToTss": 1677,
+        "ensemblTranscriptId": "ENST00000481734.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg21897367",
+    "chrHg19": 7,
+    "posHg19": 142759657,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "OR6W1P",
+        "posToTss": 869,
+        "ensemblTranscriptId": "ENST00000496192.1"
+      },
+      {
+        "geneName": "OR6W1P",
+        "posToTss": 1025,
+        "ensemblTranscriptId": "ENST00000490285.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg13303179",
+    "chrHg19": 3,
+    "posHg19": 46759335,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "PRSS50",
+        "posToTss": 62,
+        "ensemblTranscriptId": "ENST00000315170.12"
+      },
+      {
+        "geneName": "RP11-316F12.1",
+        "posToTss": 94729,
+        "ensemblTranscriptId": "ENST00000460241.2"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01048",
+        "trait": "ancestry",
+        "correlation": "neg",
+        "rank": 6372,
+        "pmid": 30563547
+      },
+      {
+        "studyId": "ES01892",
+        "trait": "ischemic stroke",
+        "correlation": "NA",
+        "rank": null,
+        "pmid": 35480311
+      },
+      {
+        "studyId": "ES02211",
+        "trait": "Alzheimer's Disease",
+        "correlation": "pos",
+        "rank": 14939,
+        "pmid": 37388929
+      }
+    ]
+  },
+  {
+    "probeId": "cg14148441",
+    "chrHg19": 19,
+    "posHg19": 47817299,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "C5AR1",
+        "posToTss": 16967,
+        "ensemblTranscriptId": "ENST00000594787.1"
+      },
+      {
+        "geneName": "C5AR1",
+        "posToTss": 4168,
+        "ensemblTranscriptId": "ENST00000355085.3"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg10075163",
+    "chrHg19": 12,
+    "posHg19": 313097,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 6674,
+        "ensemblTranscriptId": "ENST00000397296.6"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 9766,
+        "ensemblTranscriptId": "ENST00000359674.8"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 9407,
+        "ensemblTranscriptId": "ENST00000424061.6"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 10189,
+        "ensemblTranscriptId": "ENST00000536824.5"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": -424,
+        "ensemblTranscriptId": "ENST00000538272.5"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": -1117,
+        "ensemblTranscriptId": "ENST00000540094.1"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": -1149,
+        "ensemblTranscriptId": "ENST00000538580.1"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 9614,
+        "ensemblTranscriptId": "ENST00000536116.5"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 7285,
+        "ensemblTranscriptId": "ENST00000537793.1"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 10159,
+        "ensemblTranscriptId": "ENST00000535347.5"
+      },
+      {
+        "geneName": "RP11-283I3.2",
+        "posToTss": 289,
+        "ensemblTranscriptId": "ENST00000539568.2"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg20188212",
+    "chrHg19": 12,
+    "posHg19": 313104,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 6667,
+        "ensemblTranscriptId": "ENST00000397296.6"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 9759,
+        "ensemblTranscriptId": "ENST00000359674.8"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 9400,
+        "ensemblTranscriptId": "ENST00000424061.6"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 10182,
+        "ensemblTranscriptId": "ENST00000536824.5"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": -431,
+        "ensemblTranscriptId": "ENST00000538272.5"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": -1124,
+        "ensemblTranscriptId": "ENST00000540094.1"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": -1156,
+        "ensemblTranscriptId": "ENST00000538580.1"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 9607,
+        "ensemblTranscriptId": "ENST00000536116.5"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 7278,
+        "ensemblTranscriptId": "ENST00000537793.1"
+      },
+      {
+        "geneName": "SLC6A12",
+        "posToTss": 10152,
+        "ensemblTranscriptId": "ENST00000535347.5"
+      },
+      {
+        "geneName": "RP11-283I3.2",
+        "posToTss": 296,
+        "ensemblTranscriptId": "ENST00000539568.2"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00927",
+        "trait": "household socioeconomic status in childhood",
+        "correlation": "pos",
+        "rank": 224,
+        "pmid": 30351206
+      }
+    ]
+  },
+  {
+    "probeId": "cg27031099",
+    "chrHg19": 8,
+    "posHg19": 126620534,
+    "cpgIsland": "Other",
+    "relatedTranscription": [],
+    "associationList": [
+      {
+        "studyId": "ES00536",
+        "trait": "air pollution (NO2)",
+        "correlation": "pos",
+        "rank": 2325,
+        "pmid": 29410382
+      },
+      {
+        "studyId": "ES00546",
+        "trait": "systemic lupus erythematosus (SLE)",
+        "correlation": "neg",
+        "rank": 6576,
+        "pmid": 29437559
+      },
+      {
+        "studyId": "ES00721",
+        "trait": "Parkinson's disease (PD)",
+        "correlation": "neg",
+        "rank": 95,
+        "pmid": 28851441
+      },
+      {
+        "studyId": "ES01237",
+        "trait": "systemic lupus erythematosus (SLE)",
+        "correlation": "neg",
+        "rank": 6576,
+        "pmid": 31428085
+      },
+      {
+        "studyId": "ES01293",
+        "trait": "smoking",
+        "correlation": "neg",
+        "rank": 825,
+        "pmid": 31552803
+      }
+    ]
+  },
+  {
+    "probeId": "cg06159004",
+    "chrHg19": 11,
+    "posHg19": 35068850,
+    "cpgIsland": "Other",
+    "relatedTranscription": [],
+    "associationList": [
+      {
+        "studyId": "ES01048",
+        "trait": "ancestry",
+        "correlation": "neg",
+        "rank": 2922,
+        "pmid": 30563547
+      },
+      {
+        "studyId": "ES01529",
+        "trait": "ancestry",
+        "correlation": "pos",
+        "rank": 162,
+        "pmid": 33108347
+      }
+    ]
+  },
+  {
+    "probeId": "cg17361163",
+    "chrHg19": 7,
+    "posHg19": 101006019,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "COL26A1",
+        "posToTss": -82,
+        "ensemblTranscriptId": "ENST00000313669.11"
+      },
+      {
+        "geneName": "COL26A1",
+        "posToTss": -139,
+        "ensemblTranscriptId": "ENST00000613501.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01048",
+        "trait": "ancestry",
+        "correlation": "neg",
+        "rank": 2697,
+        "pmid": 30563547
+      },
+      {
+        "studyId": "ES01072",
+        "trait": "aging",
+        "correlation": "pos",
+        "rank": 2752,
+        "pmid": 30626398
+      },
+      {
+        "studyId": "ES02211",
+        "trait": "Alzheimer's Disease",
+        "correlation": "pos",
+        "rank": 12203,
+        "pmid": 37388929
+      }
+    ]
+  },
+  {
+    "probeId": "cg15501526",
+    "chrHg19": 10,
+    "posHg19": 2543763,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "RP11-526P5.2",
+        "posToTss": -212,
+        "ensemblTranscriptId": "ENST00000438753.1"
+      },
+      {
+        "geneName": "RP11-526P5.2",
+        "posToTss": -232,
+        "ensemblTranscriptId": "ENST00000437289.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg10478549",
+    "chrHg19": 14,
+    "posHg19": 39865124,
+    "cpgIsland": "Other",
+    "relatedTranscription": [],
+    "associationList": [
+      {
+        "studyId": "ES01048",
+        "trait": "ancestry",
+        "correlation": "neg",
+        "rank": 4720,
+        "pmid": 30563547
+      }
+    ]
+  },
+  {
+    "probeId": "cg21960279",
+    "chrHg19": 19,
+    "posHg19": 17905606,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "B3GNT3",
+        "posToTss": -31,
+        "ensemblTranscriptId": "ENST00000599265.5"
+      },
+      {
+        "geneName": "B3GNT3",
+        "posToTss": -313,
+        "ensemblTranscriptId": "ENST00000318683.6"
+      },
+      {
+        "geneName": "B3GNT3",
+        "posToTss": -339,
+        "ensemblTranscriptId": "ENST00000600777.1"
+      },
+      {
+        "geneName": "B3GNT3",
+        "posToTss": -360,
+        "ensemblTranscriptId": "ENST00000595387.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00270",
+        "trait": "respiratory allergies (RA)",
+        "correlation": "neg",
+        "rank": null,
+        "pmid": 26999364
+      },
+      {
+        "studyId": "ES01031",
+        "trait": "atopy",
+        "correlation": "neg",
+        "rank": 4071,
+        "pmid": 30584054
+      },
+      {
+        "studyId": "ES01463",
+        "trait": "inflamed Crohn's disease (CD)",
+        "correlation": "pos",
+        "rank": 817,
+        "pmid": 32251296
+      }
+    ]
+  },
+  {
+    "probeId": "cg16680214",
+    "chrHg19": 1,
+    "posHg19": 154839983,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "KCNN3",
+        "posToTss": 2773,
+        "ensemblTranscriptId": "ENST00000271915.8"
+      },
+      {
+        "geneName": "KCNN3",
+        "posToTss": 2771,
+        "ensemblTranscriptId": "ENST00000618040.4"
+      },
+      {
+        "geneName": "KCNN3",
+        "posToTss": 812,
+        "ensemblTranscriptId": "ENST00000358505.2"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00255",
+        "trait": "food allergy",
+        "correlation": "neg",
+        "rank": 61,
+        "pmid": 24762976
+      },
+      {
+        "studyId": "ES01048",
+        "trait": "ancestry",
+        "correlation": "neg",
+        "rank": 7609,
+        "pmid": 30563547
+      },
+      {
+        "studyId": "ES02211",
+        "trait": "Alzheimer's Disease",
+        "correlation": "pos",
+        "rank": 14361,
+        "pmid": 37388929
+      }
+    ]
+  },
+  {
+    "probeId": "cg21679753",
+    "chrHg19": 21,
+    "posHg19": 40338206,
+    "cpgIsland": "Other",
+    "relatedTranscription": [],
+    "associationList": []
+  },
+  {
+    "probeId": "cg02305391",
+    "chrHg19": 10,
+    "posHg19": 1314211,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "ADARB2",
+        "posToTss": 465459,
+        "ensemblTranscriptId": "ENST00000381312.5"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES02211",
+        "trait": "Alzheimer's Disease",
+        "correlation": "neg",
+        "rank": 559,
+        "pmid": 37388929
+      },
+      {
+        "studyId": "ES02210",
+        "trait": "mild cognitive impairment",
+        "correlation": "neg",
+        "rank": 1240,
+        "pmid": 37388929
+      }
+    ]
+  },
+  {
+    "probeId": "cg22191299",
+    "chrHg19": 18,
+    "posHg19": 55806600,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "NEDD4L",
+        "posToTss": 95001,
+        "ensemblTranscriptId": "ENST00000356462.10"
+      },
+      {
+        "geneName": "NEDD4L",
+        "posToTss": 94990,
+        "ensemblTranscriptId": "ENST00000400345.7"
+      },
+      {
+        "geneName": "NEDD4L",
+        "posToTss": 94984,
+        "ensemblTranscriptId": "ENST00000589054.5"
+      },
+      {
+        "geneName": "NEDD4L",
+        "posToTss": 94820,
+        "ensemblTranscriptId": "ENST00000382850.8"
+      },
+      {
+        "geneName": "NEDD4L",
+        "posToTss": 94707,
+        "ensemblTranscriptId": "ENST00000256830.13"
+      },
+      {
+        "geneName": "NEDD4L",
+        "posToTss": 93843,
+        "ensemblTranscriptId": "ENST00000590694.5"
+      },
+      {
+        "geneName": "NEDD4L",
+        "posToTss": 93679,
+        "ensemblTranscriptId": "ENST00000591989.5"
+      },
+      {
+        "geneName": "NEDD4L",
+        "posToTss": 93671,
+        "ensemblTranscriptId": "ENST00000591579.5"
+      },
+      {
+        "geneName": "NEDD4L",
+        "posToTss": 93661,
+        "ensemblTranscriptId": "ENST00000592846.5"
+      },
+      {
+        "geneName": "NEDD4L",
+        "posToTss": 93434,
+        "ensemblTranscriptId": "ENST00000585363.5"
+      },
+      {
+        "geneName": "NEDD4L",
+        "posToTss": 93005,
+        "ensemblTranscriptId": "ENST00000588516.5"
+      },
+      {
+        "geneName": "NEDD4L",
+        "posToTss": 92142,
+        "ensemblTranscriptId": "ENST00000456986.5"
+      },
+      {
+        "geneName": "NEDD4L",
+        "posToTss": 84659,
+        "ensemblTranscriptId": "ENST00000585594.5"
+      },
+      {
+        "geneName": "NEDD4L",
+        "posToTss": 48577,
+        "ensemblTranscriptId": "ENST00000587547.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg15178291",
+    "chrHg19": 8,
+    "posHg19": 48320302,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "SPIDR",
+        "posToTss": 147135,
+        "ensemblTranscriptId": "ENST00000297423.8"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 146832,
+        "ensemblTranscriptId": "ENST00000541342.2"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 146797,
+        "ensemblTranscriptId": "ENST00000523814.5"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 146779,
+        "ensemblTranscriptId": "ENST00000518074.5"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 146768,
+        "ensemblTranscriptId": "ENST00000517824.5"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 146768,
+        "ensemblTranscriptId": "ENST00000521550.5"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 146757,
+        "ensemblTranscriptId": "ENST00000524126.5"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 146755,
+        "ensemblTranscriptId": "ENST00000519661.5"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 146755,
+        "ensemblTranscriptId": "ENST00000524141.5"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 146754,
+        "ensemblTranscriptId": "ENST00000524033.5"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 146754,
+        "ensemblTranscriptId": "ENST00000522117.5"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 146745,
+        "ensemblTranscriptId": "ENST00000524006.5"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 130877,
+        "ensemblTranscriptId": "ENST00000521214.5"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": 46916,
+        "ensemblTranscriptId": "ENST00000521918.6"
+      },
+      {
+        "geneName": "SPIDR",
+        "posToTss": -121,
+        "ensemblTranscriptId": "ENST00000524157.2"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg15525848",
+    "chrHg19": 5,
+    "posHg19": 16509123,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "FAM134B",
+        "posToTss": -16,
+        "ensemblTranscriptId": "ENST00000399793.6"
+      },
+      {
+        "geneName": "FAM134B",
+        "posToTss": 108044,
+        "ensemblTranscriptId": "ENST00000306320.9"
+      },
+      {
+        "geneName": "FAM134B",
+        "posToTss": 422,
+        "ensemblTranscriptId": "ENST00000509977.1"
+      },
+      {
+        "geneName": "FAM134B",
+        "posToTss": -328,
+        "ensemblTranscriptId": "ENST00000506441.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00578",
+        "trait": "down syndrome",
+        "correlation": "pos",
+        "rank": 14076,
+        "pmid": 29601581
+      },
+      {
+        "studyId": "ES00182",
+        "trait": "preterm birth",
+        "correlation": "pos",
+        "rank": null,
+        "pmid": 28428831
+      },
+      {
+        "studyId": "ES00270",
+        "trait": "respiratory allergies (RA)",
+        "correlation": "pos",
+        "rank": null,
+        "pmid": 26999364
+      }
+    ]
+  },
+  {
+    "probeId": "cg26175789",
+    "chrHg19": 2,
+    "posHg19": 75821892,
+    "cpgIsland": "Other",
+    "relatedTranscription": [],
+    "associationList": [
+      {
+        "studyId": "ES00298",
+        "trait": "type 2 diabetes (T2D)",
+        "correlation": "pos",
+        "rank": 745,
+        "pmid": 26823690
+      },
+      {
+        "studyId": "ES02209",
+        "trait": "Alzheimer's disease (AD)",
+        "correlation": "pos",
+        "rank": 537,
+        "pmid": 37388929
+      },
+      {
+        "studyId": "ES02211",
+        "trait": "Alzheimer's Disease",
+        "correlation": "neg",
+        "rank": 5267,
+        "pmid": 37388929
+      }
+    ]
+  },
+  {
+    "probeId": "cg05715076",
+    "chrHg19": 14,
+    "posHg19": 100075957,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "RP11-543C4.1",
+        "posToTss": 5064,
+        "ensemblTranscriptId": "ENST00000502101.2"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01048",
+        "trait": "ancestry",
+        "correlation": "pos",
+        "rank": 718,
+        "pmid": 30563547
+      },
+      {
+        "studyId": "ES01209",
+        "trait": "ankylosing spondylitis",
+        "correlation": "pos",
+        "rank": 15,
+        "pmid": 31128893
+      },
+      {
+        "studyId": "ES01529",
+        "trait": "ancestry",
+        "correlation": "neg",
+        "rank": 213,
+        "pmid": 33108347
+      },
+      {
+        "studyId": "ES02211",
+        "trait": "Alzheimer's Disease",
+        "correlation": "pos",
+        "rank": 19160,
+        "pmid": 37388929
+      },
+      {
+        "studyId": "ES02210",
+        "trait": "mild cognitive impairment",
+        "correlation": "pos",
+        "rank": 3317,
+        "pmid": 37388929
+      }
+    ]
+  },
+  {
+    "probeId": "cg09535960",
+    "chrHg19": 8,
+    "posHg19": 23193704,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "LOXL2",
+        "posToTss": 68049,
+        "ensemblTranscriptId": "ENST00000389131.7"
+      },
+      {
+        "geneName": "LOXL2",
+        "posToTss": 67935,
+        "ensemblTranscriptId": "ENST00000523833.2"
+      },
+      {
+        "geneName": "LOXL2",
+        "posToTss": 4985,
+        "ensemblTranscriptId": "ENST00000518878.5"
+      },
+      {
+        "geneName": "RP11-177H13.2",
+        "posToTss": 20,
+        "ensemblTranscriptId": "ENST00000517420.1"
+      },
+      {
+        "geneName": "RP11-177H13.2",
+        "posToTss": -17,
+        "ensemblTranscriptId": "ENST00000519692.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00610",
+        "trait": "prostate cancer",
+        "correlation": "pos",
+        "rank": 1160,
+        "pmid": 29740534
+      },
+      {
+        "studyId": "ES00705",
+        "trait": "papillary thyroid carcinoma",
+        "correlation": "neg",
+        "rank": 2096,
+        "pmid": 28938489
+      },
+      {
+        "studyId": "ES00828",
+        "trait": "papillary thyroid carcinoma",
+        "correlation": "neg",
+        "rank": 1599,
+        "pmid": 28469731
+      },
+      {
+        "studyId": "ES00076",
+        "trait": "alcohol consumption",
+        "correlation": "pos",
+        "rank": 354,
+        "pmid": 27843151
+      },
+      {
+        "studyId": "ES01092",
+        "trait": "adenoma",
+        "correlation": "neg",
+        "rank": 5540,
+        "pmid": 30183087
+      },
+      {
+        "studyId": "ES01252",
+        "trait": "papillary thyroid carcinoma",
+        "correlation": "neg",
+        "rank": null,
+        "pmid": 31328658
+      }
+    ]
+  },
+  {
+    "probeId": "cg18026197",
+    "chrHg19": 3,
+    "posHg19": 126422536,
+    "cpgIsland": "Shore",
+    "relatedTranscription": [
+      {
+        "geneName": "CHCHD6",
+        "posToTss": -527,
+        "ensemblTranscriptId": "ENST00000290913.7"
+      },
+      {
+        "geneName": "CHCHD6",
+        "posToTss": -547,
+        "ensemblTranscriptId": "ENST00000503119.5"
+      },
+      {
+        "geneName": "CHCHD6",
+        "posToTss": -548,
+        "ensemblTranscriptId": "ENST00000508789.5"
+      },
+      {
+        "geneName": "CHCHD6",
+        "posToTss": -550,
+        "ensemblTranscriptId": "ENST00000514908.5"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01048",
+        "trait": "ancestry",
+        "correlation": "neg",
+        "rank": 1510,
+        "pmid": 30563547
+      }
+    ]
+  },
+  {
+    "probeId": "cg00240732",
+    "chrHg19": 7,
+    "posHg19": 70923396,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "WBSCR17",
+        "posToTss": 326241,
+        "ensemblTranscriptId": "ENST00000333538.9"
+      },
+      {
+        "geneName": "WBSCR17",
+        "posToTss": 174414,
+        "ensemblTranscriptId": "ENST00000498380.6"
+      },
+      {
+        "geneName": "WBSCR17",
+        "posToTss": 157668,
+        "ensemblTranscriptId": "ENST00000467723.1"
+      },
+      {
+        "geneName": "WBSCR17",
+        "posToTss": 122861,
+        "ensemblTranscriptId": "ENST00000618959.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00706",
+        "trait": "follicular thyroid carcinoma",
+        "correlation": "pos",
+        "rank": 699,
+        "pmid": 28938489
+      },
+      {
+        "studyId": "ES00276",
+        "trait": "rheumatoid arthritis (RA)",
+        "correlation": "pos",
+        "rank": 364,
+        "pmid": 27585642
+      }
+    ]
+  },
+  {
+    "probeId": "cg12580445",
+    "chrHg19": 5,
+    "posHg19": 121414634,
+    "cpgIsland": "Shore",
+    "relatedTranscription": [
+      {
+        "geneName": "LOX",
+        "posToTss": -654,
+        "ensemblTranscriptId": "ENST00000231004.4"
+      },
+      {
+        "geneName": "LOX",
+        "posToTss": -579,
+        "ensemblTranscriptId": "ENST00000639739.1"
+      },
+      {
+        "geneName": "LOX",
+        "posToTss": -1467,
+        "ensemblTranscriptId": "ENST00000508067.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00711",
+        "trait": "leukoaraiosis (LA)",
+        "correlation": "neg",
+        "rank": 59,
+        "pmid": 29875652
+      },
+      {
+        "studyId": "ES01881",
+        "trait": "triiodothyronine (T3) treatment",
+        "correlation": "neg",
+        "rank": null,
+        "pmid": 35327410
+      },
+      {
+        "studyId": "ES02209",
+        "trait": "Alzheimer's disease (AD)",
+        "correlation": "neg",
+        "rank": 605,
+        "pmid": 37388929
+      }
+    ]
+  },
+  {
+    "probeId": "cg04905079",
+    "chrHg19": 20,
+    "posHg19": 3149259,
+    "cpgIsland": "Shelf",
+    "relatedTranscription": [
+      {
+        "geneName": "LZTS3",
+        "posToTss": -52,
+        "ensemblTranscriptId": "ENST00000329152.7"
+      },
+      {
+        "geneName": "LZTS3",
+        "posToTss": 4933,
+        "ensemblTranscriptId": "ENST00000360342.7"
+      },
+      {
+        "geneName": "LZTS3",
+        "posToTss": 4933,
+        "ensemblTranscriptId": "ENST00000645462.1"
+      },
+      {
+        "geneName": "LZTS3",
+        "posToTss": 4979,
+        "ensemblTranscriptId": "ENST00000337576.6"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01969",
+        "trait": "clonal hematopoiesis of indeterminate potential",
+        "correlation": "neg",
+        "rank": 620,
+        "pmid": 36097025
+      },
+      {
+        "studyId": "ES02011",
+        "trait": "sexually dimorphic",
+        "correlation": "neg",
+        "rank": 3718,
+        "pmid": 37608375
+      }
+    ]
+  },
+  {
+    "probeId": "cg24315757",
+    "chrHg19": 3,
+    "posHg19": 65879115,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "MAGI1",
+        "posToTss": 144868,
+        "ensemblTranscriptId": "ENST00000330909.12"
+      },
+      {
+        "geneName": "MAGI1",
+        "posToTss": 144868,
+        "ensemblTranscriptId": "ENST00000402939.6"
+      },
+      {
+        "geneName": "MAGI1",
+        "posToTss": 145110,
+        "ensemblTranscriptId": "ENST00000483466.5"
+      },
+      {
+        "geneName": "MAGI1",
+        "posToTss": 144868,
+        "ensemblTranscriptId": "ENST00000497477.6"
+      },
+      {
+        "geneName": "MAGI1",
+        "posToTss": 14235,
+        "ensemblTranscriptId": "ENST00000470990.5"
+      },
+      {
+        "geneName": "MAGI1",
+        "posToTss": 145394,
+        "ensemblTranscriptId": "ENST00000464060.5"
+      },
+      {
+        "geneName": "MAGI1-IT1",
+        "posToTss": 61118,
+        "ensemblTranscriptId": "ENST00000460754.1"
+      },
+      {
+        "geneName": "MAGI1-AS1",
+        "posToTss": -376,
+        "ensemblTranscriptId": "ENST00000472514.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg13327258",
+    "chrHg19": 15,
+    "posHg19": 67141531,
+    "cpgIsland": "Other",
+    "relatedTranscription": [],
+    "associationList": [
+      {
+        "studyId": "ES01113",
+        "trait": "polybrominated biphenyl exposure",
+        "correlation": "neg",
+        "rank": 839,
+        "pmid": 30676242
+      }
+    ]
+  },
+  {
+    "probeId": "cg03258508",
+    "chrHg19": 22,
+    "posHg19": 47022167,
+    "cpgIsland": "Shore",
+    "relatedTranscription": [
+      {
+        "geneName": "GRAMD4",
+        "posToTss": 50258,
+        "ensemblTranscriptId": "ENST00000447351.5"
+      },
+      {
+        "geneName": "GRAMD4",
+        "posToTss": 49141,
+        "ensemblTranscriptId": "ENST00000431155.1"
+      },
+      {
+        "geneName": "GRAMD4",
+        "posToTss": 5868,
+        "ensemblTranscriptId": "ENST00000406902.5"
+      },
+      {
+        "geneName": "GRAMD4",
+        "posToTss": -491,
+        "ensemblTranscriptId": "ENST00000361034.7"
+      },
+      {
+        "geneName": "GRAMD4",
+        "posToTss": -573,
+        "ensemblTranscriptId": "ENST00000490378.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES02094",
+        "trait": "night shift work",
+        "correlation": "pos",
+        "rank": 873,
+        "pmid": 36457290
+      }
+    ]
+  },
+  {
+    "probeId": "cg21770758",
+    "chrHg19": 10,
+    "posHg19": 112440394,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "RBM20",
+        "posToTss": 36239,
+        "ensemblTranscriptId": "ENST00000369519.3"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES02209",
+        "trait": "Alzheimer's disease (AD)",
+        "correlation": "neg",
+        "rank": 458,
+        "pmid": 37388929
+      },
+      {
+        "studyId": "ES02211",
+        "trait": "Alzheimer's Disease",
+        "correlation": "pos",
+        "rank": 19311,
+        "pmid": 37388929
+      }
+    ]
+  },
+  {
+    "probeId": "cg00922271",
+    "chrHg19": 2,
+    "posHg19": 234544857,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "UGT1A10",
+        "posToTss": -291,
+        "ensemblTranscriptId": "ENST00000373445.1"
+      },
+      {
+        "geneName": "UGT1A10",
+        "posToTss": -243,
+        "ensemblTranscriptId": "ENST00000344644.9"
+      },
+      {
+        "geneName": "UGT1A8",
+        "posToTss": 18566,
+        "ensemblTranscriptId": "ENST00000373450.4"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg14865086",
+    "chrHg19": 17,
+    "posHg19": 17179362,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "COPS3",
+        "posToTss": 4729,
+        "ensemblTranscriptId": "ENST00000539941.6"
+      },
+      {
+        "geneName": "COPS3",
+        "posToTss": 5245,
+        "ensemblTranscriptId": "ENST00000268717.9"
+      },
+      {
+        "geneName": "COPS3",
+        "posToTss": 5143,
+        "ensemblTranscriptId": "ENST00000578317.5"
+      },
+      {
+        "geneName": "COPS3",
+        "posToTss": 4652,
+        "ensemblTranscriptId": "ENST00000439936.6"
+      },
+      {
+        "geneName": "COPS3",
+        "posToTss": 18,
+        "ensemblTranscriptId": "ENST00000486810.5"
+      },
+      {
+        "geneName": "COPS3",
+        "posToTss": 5138,
+        "ensemblTranscriptId": "ENST00000577210.5"
+      },
+      {
+        "geneName": "COPS3",
+        "posToTss": 5191,
+        "ensemblTranscriptId": "ENST00000417352.5"
+      },
+      {
+        "geneName": "COPS3",
+        "posToTss": 5225,
+        "ensemblTranscriptId": "ENST00000584216.5"
+      },
+      {
+        "geneName": "COPS3",
+        "posToTss": 5198,
+        "ensemblTranscriptId": "ENST00000492672.5"
+      },
+      {
+        "geneName": "COPS3",
+        "posToTss": 5198,
+        "ensemblTranscriptId": "ENST00000477299.5"
+      },
+      {
+        "geneName": "COPS3",
+        "posToTss": 5225,
+        "ensemblTranscriptId": "ENST00000577246.5"
+      },
+      {
+        "geneName": "COPS3",
+        "posToTss": 5112,
+        "ensemblTranscriptId": "ENST00000462236.1"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01048",
+        "trait": "ancestry",
+        "correlation": "neg",
+        "rank": 6619,
+        "pmid": 30563547
+      }
+    ]
+  },
+  {
+    "probeId": "cg13796823",
+    "chrHg19": 6,
+    "posHg19": 130686592,
+    "cpgIsland": "Island",
+    "relatedTranscription": [
+      {
+        "geneName": "SAMD3",
+        "posToTss": -22,
+        "ensemblTranscriptId": "ENST00000368134.6"
+      },
+      {
+        "geneName": "TMEM200A",
+        "posToTss": -287,
+        "ensemblTranscriptId": "ENST00000296978.3"
+      },
+      {
+        "geneName": "TMEM200A",
+        "posToTss": -834,
+        "ensemblTranscriptId": "ENST00000617887.4"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00435",
+        "trait": "hepatocellular carcinoma (HCC)",
+        "correlation": "pos",
+        "rank": 2898,
+        "pmid": 23208076
+      },
+      {
+        "studyId": "ES00975",
+        "trait": "hepatocellular carcinoma (HCC)",
+        "correlation": "pos",
+        "rank": 6343,
+        "pmid": 29988590
+      },
+      {
+        "studyId": "ES01245",
+        "trait": "ancestry",
+        "correlation": "NA",
+        "rank": null,
+        "pmid": 31399127
+      },
+      {
+        "studyId": "ES02025",
+        "trait": "gastric cardiac intraepithelial neoplasia",
+        "correlation": "pos",
+        "rank": 11221,
+        "pmid": 38258659
+      }
+    ]
+  },
+  {
+    "probeId": "cg06094757",
+    "chrHg19": 12,
+    "posHg19": 10563003,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "KLRC4-KLRK1",
+        "posToTss": -855,
+        "ensemblTranscriptId": "ENST00000539300.5"
+      },
+      {
+        "geneName": "KLRC4-KLRK1",
+        "posToTss": -258,
+        "ensemblTranscriptId": "ENST00000543812.5"
+      },
+      {
+        "geneName": "KLRC4-KLRK1",
+        "posToTss": -855,
+        "ensemblTranscriptId": "ENST00000586581.5"
+      },
+      {
+        "geneName": "KLRC4-KLRK1",
+        "posToTss": -276,
+        "ensemblTranscriptId": "ENST00000591546.5"
+      },
+      {
+        "geneName": "KLRC4-KLRK1",
+        "posToTss": -276,
+        "ensemblTranscriptId": "ENST00000590131.5"
+      },
+      {
+        "geneName": "KLRC4-KLRK1",
+        "posToTss": -276,
+        "ensemblTranscriptId": "ENST00000588263.5"
+      },
+      {
+        "geneName": "KLRC4-KLRK1",
+        "posToTss": -276,
+        "ensemblTranscriptId": "ENST00000588447.5"
+      },
+      {
+        "geneName": "KLRC4-KLRK1",
+        "posToTss": -276,
+        "ensemblTranscriptId": "ENST00000590323.5"
+      },
+      {
+        "geneName": "KLRC4-KLRK1",
+        "posToTss": -855,
+        "ensemblTranscriptId": "ENST00000539370.5"
+      },
+      {
+        "geneName": "KLRC4-KLRK1",
+        "posToTss": -276,
+        "ensemblTranscriptId": "ENST00000585507.5"
+      },
+      {
+        "geneName": "KLRC4-KLRK1",
+        "posToTss": -276,
+        "ensemblTranscriptId": "ENST00000591937.1"
+      },
+      {
+        "geneName": "KLRC4",
+        "posToTss": -647,
+        "ensemblTranscriptId": "ENST00000309384.2"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01147",
+        "trait": "glucocorticoid exposure",
+        "correlation": "neg",
+        "rank": 10,
+        "pmid": 30821055
+      }
+    ]
+  },
+  {
+    "probeId": "cg05921509",
+    "chrHg19": 2,
+    "posHg19": 56129376,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "EFEMP1",
+        "posToTss": 21898,
+        "ensemblTranscriptId": "ENST00000394555.6"
+      },
+      {
+        "geneName": "EFEMP1",
+        "posToTss": 21535,
+        "ensemblTranscriptId": "ENST00000635671.1"
+      },
+      {
+        "geneName": "EFEMP1",
+        "posToTss": 21546,
+        "ensemblTranscriptId": "ENST00000355426.7"
+      },
+      {
+        "geneName": "EFEMP1",
+        "posToTss": 15539,
+        "ensemblTranscriptId": "ENST00000634374.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg10957166",
+    "chrHg19": 12,
+    "posHg19": 122238218,
+    "cpgIsland": "Shelf",
+    "relatedTranscription": [
+      {
+        "geneName": "RHOF",
+        "posToTss": 365,
+        "ensemblTranscriptId": "ENST00000546227.5"
+      },
+      {
+        "geneName": "RHOF",
+        "posToTss": 2616,
+        "ensemblTranscriptId": "ENST00000541657.5"
+      },
+      {
+        "geneName": "RHOF",
+        "posToTss": 3091,
+        "ensemblTranscriptId": "ENST00000545544.1"
+      },
+      {
+        "geneName": "AC084018.1",
+        "posToTss": 2598,
+        "ensemblTranscriptId": "ENST00000542933.5"
+      },
+      {
+        "geneName": "AC084018.1",
+        "posToTss": 3172,
+        "ensemblTranscriptId": "ENST00000429892.5"
+      },
+      {
+        "geneName": "AC084018.1",
+        "posToTss": 695,
+        "ensemblTranscriptId": "ENST00000537157.5"
+      },
+      {
+        "geneName": "AC084018.1",
+        "posToTss": 2621,
+        "ensemblTranscriptId": "ENST00000428029.6"
+      },
+      {
+        "geneName": "AC084018.1",
+        "posToTss": 2631,
+        "ensemblTranscriptId": "ENST00000541694.5"
+      },
+      {
+        "geneName": "AC084018.1",
+        "posToTss": 2090,
+        "ensemblTranscriptId": "ENST00000543167.5"
+      },
+      {
+        "geneName": "AC084018.1",
+        "posToTss": 2634,
+        "ensemblTranscriptId": "ENST00000535643.5"
+      },
+      {
+        "geneName": "AC084018.1",
+        "posToTss": 2292,
+        "ensemblTranscriptId": "ENST00000543334.5"
+      },
+      {
+        "geneName": "AC084018.1",
+        "posToTss": 1130,
+        "ensemblTranscriptId": "ENST00000535614.5"
+      },
+      {
+        "geneName": "AC084018.1",
+        "posToTss": 2633,
+        "ensemblTranscriptId": "ENST00000536662.5"
+      },
+      {
+        "geneName": "AC084018.1",
+        "posToTss": 2574,
+        "ensemblTranscriptId": "ENST00000545885.5"
+      },
+      {
+        "geneName": "AC084018.1",
+        "posToTss": 3594,
+        "ensemblTranscriptId": "ENST00000538335.1"
+      },
+      {
+        "geneName": "RP11-347I19.8",
+        "posToTss": 2801,
+        "ensemblTranscriptId": "ENST00000609067.1"
+      },
+      {
+        "geneName": "RP11-347I19.7",
+        "posToTss": -485,
+        "ensemblTranscriptId": "ENST00000613093.1"
+      }
+    ],
+    "associationList": []
+  },
+  {
+    "probeId": "cg26655517",
+    "chrHg19": 19,
+    "posHg19": 54518382,
+    "cpgIsland": "Shelf",
+    "relatedTranscription": [],
+    "associationList": [
+      {
+        "studyId": "ES01160",
+        "trait": "childhood obesity",
+        "correlation": "neg",
+        "rank": 263,
+        "pmid": 30909978
+      }
+    ]
+  },
+  {
+    "probeId": "cg16553589",
+    "chrHg19": 5,
+    "posHg19": 122766566,
+    "cpgIsland": "Other",
+    "relatedTranscription": [],
+    "associationList": [
+      {
+        "studyId": "ES01505",
+        "trait": "smoking",
+        "correlation": "pos",
+        "rank": 117,
+        "pmid": 32731254
+      }
+    ]
+  },
+  {
+    "probeId": "cg25857471",
+    "chrHg19": 6,
+    "posHg19": 30910113,
+    "cpgIsland": "Other",
+    "relatedTranscription": [
+      {
+        "geneName": "SFTA2",
+        "posToTss": 13300,
+        "ensemblTranscriptId": "ENST00000634371.1"
+      },
+      {
+        "geneName": "DPCR1",
+        "posToTss": 7813,
+        "ensemblTranscriptId": "ENST00000636043.1"
+      },
+      {
+        "geneName": "DPCR1",
+        "posToTss": 1364,
+        "ensemblTranscriptId": "ENST00000462446.5"
+      },
+      {
+        "geneName": "DPCR1",
+        "posToTss": 1336,
+        "ensemblTranscriptId": "ENST00000304311.3"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01262",
+        "trait": "prenatal bisphenol A (BPA) exposure",
+        "correlation": "pos",
+        "rank": 9,
+        "pmid": 31451752
+      },
+      {
+        "studyId": "ES01263",
+        "trait": "prenatal bisphenol A (BPA) exposure",
+        "correlation": "pos",
+        "rank": 38,
+        "pmid": 31451752
+      }
+    ]
+  },
+  {
+    "probeId": "cg09205595",
+    "chrHg19": 7,
+    "posHg19": 150782539,
+    "cpgIsland": "Shore",
+    "relatedTranscription": [
+      {
+        "geneName": "AGAP3",
+        "posToTss": -379,
+        "ensemblTranscriptId": "ENST00000490097.5"
+      },
+      {
+        "geneName": "AGAP3",
+        "posToTss": -415,
+        "ensemblTranscriptId": "ENST00000463381.5"
+      },
+      {
+        "geneName": "AGAP3",
+        "posToTss": -1290,
+        "ensemblTranscriptId": "ENST00000473312.5"
+      },
+      {
+        "geneName": "AGAP3",
+        "posToTss": -1290,
+        "ensemblTranscriptId": "ENST00000479901.5"
+      },
+      {
+        "geneName": "AGAP3",
+        "posToTss": -1290,
+        "ensemblTranscriptId": "ENST00000397238.6"
+      },
+      {
+        "geneName": "AGAP3",
+        "posToTss": -1290,
+        "ensemblTranscriptId": "ENST00000622464.4"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES00450",
+        "trait": "oral squamous cell carcinoma (OSCC)",
+        "correlation": "pos",
+        "rank": 10107,
+        "pmid": 28890207
+      },
+      {
+        "studyId": "ES00221",
+        "trait": "asthma",
+        "correlation": "pos",
+        "rank": 6766,
+        "pmid": 27942592
+      },
+      {
+        "studyId": "ES02025",
+        "trait": "gastric cardiac intraepithelial neoplasia",
+        "correlation": "pos",
+        "rank": 23491,
+        "pmid": 38258659
+      }
+    ]
+  },
+  {
+    "probeId": "cg23918315",
+    "chrHg19": 5,
+    "posHg19": 140479025,
+    "cpgIsland": "Shelf",
+    "relatedTranscription": [
+      {
+        "geneName": "PCDHB3",
+        "posToTss": -1032,
+        "ensemblTranscriptId": "ENST00000231130.3"
+      }
+    ],
+    "associationList": [
+      {
+        "studyId": "ES01091",
+        "trait": "colorectal laterally spreading tumor",
+        "correlation": "neg",
+        "rank": 4938,
+        "pmid": 30183087
+      }
+    ]
+  }
+]
