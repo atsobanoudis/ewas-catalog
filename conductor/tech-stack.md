@@ -21,5 +21,7 @@
 
 ## Reporting & Visualization
 - **Markdown**: For project documentation and structured progress reports.
-- **(Proposed) Matplotlib/Seaborn/Plotly**: For generating publication-ready visualizations in Python.
-- **(Proposed) Jinja2/ReportLab**: For automated PDF/HTML report generation.
+- **Matplotlib/Seaborn**: For generating publication-ready static heatmaps (`viz_engine.py`).
+- **NetworkX**: For generating gene-disease network graphs (`viz_engine.py`).
+- **disgenet2r (R)**: For specialized DisGeNET visualizations.
+
