@@ -1,18 +1,26 @@
 # General Workflow
-Birds-eye view workflow building `annotated_genes.xlsx`:
-1) HGNC/NCBI pull: resolve symbols/LOC IDs to HGNC/Entrez/Ensembl, gene type, synonyms, UniProt, summaries.
-1a) Function aggregation: fetch UniProt function comments and HGNC text; build per-source fields and a combined block.
-2) gene association via **GWAS Catalog**, **HArmonizome**, **PubMed**, and **DISGENET**
-2a) Psychiatric GWAS attach: join `gene_psych_gwas.tsv`; add counts/traits/labels/PMIDs/EFO/study lists.
-2b) Harmonizome attach: query Harmonizome, keep disease/phenotype datasets, filter by psychiatric keywords, summarize per gene.
-2c) PubMed attach: use Entrez Gene → PubMed links when Entrez ID exists, else symbol search; filter by mental-health MeSH/text terms; tag genetic-related hits.
-2d) Received academic API for DISGENET's curated dataset, gathered associations via 
-3) Incorporating CpG-disease associations
+This project provides a comprehensive bioinformatics pipeline for annotating gene lists derived from epigenetic studies, specifically targeting psychiatric research. The final output is a multi-layered dataset (`annotated_genes.xlsx`), with the **Augmented** sheet serving as the primary living document.
+
+<h3 style="margin: 0px">1. Core Annotation (Foundation)</h3>
+- **Gene Metadata:** Resolving gene identifiers (Symbols, LOC IDs) to standardized HGNC, Entrez, and Ensembl IDs via NCBI Datasets.
+- **Functional Synthesis:** Aggregating biological summaries and "FUNCTION" comments from NCBI, UniProt, and HGNC into a unified functional description.
+
+<h3 style="margin: 0px">2. Evidence Integration (Multi-Omic)</h3>
+- **Psychiatric Associations:** Identifying gene-disease links across four major evidence streams:
+    - **GWAS Catalog:** Significant SNP-trait associations filtered for psychiatric phenotypes.
+    - **Harmonizome:** Cross-database (CTD, GAD, etc.) disease associations enriched for mental health keywords.
+    - **PubMed Literature:** Automated mining of high-confidence gene-literature links via MeSH terms and title-based genetic tagging.
+    - **DisGeNET:** Integration of curated psychiatric disease-gene associations, providing both association scores and supporting evidence.
+
+<h3 style="margin: 0px">3. Epigenetic Context & Augmentation (Final State)</h3>
+- **CpG-to-Gene Mapping:** Explicitly linking CpG probe IDs and chromosomal coordinates back to the annotated gene list.
+- **EWAS Atlas Integration:** Pulling trait associations directly associated with the CpG probes to provide a primary epigenetic signal.
+- **Broad Association Mapping:** Expanding the dataset beyond psychiatric traits to include a broad-spectrum view of all known gene-disease associations (via DisGeNET), allowing for a comprehensive analysis of pleiotropy and non-psychiatric context.
+
 
 
 # Detailed workflows
-<h3 style="
-        margin: 0px">Gene Annotation</h3>
+<h3 style="margin: 0px">Gene Annotation</h3>
 <details>
 <summary>HGNC & NCBI Metadata</summary>
 
@@ -138,11 +146,11 @@ gene symbol → Gene-Evidence Associations (`data/disgenet_gea.csv`)
                 Schizophrenia, Negative, 2005, 99348737;
                 Bipolar Disorder, Positive, 2015, 9398387
                 ```
+>[Note:]
+*The `disgenet_diseases` column represents a broad extraction of all associated traits, bypassing the mental health filter applied to the `disgenet_psych_diseases` column.*
 </details>
 
-<h3 style="
-        margin-top: 10px;
-        margin-bottom: 0px">Epigene Annotation</h3>
+<h3 style="margin-top: 10px; margin-bottom: 0px">Epigene Annotation</h3>
 <details>
 <summary>EWAS Atlas</summary>
 
@@ -178,11 +186,37 @@ CpG coordinates (`ewas_res_groupsig_128.xlsx`) → Track annotations (`data/ewas
 3. Generate flattened hits written to Excel file with separate sheets for each track (`clinvarMain`, `gwasCatalog`)
     - Headers determined by resulted json fields
 </details>
+
+<details>
+<summary>Augmentation</summary>
+
+**[EWAS Atlas](https://ngdc.cncb.ac.cn/ewas/atlas)** & **[DisGeNET](https://www.disgenet.org/)**:\
+`annotated_genes.xlsx` (living file) + `ewas_res_groupsig_128.xlsx` → `annotated_genes.xlsx` (Augmented sheet)
+
+1. **Mapping Integration**
+    - Joins the PI-provided `ewas_res_groupsig_128.xlsx` chromosomal coordinates and probe IDs to the existing annotated gene list.
+    - Logic: Primary join on the `input` column to handle gene name discrepancies between raw data and validated symbols.
+2. **EWAS Atlas Enrichment**
+    - Cross-references CpG probe IDs with the EWAS Atlas dataset to identify additional trait associations.
+    - Format: `[Trait];\n[Next Trait]` (semicolon and newline delimited).
+3. **Broad-Spectrum DisGeNET**
+    - Pulls all gene-disease associations without psychiatric filtering to provide broad phenotypic context.
+    - Note: The `disgenet_diseases` column contains these broad extractions.
+4. **Columns Added**: `cpg`, `cpg_chr`, `cpg_start`, `cpg_end`, `ewas_atlas_traits`, `ewas_atlas_pmids`, `disgenet_diseases`
+</details>
+
 <br>
 <br>
 
 # Interesting findings
-- **EWAS Atlas** results for `cg09420691` is only associated with `body mass index (BMI)` trait, despite its related gene, `PRDM15` being associated with `Mental Disorders` at 100% (**DISGENET**) and is the only relevant association from this dataset, suggesting.. what?
+Because multiple genes are now linked to the same CpG, filtering by CpG can yield interesting, albeit expected results. Genes *UGTA10* and *UGT1A8* are both close enough to *cg00922271* to be listed as a unique gene, and their disease association profiles are expectedly similar from DISGENET data (see below).
+| cpg        | symbol  | disgenet_diseases |
+|------------|---------|------------------|
+| cg00922271 | UGT1A10 | Gilbert Disease, 0.75;<br>Increased bilirubin level (finding), 0.65;<br>Crigler Najjar syndrome, type 1, 0.6;<br>Crigler-Najjar syndrome, 0.55;<br>BILIRUBIN, SERUM LEVEL OF, QUANTITATIVE TRAIT LOCUS 1, 0.4;<br>Crigler Najjar syndrome, type 2, 0.4;<br>GILBERT SYNDROME, SUSCEPTIBILITY TO, 0.4;<br>Lucey-Driscoll syndrome (disorder), 0.4 |
+| cg00922271 | UGT1A8  | Diarrhea, 0.5;<br>Gilbert Disease, 0.45;<br>Crigler Najjar syndrome, type 2, 0.4;<br>BILIRUBIN, SERUM LEVEL OF, QUANTITATIVE TRAIT LOCUS 1, 0.4;<br>Crigler-Najjar syndrome, 0.4;<br>Lucey-Driscoll syndrome (disorder), 0.4;<br>Crigler Najjar syndrome, type 1, 0.4;<br>Increased bilirubin level (finding), 0.4;<br>Diarrheal disorder, 0.4;<br>GILBERT SYNDROME, SUSCEPTIBILITY TO, 0.4 |
+
+
+**EWAS Atlas** results for `cg09420691` is only associated with `body mass index (BMI)` trait, despite its related gene, `PRDM15` being associated with `Mental Disorders` at 100% (**DISGENET**) and is the only relevant association from this dataset, suggesting.. what?
 
 Although selection was based solely on genomic proximity, the two closest traits of 765 interestingly ranged from a classical biological phenotype to an educational attainment proxy, namely the highest mathematics course completed (see below).
 
@@ -191,20 +225,29 @@ Although selection was based solely on genomic proximity, the two closest traits
 | cg06941159  | 6        | 30038396 | Highest math class taken (MTAG)    | 16p11.2   | Intergenic  |
 | cg20910361  | 8        | 36224396 | Height                             | 4q31.21   |             |
 
-# Considerations/Limitations
-- Some keyword captures like "Disease of mental health" were not used during earlier gene annotations, thus Harmonizome extraction is not comprehensive (identified by manual exploration of PRDM15 and the `DISEASES Experimental Gene-Disease Association Evidence Sores 2025` data set)
-- Many publicly-available datasets identified during this research (PsyGeNET, MRC-IEU EWAS Catalog, etc.) were difficult to retrieve or not available via the web through any devices/internets i tried accessing them by. Furthermore, datasets I used to build this extraction, like NHGRI-EBI GWAS Catalog's web browser and web endpoints for their downloadable datasets are no longer available, within a few months span of my accessing of them. This highly volatile methodology limits reproducibility and makes me question if I should have attempted a more robust method of navigating API-only datasets like MRC-IEU's OpenGWAS; while I subconsciously filtered databases with UI web-endpoints first to identify extractable variables and validate my programming process at each step, this effectively biased my original datasets I used to capture. Thankfully, I eventually got DISGENET API access, which is a simpler and more methodologically complete extraction and contains sources from previously-unavailable datasets like PsyGeNET.
-- I later was able to access MRC-IEU EWAS Catalog. while their browser service wasn't working, I downloaded their results and studies files to explore. I filtered by CpG to identify relevant studies and their effect sizes, then cross referenced the studies to pull in trait data. This process seemed unfulfilling since the resulting data was (1) based traits generalized to entire epigenome studies and (2) the traits were not very telling. See `misc/combined_ewas_catalog.xlsx` if you're interested.
-- Some genes in DISGENET are not listed, like `KLRC4-KLRK1` (confirmed via symbol and entrez ID), while some are listed but have no associations (e.g., LINC01500); this is likely due to being forced to use the limited **Curated** dataset through academic plan; the distinction between unlisted and no associations was not captured, rather a single csv, `misc/disgenet_missing_associations.csv`
-- there exists a non-zero amount of genes with identifiable psych associations from DISGENET but zero associations from EBI GWAS Catalog or even Harmonizome, indicating imperfect/incomplete capture
-- consider playing with the UCSC GWAS Catalog window to narrow screening of neighboring gene-trait associations
-- a veriety of resources required further processing to make sense of the data, sources like the [Psychiatric Genomics Consortium](https://pgc.unc.edu) have [downloadable study data](https://pgc.unc.edu/for-researchers/download-results/) from curated genomic papers categorized by psychiatric condition. Further exploration using these data sets could contribute to the accuracy of gene annotations and illuminate potential epigenetic components. 
+# Considerations and Methodological Limitations
+
+This research involves the synthesis of multi-omic data from disparate public repositories. While every effort was made to ensure accuracy and completeness, several methodological considerations and limitations must be acknowledged to guide future interpretations.
+
+The bioinformatics landscape is characterized by high volatility in dataset availability and API accessibility. During the course of this project, several key resources (e.g., specific web-endpoints for the NHGRI-EBI GWAS Catalog) became unavailable or shifted to API-only access. Consequently, the results presented here represent a specific point-in-time snapshot of these databases. Future efforts to reproduce these results may encounter discrepancies due to database versioning or the deprecation of legacy web services.
+
+Beyond temporal volatility, the associations identified via the EWAS Atlas, GWAS Catalog, and PubMed mining are primarily descriptive. While a high correlation or frequent literature co-occurrence suggests a potential biological link, these metrics do not imply direct mechanistic causation. Epigenetic signals (CpG methylation) and genomic variants (SNPs) often act in complex regulatory networks where proximity to a gene does not always equate to functional regulation of that specific gene.
+
+Similar interpretative caution is needed for DisGeNET association scores, which are composite metrics derived from multiple evidence streams, including curated literature and animal models. While a high score (e.g., >0.6) indicates strong evidence, the interpretation of these scores should be context-dependent. Discrepancies between DisGeNET and other sources (like the GWAS Catalog) highlight the inherent gaps in current knowledge bases and the limitations of automated metadata extraction.
+
+These evidentiary constraints are further influenced by search strategy and keyword sensitivity. Early gene annotations utilized a specific set of psychiatric keywords (see *Appendix A*). Manual exploration revealed that broader terms (e.g., "Diseases of mental health") might yield additional hits in repositories like the Harmonizome. The current extraction, while robust, may not be exhaustive for all potential neuropsychiatric phenotypes. This limitation was partially mitigated in the later "Augmentation" phase by incorporating broad-spectrum DisGeNET extractions to capture pleiotropic effects.
+
+Search parameters were also shaped by dataset accessibility and bias. Initial data capture favored databases with robust user interfaces (UIs) to facilitate rapid validation of the extraction logic. While later phases transitioned to more comprehensive API-driven access (e.g., DisGeNET API), the original selection of datasets may reflect an inherent bias toward well-documented, accessible resources. Future work should prioritize direct integration with API-only repositories like the MRC-IEU OpenGWAS to further enhance reproducibility.
+
+Finally, a gap analysis reveals that a non-zero number of genes exhibit significant psychiatric associations in DisGeNET but remain absent from the GWAS Catalog or Harmonizome results. This indicates that while the pipeline is effective at capturing well-established links, the "dark matter" of gene-disease associations requires further investigation; future iterations could benefit from:
+- Adjusting the 5kb window in the UCSC neighboring GWAS screening to better capture distal regulatory elements.
+- Direct processing of raw summary statistics from curated [Psychiatric Genomics Consortium](https://pgc.unc.edu) (PGC) studies to enhance annotation accuracy beyond literature-level metadata. [Downloadable study data](https://pgc.unc.edu/for-researchers/download-results/) are available, categorized by psychiatric condition, but require more complex data processing than I felt was relevant.
+
+<br>
 
 # *Appendix*
 
-<h3 style="
-        margin-top: 10px;
-        margin-bottom: 0px">A. Psychiatric Keywords (GWAS & Harmonizome)</h3>
+<h3 style="margin: 0px">A. Psychiatric Keywords (GWAS & Harmonizome)</h3>
 Specific keywords used to filter trait and disease labels across the GWAS Catalog and Harmonizome datasets; matches are case-sensitive and inclusive of substrings
 <details>
 <summary>Keywords by Category</summary>
@@ -273,9 +316,7 @@ Specific keywords used to filter trait and disease labels across the GWAS Catalo
 ```
 </details>
 
-<h3 style="
-        margin-top: 10px;
-        margin-bottom: 0px">B. Mental Health MeSH, Title, & Genetic Terms (PubMed)</h3>
+<h3 style="margin-top: 10px; margin-bottom: 0px">B. Mental Health MeSH, Title, & Genetic Terms (PubMed)</h3>
 Medical Subject Headings (MeSH) and fallback title keywords used to identify relevant literature from gene queries via NCBI E-utilities and classify as genetic
 <details>
 <summary>MeSH Terms by Category</summary>
