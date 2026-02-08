@@ -1,5 +1,8 @@
 import pandas as pd
 import seaborn as sns
+import matplotlib
+# Use Agg backend to avoid Tkinter dependency issues
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 import re
