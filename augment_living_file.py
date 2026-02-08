@@ -105,7 +105,9 @@ def augment_living_file(living_path: str = "annotated_genes.xlsx",
         plot_broad_spectrum_network(df_augmented, 
                                     disease_col='disgenet_diseases', 
                                     output_path="viz/network_broad_spectrum.png",
-                                    title="Broad-Spectrum Gene-Disease Network")
+                                    title="Broad-Spectrum Gene-Disease Network",
+                                    score_threshold=0.1, # Filter low scores
+                                    wrap_width=20) # Wrap long labels
 
     # Psychiatric Heatmap (R - DisGeNET2R)
     # Check if Rscript is available
