@@ -22,6 +22,7 @@
     - [x] Add `dpi` parameter to `plot_disease_heatmap`.
 - [x] Task: Implement `plot_broad_spectrum_network` in `viz_engine.py` using `networkx` to replace the broad-spectrum heatmap. [474965c]
 - [x] Task: Create/Update an R script (`disgenet/plot_heatmap.R`) to generate a static 300 DPI heatmap using `disgenet2r` and the existing RDS file. [a041772]
+- [x] Task: Refine network graph (weights, text wrapping, filtering) and fix R script printing. [cf6e2d1]
 - [x] Task: Integrate these new visualizations into `augment_living_file.py`. [b823429]
 - [ ] Task: Conductor - User Manual Verification 'Phase 2.1: Visualization Refinements' (Protocol in workflow.md)
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Core Visualization Suite' (Protocol in workflow.md)
