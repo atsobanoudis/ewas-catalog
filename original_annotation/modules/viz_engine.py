@@ -11,12 +11,13 @@ def plot_disease_heatmap(df: pd.DataFrame,
                          title: str = "Gene-Disease Association Heatmap",
                          cmap: str = "viridis",
                          figsize: tuple = None,
-                         font_scale: float = 1.0):
+                         font_scale: float = 1.0,
+                         dpi: int = 300):
     """
     Generates a publication-quality heatmap showing associations between genes and diseases.
     Expects associations in the format "Disease Name, Score;\nNext Disease, Score".
     """
-    # ... (parsing logic)
+    # 1. Parse the associations into a long-form DataFrame
     parsed_data = []
     
     for _, row in df.iterrows():
@@ -89,7 +90,7 @@ def plot_disease_heatmap(df: pd.DataFrame,
     
     plt.tight_layout()
     
-    # Save output with high DPI for zooming
-    plt.savefig(output_path, dpi=600)
+    # Save output
+    plt.savefig(output_path, dpi=dpi)
     plt.close()
-    print(f"[VIZ] Heatmap saved to: {output_path} (DPI: 600)")
+    print(f"[VIZ] Heatmap saved to: {output_path} (DPI: {dpi})")
