@@ -1,8 +1,8 @@
 # Implementation Plan: Integrate CpG-Epigenetic Data and Implement Core Visualization Suite
 
 ## Phase 1: Data Integration & Broad Association Mapping
-- [ ] Task: Integrate PI-provided CpG-to-gene mappings from `ewas_res_groupsig_128.xlsx`.
-    - [ ] Ensure all CpG chromosomal coordinates and their pre-mapped genes are correctly loaded.
+- [x] Task: Integrate PI-provided CpG-to-gene mappings from `ewas_res_groupsig_128.xlsx`. [f3d50b4]
+    - [x] Ensure all CpG chromosomal coordinates and their pre-mapped genes are correctly loaded.
 - [ ] Task: Integrate CpG-to-trait associations from `ewas_atlas.csv`.
     - [ ] Match by CpG ID; for gene-level traits, defer to the PI's provided mappings for consistency.
 - [ ] Task: Implement broad-spectrum gene-disease associations.
