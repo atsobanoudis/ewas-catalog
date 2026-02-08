@@ -3,6 +3,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 import re
+import networkx as nx
 
 def plot_disease_heatmap(df: pd.DataFrame, 
                          disease_col: str = 'disgenet_diseases', 
@@ -90,7 +91,82 @@ def plot_disease_heatmap(df: pd.DataFrame,
     
     plt.tight_layout()
     
-    # Save output
+    # Save output with high DPI for zooming
     plt.savefig(output_path, dpi=dpi)
     plt.close()
     print(f"[VIZ] Heatmap saved to: {output_path} (DPI: {dpi})")
+
+def plot_broad_spectrum_network(df: pd.DataFrame, 
+                                disease_col: str = 'disgenet_diseases', 
+                                gene_col: str = 'symbol',
+                                output_path: str = "broad_spectrum_network.png",
+                                title: str = "Gene-Disease Network"):
+    """
+    Generates a network graph for broad-spectrum gene-disease associations.
+    Genes are source nodes, Diseases are target nodes.
+    """
+    G = nx.Graph()
+    
+    for _, row in df.iterrows():
+        gene = row[gene_col]
+        assoc_str = row[disease_col]
+        
+        if pd.isna(assoc_str) or assoc_str == 'n/a':
+            continue
+            
+        # Add gene node
+        G.add_node(gene, type='gene')
+        
+        parts = re.split(r';\n|;', assoc_str)
+        for part in parts:
+            part = part.strip()
+            if not part:
+                continue
+            
+            if ',' in part:
+                try:
+                    disease, score_str = part.rsplit(',', 1)
+                    disease = disease.strip()
+                    score = float(score_str.strip())
+                    
+                    # Add disease node
+                    G.add_node(disease, type='disease')
+                    
+                    # Add edge
+                    G.add_edge(gene, disease, weight=score)
+                except (ValueError, TypeError):
+                    continue
+
+    if G.number_of_nodes() == 0:
+        print("[VIZ] No nodes to plot in network graph.")
+        return
+
+    plt.figure(figsize=(15, 15))
+    
+    # Layout
+    pos = nx.spring_layout(G, k=0.15, iterations=20)
+    
+    # Nodes
+    genes = [n for n, d in G.nodes(data=True) if d.get('type') == 'gene']
+    diseases = [n for n, d in G.nodes(data=True) if d.get('type') == 'disease']
+    
+    nx.draw_networkx_nodes(G, pos, nodelist=genes, node_color='skyblue', node_size=100, alpha=0.8, label='Genes')
+    nx.draw_networkx_nodes(G, pos, nodelist=diseases, node_color='lightcoral', node_size=50, alpha=0.6, label='Diseases')
+    
+    # Edges
+    edges = G.edges()
+    weights = [G[u][v]['weight'] for u, v in edges]
+    nx.draw_networkx_edges(G, pos, edge_color=weights, edge_cmap=plt.cm.Greys, width=0.5, alpha=0.3)
+    
+    # Labels (only for genes to avoid clutter, or maybe top hubs?)
+    # For now, label everything but with small font
+    nx.draw_networkx_labels(G, pos, font_size=5, font_color='black')
+    
+    plt.title(title, fontsize=20)
+    plt.axis('off')
+    
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(output_path, dpi=300)
+    plt.close()
+    print(f"[VIZ] Network graph saved to: {output_path}")
