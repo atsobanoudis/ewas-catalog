@@ -2,13 +2,16 @@ import pandas as pd
 from pathlib import Path
 import sys
 import os
+import subprocess
+import shutil
 
 # Add root to path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from original_annotation.modules.cpg_integration import load_pi_cpg_mappings, attach_ewas_atlas_traits
 from original_annotation.modules.disgenet_utils import annotate_with_disgenet
-from original_annotation.modules.viz_engine import plot_disease_heatmap
+from original_annotation.modules.viz_engine import plot_disease_heatmap, plot_broad_spectrum_network
+
 
 def augment_living_file(living_path: str = "annotated_genes.xlsx", 
                         mapping_path: str = "ewas_res_groupsig_128.xlsx",
@@ -84,26 +87,43 @@ def augment_living_file(living_path: str = "annotated_genes.xlsx",
     print(f"[AUGMENT] Saving augmented file to: {output_path}")
     df_augmented.to_excel(output_path, index=False)
 
-    # 4. Generate Heatmaps
-    print("[AUGMENT] Generating initial heatmaps...")
+    # 4. Generate Visualizations
+    print("[AUGMENT] Generating visualizations...")
     viz_dir = Path("viz")
     viz_dir.mkdir(exist_ok=True)
     
-    # Psychiatric Heatmap
+    # Psychiatric Heatmap (Python - Seaborn) - Reverted to 300 DPI
     if 'disgenet_psych_diseases' in df_augmented.columns:
         plot_disease_heatmap(df_augmented, 
                              disease_col='disgenet_psych_diseases', 
-                             output_path="viz/heatmap_psychiatric.png",
-                             title="Psychiatric Gene-Disease Associations (DisGeNET)")
+                             output_path="viz/heatmap_psychiatric_seaborn.png",
+                             title="Psychiatric Gene-Disease Associations (Seaborn)",
+                             dpi=300)
     
-    # Broad-Spectrum Heatmap
+    # Broad-Spectrum Network Graph (Python - NetworkX)
     if 'disgenet_diseases' in df_augmented.columns:
-        plot_disease_heatmap(df_augmented, 
-                             disease_col='disgenet_diseases', 
-                             output_path="viz/heatmap_broad_spectrum.png",
-                             title="Broad-Spectrum Gene-Disease Associations (DisGeNET)")
+        plot_broad_spectrum_network(df_augmented, 
+                                    disease_col='disgenet_diseases', 
+                                    output_path="viz/network_broad_spectrum.png",
+                                    title="Broad-Spectrum Gene-Disease Network")
+
+    # Psychiatric Heatmap (R - DisGeNET2R)
+    # Check if Rscript is available
+    if shutil.which("Rscript"):
+        r_script_path = Path("disgenet/plot_heatmap.R")
+        if r_script_path.is_file():
+            print("[AUGMENT] Executing R script for DisGeNET2R heatmap...")
+            try:
+                subprocess.run(["Rscript", str(r_script_path)], check=True)
+            except subprocess.CalledProcessError as e:
+                print(f"[AUGMENT] Error running R script: {e}")
+        else:
+            print(f"[AUGMENT] R script not found at {r_script_path}")
+    else:
+        print("[AUGMENT] Rscript not found. Skipping DisGeNET2R heatmap generation.")
 
     print("[AUGMENT] Done.")
+
 
 
 if __name__ == "__main__":
