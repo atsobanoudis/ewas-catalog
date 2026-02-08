@@ -1,6 +1,6 @@
 # Implementation Plan: Integrate CpG-Epigenetic Data and Implement Core Visualization Suite
 
-## Phase 1: Data Integration & Broad Association Mapping
+## Phase 1: Data Integration & Broad Association Mapping [checkpoint: db91993]
 - [x] Task: Integrate PI-provided CpG-to-gene mappings from `ewas_res_groupsig_128.xlsx`. [f3d50b4]
     - [x] Ensure all CpG chromosomal coordinates and their pre-mapped genes are correctly loaded.
 - [x] Task: Integrate CpG-to-trait associations from `ewas_atlas.csv`. [9cd7345]
@@ -8,7 +8,8 @@
 - [x] Task: Implement broad-spectrum gene-disease associations. [4fa3864]
     - [x] Update `disgenet_append_gea.py` (or create a variant) to include associations without filtering for "Mental or Behavioral Dysfunction".
 - [x] Task: Create `augment_living_file.py` to update the existing `annotated_genes.xlsx` with CpG info and broad associations. [ca4d92f]
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Data Integration & Broad Association Mapping' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Data Integration & Broad Association Mapping' (Protocol in workflow.md)
+
 
 ## Phase 2: Core Visualization Suite
 - [ ] Task: Design and implement the Visualization Module (`viz_engine.py`).
