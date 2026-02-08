@@ -34,7 +34,9 @@ def augment_living_file(living_path: str = "annotated_genes.xlsx",
         'End_hg38': 'cpg_end'
     })
     
-    df_augmented = pd.merge(df_living, df_mappings_clean, left_on='symbol', right_on='gene', how='left')
+    # Use 'input' as the join key as requested, ensuring no leading/trailing whitespace
+    df_living['input'] = df_living['input'].astype(str).str.strip()
+    df_augmented = pd.merge(df_living, df_mappings_clean, left_on='input', right_on='gene', how='left')
     
     # Drop the extra 'gene' column from join
     if 'gene' in df_augmented.columns:
