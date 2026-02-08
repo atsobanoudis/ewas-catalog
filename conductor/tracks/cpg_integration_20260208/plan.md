@@ -7,7 +7,7 @@
     - [x] Match by CpG ID; for gene-level traits, defer to the PI's provided mappings for consistency.
 - [x] Task: Implement broad-spectrum gene-disease associations. [4fa3864]
     - [x] Update `disgenet_append_gea.py` (or create a variant) to include associations without filtering for "Mental or Behavioral Dysfunction".
-- [x] Task: Modify `original-annotation/main.py` or equivalent to include CpG locations and broad trait associations in output. [9c54c7c]
+- [x] Task: Create `augment_living_file.py` to update the existing `annotated_genes.xlsx` with CpG info and broad associations. [ca4d92f]
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Data Integration & Broad Association Mapping' (Protocol in workflow.md)
 
 ## Phase 2: Core Visualization Suite
