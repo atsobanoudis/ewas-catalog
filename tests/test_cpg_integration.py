@@ -1,12 +1,18 @@
 import pytest
 import pandas as pd
+import numpy as np
 import sys
 import os
 
 # Add the project root to sys.path to import our modules
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from original_annotation.modules.cpg_integration import expand_cpg_gene_mappings, load_pi_cpg_mappings, attach_ewas_atlas_traits
+from original_annotation.modules.cpg_integration import (
+    expand_cpg_gene_mappings, 
+    load_pi_cpg_mappings, 
+    attach_ewas_atlas_traits,
+    analyze_unmapped_genes
+)
 
 def test_cpg_mapping_expansion():
     # Sample data representing ewas_res_groupsig_128.xlsx
@@ -47,10 +53,10 @@ def test_load_pi_cpg_mappings(tmp_path):
     assert 'gene' in result.columns
     assert result['gene'].iloc[0] == 'GENE1'
 
-def test_attach_ewas_atlas_traits():
+def test_attach_ewas_atlas_traits_refined():
     # Sample mapping data
     mapping_data = {
-        'cpg': ['cg07252486', 'cg22084806', 'cg99999999'], # cg9999 is not in atlas
+        'cpg': ['cg07252486', 'cg22084806', 'cg99999999'],
         'gene': ['NTM', 'unmapped', 'SOMEGENE']
     }
     mapping_df = pd.DataFrame(mapping_data)
@@ -58,24 +64,70 @@ def test_attach_ewas_atlas_traits():
     # Sample Atlas data
     atlas_data = {
         'cpg': ['cg07252486', 'cg07252486', 'cg22084806'],
-        'trait': ['Body mass index', 'Obesity', 'Age'],
-        'pmid': [12345, 67890, 11111]
+        'trait': ['BMI', 'Obesity', 'Age'],
+        'pmid': [123, 456, 789],
+        'rank': [10, np.nan, 5],
+        'total_associations': [100, 100, 50],
+        'correlation': ['pos', 'neg', np.nan]
     }
     atlas_df = pd.DataFrame(atlas_data)
     
     result = attach_ewas_atlas_traits(mapping_df, atlas_df)
     
-    # Assertions
-    assert 'ewas_atlas_traits' in result.columns
-    # Traits for cg07252486 should be aggregated
+    # Assertions for formatting: trait, rank_score, correlation, pmid
+    # cg07252486: 
+    # BMI: score=0.100, corr=hyper, pmid=123
+    # Obesity: score=0.000, corr=hypo, pmid=456
     traits_cg1 = result[result['cpg'] == 'cg07252486']['ewas_atlas_traits'].iloc[0]
-    assert 'Body mass index' in traits_cg1
-    assert 'Obesity' in traits_cg1
+    assert 'BMI, 0.100, hyper, 123' in traits_cg1
+    assert 'Obesity, 0.000, hypo, 456' in traits_cg1
     
-    # Check cg22084806
-    traits_cg2 = result[result['cpg'] == 'cg22084806']['ewas_atlas_traits'].iloc[0]
-    assert 'Age' in traits_cg2
+    # Check sorting: obesity (0.000) should be AFTER BMI (0.100) if descending score
+    # Wait, spec says "ordered by rank_score, then subsequently alphabetical"
+    # Actually, Obesity score 0.000, BMI score 0.100.
+    # BMI should come first.
+    lines = traits_cg1.split(';\n')
+    assert 'BMI' in lines[0]
+    
+    # Check null handling: cg99999999 should be NaN/None, not "n/a"
+    val = result[result['cpg'] == 'cg99999999']['ewas_atlas_traits'].iloc[0]
+    assert pd.isna(val)
 
-    # Check cg99999999 (not in atlas)
-    traits_cg3 = result[result['cpg'] == 'cg99999999']['ewas_atlas_traits'].iloc[0]
-    assert traits_cg3 == 'n/a'
+def test_analyze_unmapped_genes():
+    # Living file data
+    living_data = {
+        'symbol': ['GENE1', 'GENE2'],
+        'synonyms': ['["ALIAS1", "ALIAS2"]', None]
+    }
+    living_df = pd.DataFrame(living_data)
+    
+    # Atlas data
+    atlas_data = {
+        'cpg': ['cg1', 'cg1', 'cg2', 'cg2', 'cg2'],
+        'genes': ['GENE1;NEWGENE', 'GENE1;NEWGENE', 'ALIAS1;DECIMAL.1;ANOTHER', 'ALIAS1;DECIMAL.1;ANOTHER', 'ALIAS1;DECIMAL.1;ANOTHER']
+    }
+    atlas_df = pd.DataFrame(atlas_data)
+    
+    unmapped_col, unaccounted_df, appendix_c_df = analyze_unmapped_genes(atlas_df, living_df)
+    
+    # unmapped_col for cg1: NEWGENE (Established)
+    assert unmapped_col['cg1'] == 'Established: NEWGENE'
+    
+    # unmapped_col for cg2: ANOTHER (Established), DECIMAL.1 (Unestablished)
+    # ALIAS1 should be found in synonyms of GENE1
+    assert 'Established: ANOTHER' in unmapped_col['cg2']
+    assert 'Unestablished: DECIMAL.1' in unmapped_col['cg2']
+    
+    # unaccounted_df: should have NEWGENE, ANOTHER, and ALIAS1 (if we want to track aliases)
+    # Spec: "uncaptured_gene is specific gene that isn't found in annotated_genes symbol, then synonym_of is if there are any hits"
+    # Filtered out decimals from unaccounted_df as requested later
+    assert 'NEWGENE' in unaccounted_df['uncaptured_gene'].values
+    assert 'ALIAS1' in unaccounted_df['uncaptured_gene'].values
+    assert 'DECIMAL.1' not in unaccounted_df['uncaptured_gene'].values
+    
+    # synonym_of for ALIAS1 should be GENE1
+    row_alias = unaccounted_df[unaccounted_df['uncaptured_gene'] == 'ALIAS1']
+    assert row_alias['synonym_of'].iloc[0] == 'GENE1'
+    
+    # appendix_c_df: should have DECIMAL.1
+    assert 'DECIMAL.1' in appendix_c_df['genes'].iloc[0]
