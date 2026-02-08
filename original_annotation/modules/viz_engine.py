@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import re
 import networkx as nx
+import textwrap
 
 def plot_disease_heatmap(df: pd.DataFrame, 
                          disease_col: str = 'disgenet_diseases', 
@@ -100,10 +101,14 @@ def plot_broad_spectrum_network(df: pd.DataFrame,
                                 disease_col: str = 'disgenet_diseases', 
                                 gene_col: str = 'symbol',
                                 output_path: str = "broad_spectrum_network.png",
-                                title: str = "Gene-Disease Network"):
+                                title: str = "Gene-Disease Network",
+                                score_threshold: float = 0.1,
+                                wrap_width: int = 15):
     """
     Generates a network graph for broad-spectrum gene-disease associations.
     Genes are source nodes, Diseases are target nodes.
+    Filters out associations with score < score_threshold.
+    Wraps disease labels.
     """
     G = nx.Graph()
     
@@ -114,8 +119,7 @@ def plot_broad_spectrum_network(df: pd.DataFrame,
         if pd.isna(assoc_str) or assoc_str == 'n/a':
             continue
             
-        # Add gene node
-        G.add_node(gene, type='gene')
+        # We will add the gene node later only if it has valid edges
         
         parts = re.split(r';\n|;', assoc_str)
         for part in parts:
@@ -129,43 +133,59 @@ def plot_broad_spectrum_network(df: pd.DataFrame,
                     disease = disease.strip()
                     score = float(score_str.strip())
                     
-                    # Add disease node
-                    G.add_node(disease, type='disease')
-                    
-                    # Add edge
-                    G.add_edge(gene, disease, weight=score)
+                    if score >= score_threshold:
+                        # Wrap disease name
+                        disease_label = "\n".join(textwrap.wrap(disease, wrap_width))
+                        
+                        # Add nodes and edge
+                        G.add_node(gene, type='gene', label=gene)
+                        G.add_node(disease, type='disease', label=disease_label)
+                        G.add_edge(gene, disease, weight=score)
+                        
                 except (ValueError, TypeError):
                     continue
 
     if G.number_of_nodes() == 0:
-        print("[VIZ] No nodes to plot in network graph.")
+        print(f"[VIZ] No nodes to plot in network graph (threshold={score_threshold}).")
         return
 
-    plt.figure(figsize=(15, 15))
+    plt.figure(figsize=(20, 20)) # Larger figure
     
-    # Layout
-    pos = nx.spring_layout(G, k=0.15, iterations=20)
+    # Layout - Kamada Kawai often handles disjoint components nicely
+    try:
+        pos = nx.kamada_kawai_layout(G)
+    except:
+        pos = nx.spring_layout(G, k=0.3, iterations=50) # Fallback
     
     # Nodes
     genes = [n for n, d in G.nodes(data=True) if d.get('type') == 'gene']
     diseases = [n for n, d in G.nodes(data=True) if d.get('type') == 'disease']
     
-    nx.draw_networkx_nodes(G, pos, nodelist=genes, node_color='skyblue', node_size=100, alpha=0.8, label='Genes')
-    nx.draw_networkx_nodes(G, pos, nodelist=diseases, node_color='lightcoral', node_size=50, alpha=0.6, label='Diseases')
+    # Genes (Blue)
+    nx.draw_networkx_nodes(G, pos, nodelist=genes, node_color='skyblue', node_size=300, alpha=0.9, label='Genes')
     
-    # Edges
-    edges = G.edges()
-    weights = [G[u][v]['weight'] for u, v in edges]
-    nx.draw_networkx_edges(G, pos, edge_color=weights, edge_cmap=plt.cm.Greys, width=0.5, alpha=0.3)
+    # Diseases (Red) - Sized by degree? Or fixed? Let's keep fixed but distinct color
+    nx.draw_networkx_nodes(G, pos, nodelist=diseases, node_color='salmon', node_size=150, alpha=0.7, label='Diseases')
     
-    # Labels (only for genes to avoid clutter, or maybe top hubs?)
-    # For now, label everything but with small font
-    nx.draw_networkx_labels(G, pos, font_size=5, font_color='black')
+    # Edges - Width based on weight
+    edges = G.edges(data=True)
+    weights = [d['weight'] for u, v, d in edges]
+    # Normalize weights for width (e.g., 0.1 to 1.0 -> width 0.5 to 5)
+    widths = [w * 5 for w in weights]
     
-    plt.title(title, fontsize=20)
+    nx.draw_networkx_edges(G, pos, edge_color='gray', width=widths, alpha=0.4)
+    
+    # Labels
+    # Use the 'label' attribute we set (wrapped for diseases)
+    labels = nx.get_node_attributes(G, 'label')
+    nx.draw_networkx_labels(G, pos, labels, font_size=8, font_color='black')
+    
+    plt.title(f"{title} (Score > {score_threshold})", fontsize=24)
     plt.axis('off')
     
-    plt.legend()
+    # Legend
+    plt.legend(scatterpoints=1)
+    
     plt.tight_layout()
     plt.savefig(output_path, dpi=300)
     plt.close()
