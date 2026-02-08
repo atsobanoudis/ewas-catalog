@@ -15,7 +15,7 @@
 - [x] Task: Design and implement the Visualization Module (`viz_engine.py`). [566a328]
     - [x] Implement `plot_disease_heatmap(gene_list, association_data)` using Seaborn/Matplotlib.
     - [x] Add aesthetic configuration support (palettes, fonts) to match Academic & Clean guidelines.
-- [ ] Task: Generate initial heatmaps for the current `annotated_genes.xlsx` dataset.
+- [x] Task: Generate initial heatmaps for the current `annotated_genes.xlsx` dataset. [c9f99f0]
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Core Visualization Suite' (Protocol in workflow.md)
 
 ## Phase 3: Automated Reporting & Synthesis
