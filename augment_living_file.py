@@ -11,6 +11,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from original_annotation.modules.cpg_integration import load_pi_cpg_mappings, attach_ewas_atlas_traits
 from original_annotation.modules.disgenet_utils import annotate_with_disgenet
 from original_annotation.modules.viz_engine import plot_disease_heatmap, plot_broad_spectrum_network
+from original_annotation.modules.reporting_engine import generate_summary_report
 
 
 def augment_living_file(living_path: str = "annotated_genes.xlsx", 
@@ -21,8 +22,6 @@ def augment_living_file(living_path: str = "annotated_genes.xlsx",
     """
     Loads the existing living file and appends CpG coordinates, Atlas traits, and broad DisGeNET data.
     """
-    # ... (rest of function)
-
     print(f"[AUGMENT] Loading living file: {living_path}")
     df_living = pd.read_excel(living_path)
     
@@ -124,9 +123,11 @@ def augment_living_file(living_path: str = "annotated_genes.xlsx",
     else:
         print("[AUGMENT] Rscript not found. Skipping DisGeNET2R heatmap generation.")
 
+    # 5. Generate Summary Report
+    print("[AUGMENT] Generating summary report...")
+    generate_summary_report(df_augmented, output_path="summary_report.md")
+
     print("[AUGMENT] Done.")
-
-
 
 if __name__ == "__main__":
     augment_living_file()
