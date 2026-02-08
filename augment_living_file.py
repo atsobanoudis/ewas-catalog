@@ -8,6 +8,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from original_annotation.modules.cpg_integration import load_pi_cpg_mappings, attach_ewas_atlas_traits
 from original_annotation.modules.disgenet_utils import annotate_with_disgenet
+from original_annotation.modules.viz_engine import plot_disease_heatmap
 
 def augment_living_file(living_path: str = "annotated_genes.xlsx", 
                         mapping_path: str = "ewas_res_groupsig_128.xlsx",
@@ -17,6 +18,8 @@ def augment_living_file(living_path: str = "annotated_genes.xlsx",
     """
     Loads the existing living file and appends CpG coordinates, Atlas traits, and broad DisGeNET data.
     """
+    # ... (rest of function)
+
     print(f"[AUGMENT] Loading living file: {living_path}")
     df_living = pd.read_excel(living_path)
     
@@ -80,7 +83,28 @@ def augment_living_file(living_path: str = "annotated_genes.xlsx",
 
     print(f"[AUGMENT] Saving augmented file to: {output_path}")
     df_augmented.to_excel(output_path, index=False)
+
+    # 4. Generate Heatmaps
+    print("[AUGMENT] Generating initial heatmaps...")
+    viz_dir = Path("viz")
+    viz_dir.mkdir(exist_ok=True)
+    
+    # Psychiatric Heatmap
+    if 'disgenet_psych_diseases' in df_augmented.columns:
+        plot_disease_heatmap(df_augmented, 
+                             disease_col='disgenet_psych_diseases', 
+                             output_path="viz/heatmap_psychiatric.png",
+                             title="Psychiatric Gene-Disease Associations (DisGeNET)")
+    
+    # Broad-Spectrum Heatmap
+    if 'disgenet_diseases' in df_augmented.columns:
+        plot_disease_heatmap(df_augmented, 
+                             disease_col='disgenet_diseases', 
+                             output_path="viz/heatmap_broad_spectrum.png",
+                             title="Broad-Spectrum Gene-Disease Associations (DisGeNET)")
+
     print("[AUGMENT] Done.")
+
 
 if __name__ == "__main__":
     augment_living_file()
