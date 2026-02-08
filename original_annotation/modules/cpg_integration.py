@@ -40,8 +40,8 @@ def attach_ewas_atlas_traits(mapping_df: pd.DataFrame, atlas_df: pd.DataFrame) -
         traits = sorted(list(set(group['trait'].dropna().astype(str))))
         pmids = sorted(list(set(group['pmid'].dropna().astype(int).astype(str))))
         
-        trait_str = "; ".join(traits) if traits else "n/a"
-        pmid_str = "; ".join(pmids) if pmids else "n/a"
+        trait_str = ";\n".join(traits) if traits else "n/a"
+        pmid_str = ";\n".join(pmids) if pmids else "n/a"
         
         return pd.Series({
             'ewas_atlas_traits': trait_str,

@@ -48,6 +48,11 @@ def augment_living_file(living_path: str = "annotated_genes.xlsx",
     else:
         print(f"[AUGMENT] Warning: {atlas_path} not found.")
 
+    # Rename existing 'disgenet_evidence' to 'disgenet_psych_evidence' if it exists
+    if 'disgenet_evidence' in df_augmented.columns:
+        print("[AUGMENT] Renaming 'disgenet_evidence' to 'disgenet_psych_evidence'...")
+        df_augmented = df_augmented.rename(columns={'disgenet_evidence': 'disgenet_psych_evidence'})
+
     # 3. Attach Broad-Spectrum DisGeNET
     if Path(gea_path).is_file():
         print("[AUGMENT] Attaching Broad-Spectrum DisGeNET associations...")
@@ -55,6 +60,10 @@ def augment_living_file(living_path: str = "annotated_genes.xlsx",
         # We use annotate_with_disgenet which expects 'symbol' column
         # Since we might already have disgenet_psych columns, this will add disgenet_diseases (broad)
         df_augmented = annotate_with_disgenet(df_augmented, df_gea, psych_only=False)
+        
+        # We only want the disease list, not the evidence for broad spectrum
+        if 'disgenet_evidence' in df_augmented.columns:
+             df_augmented = df_augmented.drop(columns=['disgenet_evidence'])
     else:
         print(f"[AUGMENT] Warning: {gea_path} not found.")
 
