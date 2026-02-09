@@ -14,15 +14,15 @@
     - [x] Output `unaccounted_genes.csv` (Filtered: No Decimals) and `appendix_c_source.csv` (Filtered: Decimals Only).
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Data Augmentation Logic' (Protocol in workflow.md)
 
-## Phase 2: Documentation Overhaul
-- [~] Task: Update `REPORT.md` - Detailed Workflow.
-    - [ ] Add `rank_score`, correlation mapping, and unmapped gene logic to the EWAS Atlas section.
-- [ ] Task: Update `REPORT.md` - Interesting Findings.
-    - [ ] Insert the **FMN1 Case Study** with placeholders for specific stats.
-    - [ ] Insert the **Unaccounted Genes** findings (referencing the CSV).
-- [ ] Task: Update `REPORT.md` - Considerations/Limitations.
-    - [ ] Discuss methodology (rank limitations, p-value exclusion).
-    - [ ] Discuss scientific implications (Nearest vs. Associated).
-- [ ] Task: Update `REPORT.md` - Appendix C.
-    - [ ] Create Appendix C table for decimal-named genes (Unestablished).
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Documentation Overhaul' (Protocol in workflow.md)
+## Phase 2: Documentation Overhaul [checkpoint: 3721ef4]
+- [x] Task: Update `REPORT.md` - Detailed Workflow. [3721ef4]
+    - [x] Add `rank_score`, correlation mapping, and unmapped gene logic to the EWAS Atlas section.
+- [x] Task: Update `REPORT.md` - Interesting Findings. [3721ef4]
+    - [x] Insert the **FMN1 Case Study** with placeholders for specific stats.
+    - [x] Insert the **Unaccounted Genes** findings (referencing the CSV).
+- [x] Task: Update `REPORT.md` - Considerations/Limitations. [3721ef4]
+    - [x] Discuss methodology (rank limitations, p-value exclusion).
+    - [x] Discuss scientific implications (Nearest vs. Associated).
+- [x] Task: Update `REPORT.md` - Appendix C. [3721ef4]
+    - [x] Create Appendix C table for decimal-named genes (Unestablished).
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Documentation Overhaul' (Protocol in workflow.md)
