@@ -1,0 +1,10 @@
+{
+    "markdown.styles": [
+        "report\\nord.css"
+    ],
+    "markdown-pdf.styles": [
+        "report\\nord.css"
+    ],
+    "markdown-pdf.stylesRelativePathFile": false,
+    "markdown-pdf.includeDefaultStyles": true
+}

@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>REPORT.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+<link rel="stylesheet" href="file:///c%3A/Users/alext/Documents/Coding/ewas-catalog/report/nord.css" type="text/css">
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///c%3A/Users/alext/Documents/Coding/ewas-catalog/report/nord.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="psychiatric-gene-epigene-annotation">Psychiatric Gene-Epigene Annotation</h1>
+<h2 id="general-workflow">General Workflow</h2>
+<p>This project provides a comprehensive bioinformatics pipeline for annotating gene lists derived from epigenetic studies, specifically targeting psychiatric research. The final output is a multi-layered dataset (<code>annotated_genes.xlsx</code>), with the <code>augmented</code> sheet serving as the combined genetic-epigenetic annotation</p>
+<h3 style="margin: 0px">1. Core annotation</h3>
+<p>- Gene metadata: resolving gene identifiers (Symbols, LOC IDs) to standardized HGNC, Entrez, and Ensembl IDs via NCBI Datasets.<br>
+- Functional synthesis: aggregating biological summaries and &quot;FUNCTION&quot; comments from NCBI, UniProt, and HGNC into a unified functional description.</p>
+<h3 style="margin: 0px">2. Evidence Integration</h3>
+<p>Psychiatric associations: identifying gene-disease links across four major evidence streams<br>
+1. GWAS Catalog: significant SNP-trait associations filtered for psychiatric phenotypes<br>
+2. Harmonizome: Cross-database (CTD, GAD, etc.) disease associations enriched for mental health keywords<br>
+3. PubMed Literature: Automated mining of high-confidence gene-literature links via MeSH terms and title-based genetic tagging<br>
+4. DisGeNET: Integration of curated psychiatric disease-gene associations, providing both association scores and supporting evidence</p>
+<h3 style="margin: 0px">3. Epigenetic Context & Augmentation</h3>
+<p>- CpG-to-Gene mapping: explicitly links CpG probe IDs and chromosomal coordinates back to the annotated gene list<br>
+- EWAS Atlas integration: pulling trait associations directly associated with the CpG probes to provide a primary epigenetic signal.<br>
+- Broad association mapping: expanding the dataset beyond psychiatric traits to include a broad-spectrum view of all known gene-disease associations (via DisGeNET), allowing for a comprehensive analysis of pleiotropy and non-psychiatric context.</p>
+<h2 id="detailed-workflows">Detailed workflows</h2>
+<h3 style="margin: 0px">Gene Annotation</h3>
+<details>
+<summary>HGNC & NCBI Metadata</summary>
+<p><strong><a href="https://www.ncbi.nlm.nih.gov/datasets/">NCBI Datasets</a></strong> (<a href="https://www.ncbi.nlm.nih.gov/datasets/docs/v2/api/rest-api/">REST API</a>) &amp; <strong><a href="https://www.genenames.org/">HGNC</a></strong> (<a href="https://www.genenames.org/help/rest/">REST API</a>):<br>
+unique <code>ewas_res_groupsig_128.xlsx</code> gene list → base annotation</p>
+<ol>
+<li>Input resolution
+<ul>
+<li>Accepts gene symbols or LOC IDs</li>
+<li>LOC IDs (e.g., <code>LOC101926933</code>) resolved via NCBI Gene ID</li>
+<li>Symbols resolved via NCBI symbol search (restricted to human)</li>
+</ul>
+</li>
+<li>Metadata extraction
+<ul>
+<li>NCBI: Retrieves HGNC <code>symbol</code>, <code>name</code>, <code>hgncID</code>, <code>entrezID</code>, <code>ensemblID</code>,  <code>gene_type</code>, <code>synonyms</code>, UniProt accession as <code>uniprot</code></li>
+<li>HGNC Fallback: If NCBI lacks an Ensembl ID, queries HGNC using the HGNC ID to fill the gap</li>
+<li>creates <code>annotated_genes.xlsx</code> with above columns</li>
+</ul>
+</li>
+</ol>
+</details>
+<details>
+<summary>Function Aggregation</summary>
+<p><strong><a href="https://www.uniprot.org/">UniProt</a></strong> (<a href="https://www.uniprot.org/help/api">REST API</a>); <strong><a href="https://www.genenames.org/">HGNC</a></strong> (<a href="https://www.genenames.org/help/rest/#!/#tocAnchor-1-1">REST API</a>):<br>
+Gene symbol → enriched annotation</p>
+<ol>
+<li>Fetching
+<ul>
+<li>UniProt: Queries API using the <code>uniprot</code> accession from NCBI. Extracts &quot;FUNCTION&quot; comments, entry status (Reviewed/Unreviewed), and protein existence evidence (n/a, 1–5)</li>
+<li>HGNC: Queries API; attempts to find &quot;curator_summary&quot;, &quot;gene_group&quot;, or &quot;name&quot; to serve as a functional description</li>
+</ul>
+</li>
+<li>Aggregation &amp; Deduping
+<ul>
+<li>Combines text from NCBI (Summary), UniProt, and HGNC</li>
+<li>Normalizes text (lowercase, whitespace) to detect duplicates automatically</li>
+<li>Format: Returns a multi-line string labeling the source and collapsing duplicates in <code>function</code> column</li>
+<li>Example:<pre class="hljs"><code><div>[SOURCE: NCBI] Protein coding gene...
+[SOURCE: UniProt] same as NCBI
+[SOURCE: HGNC] n/a
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>Columns Added: <code>uniprot_review</code>, <code>protein_existence</code>, <code>function</code></li>
+</ol>
+</details>
+<details>
+<summary>GWAS Catalog (Psychiatric)</summary>
+<p><strong><a href="https://www.ebi.ac.uk/gwas/">GWAS Catalog</a></strong> (<a href="https://www.ebi.ac.uk/gwas/docs/file-downloads">Data Downloads</a>):<br>
+<code>gwas-catalog-associations_ontology-annotated.tsv</code> → <code>misc/gene_psych_gwas.tsv</code></p>
+<ol>
+<li>Pre-processing
+<ul>
+<li>Filters EBI GWAS Catalog associations for psychiatric keywords (see <em>Appendix A</em>)</li>
+<li>Explodes multi-gene entries (comma-separated MAPPED_GENE)</li>
+<li>Aggregates traits, studies, and PMIDs per gene</li>
+</ul>
+</li>
+<li>Attachment
+<ul>
+<li>Joins the pre-computed psychiatric GWAS table to the main gene list by gene symbol</li>
+<li>Logic: Left join on standardized symbol</li>
+</ul>
+</li>
+<li>Columns Added: <code>gwas_assoc_count</code>, <code>gwas_traits</code>, <code>gwas_labels</code>, <code>gwas_pmids</code>, <code>gwas_efo_uris</code>, <code>gwas_study_accessions</code></li>
+</ol>
+</details>
+<details>
+<summary>Harmonizome (Psychiatric)</summary>
+<p><strong><a href="https://maayanlab.cloud/Harmonizome/">Harmonizome</a></strong> (<a href="https://maayanlab.cloud/Harmonizome/documentation">REST API</a>):<br>
+Gene Symbol → Psychiatric Associations (<code>annotated_genes.xlsx</code>)</p>
+<ol>
+<li>Query all associations for a gene symbol via <code>download/associations</code> REST endpoint</li>
+<li>Filtering
+<ul>
+<li>Datasets: Restricts to key disease datasets (<em>CTD, DisGeNET, GAD, GWASdb, DISEASES</em>)</li>
+<li>Keywords: Filters associations for psychiatric terms (see <em>Appendix A</em>)</li>
+</ul>
+</li>
+<li>Columns added: <code>harmonizome_count</code>, <code>harmonizome_terms</code>, <code>harmonizome_datasets</code></li>
+</ol>
+</details>
+<details>
+<summary>PubMed Literature</summary>
+<p><strong><a href="https://www.ncbi.nlm.nih.gov/books/NBK25501/">NCBI E-utilities</a></strong> (<a href="https://www.ncbi.nlm.nih.gov/books/NBK25499/">API</a>):<br>
+Entrez ID / Symbol → Mental Health Literature Hits (<code>annotated_genes.xlsx</code>)</p>
+<ol>
+<li>Identification
+<ul>
+<li>Primary: <code>elink</code> (Gene ID → PubMed ID) for high-confidence links</li>
+<li>Secondary: <code>esearch</code> (Symbol in Title/Abstract/MeSH) if Entrez ID is missing</li>
+</ul>
+</li>
+<li>Filtering
+<ul>
+<li>Retrieves full XML for identified PMIDs stored in <code>pubmed_pmid</code></li>
+<li>Mental Health Filter: Keeps papers matching specific MeSH terms or Title keywords (see <em>Appendix B</em>), lists term hits in <code>pubmed_terms</code></li>
+<li>Genetic Tagging: Flags papers as &quot;Genetic&quot; if they contain terms like &quot;Polymorphism&quot;, &quot;GWAS&quot;, &quot;Variant&quot;</li>
+</ul>
+</li>
+<li>Formatting
+<ul>
+<li>Generates a brief summary string for quick review in <code>pubmed_brief</code> column</li>
+<li>Example:<pre class="hljs"><code><div>Schizophrenia genetics 2024 PMID: 12345 Genetic
+Depression study 2023 PMID: 67890 Not Genetic
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>Columns added: <code>pubmed_count</code>, <code>pubmed_genetic_count</code>, <code>pubmed_pmid</code>, <code>pubmed_terms</code>, <code>pubmed_brief</code></li>
+</ol>
+</details>
+<details>
+<summary>DisGeNET</summary>
+<p><strong><code>disgenet2r</code></strong>:<br>
+gene symbol → Gene-Disease Associations (<code>data/disgenet_gda.csv</code>)<br>
+gene symbol → Gene-Evidence Associations (<code>data/disgenet_gea.csv</code>)</p>
+<ol>
+<li>Filter <code>disgenet_gea.csv</code> by column <code>diseaseClasses_UMLS_ST</code> == &quot;Mental or Behavioral Dysfunction (T048)&quot;</li>
+<li>For every gene in <code>annotated_genes.xlsx</code>:
+<ol>
+<li><code>disgenet_psych_diseases</code> column:
+<ul>
+<li>Group <code>disease_name</code> values in <code>disgenet_gea.csv</code></li>
+<li>Logic:
+<ul>
+<li><code>score</code> consistency across entries; else &quot;error&quot;</li>
+<li>Sort unique disease names by score</li>
+</ul>
+</li>
+<li>Format: <code>[Disease Name], [Score]</code>
+<ul>
+<li>Separator: <code>;</code> + newline</li>
+<li><em>Example</em>:<pre class="hljs"><code><div>Schizophrenia, 0.7;
+Bipolar Disorder, 0.5
+</div></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>disgenet_evidence</code> column:
+<ul>
+<li>Separate <code>disease_name</code> (rows in <code>disgenet_gea.csv</code>)</li>
+<li>Logic:
+<ul>
+<li>Polarity: &quot;Positive&quot;, &quot;Negative&quot;, or &quot;NAPolarity&quot; (for NA)</li>
+<li>Reference: if <code>reference_type</code> == &quot;PMID&quot; → use <code>reference</code> ID; else <code>reference(&quot;NA&quot;)(source, associationType)</code></li>
+<li>Sort by (1) descending disease score, then (2) polarity ( + &gt; na &gt; - ) and chronological publication</li>
+</ul>
+</li>
+<li>Format: <code>[Disease], [Polarity], [Year], [Ref]</code>
+<ul>
+<li><em>Example</em>:<pre class="hljs"><code><div>Schizophrenia, Positive, 2006, 2489764;
+Schizophrenia, NAPolarity, 2004, NA(CLINVAR, GeneticVariation);
+Schizophrenia, Negative, 2005, 99348737;
+Bipolar Disorder, Positive, 2015, 9398387
+</div></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<p>[Note:]
+<em>The <code>disgenet_diseases</code> column represents a broad extraction of all associated traits, bypassing the mental health filter applied to the <code>disgenet_psych_diseases</code> column.</em></p>
+</blockquote>
+</details>
+<h3 style="margin-top: 10px; margin-bottom: 0px">Epigene Annotation</h3>
+<details>
+<summary>UCSC Screen</summary>
+<p><strong><a href="https://genome.ucsc.edu/">UCSC Genome Browser</a></strong> (<a href="https://genome.ucsc.edu/goldenPath/help/api.html">REST API</a>):<br>
+CpG coordinates (<code>ewas_res_groupsig_128.xlsx</code>) → Track annotations (<code>data/ewas_ucsc_annotated.xlsx</code>)</p>
+<ol>
+<li>Confirm coordinates resolve to the correct CpG ID via <code>snpArrayIllumina850k</code> track</li>
+<li><strong>Track Queries</strong>:
+<ol>
+<li>Direct Overlap: query <code>clinvarMain</code> at exact CpG coordinates to identify clinical significance or mutations (unlikely)</li>
+<li>Neighborhood: query <code>gwasCatalog</code> within a 5kb window (±5000bp) to identify nearby disease-associated SNPs</li>
+</ol>
+</li>
+<li>Generate flattened hits written to Excel file with separate sheets for each track (<code>clinvarMain</code>, <code>gwasCatalog</code>)
+<ul>
+<li>Headers determined by resulted json fields</li>
+</ul>
+</li>
+</ol>
+</details>
+<details>
+<summary>EWAS Atlas</summary>
+<p><strong><a href="https://ngdc.cncb.ac.cn/ewas/atlas">NGDC EWAS Atlas</a></strong> (<a href="https://ngdc.cncb.ac.cn/ewas/api">REST API</a>):<br>
+CpG probe ID → trait associations (<code>data/ewas_atlas.csv</code>)</p>
+<ol>
+<li>Query API per CpG <code>probeID</code> in <code>ewas_res_groupsig_128.xlsx</code>:
+<ul>
+<li>Resolve symbols from relatedTranscription as <code>genes</code></li>
+<li>Capture cpgIsland status as <code>cpg_island</code></li>
+<li>Flatten <code>associationList</code>, containing <code>trait</code>, <code>correlation</code>, <code>rank</code>, <code>pmid</code></li>
+</ul>
+</li>
+<li>Methodological refining
+<ul>
+<li>Rank scoring: calculate <code>rank_score = rank / total_associations</code> (3 decimal places). If rank is missing, empty value for output readability</li>
+<li>Correlation (methylation) mapping:
+<ul>
+<li><code>pos</code> ↔ <code>hyper</code></li>
+<li><code>neg</code> ↔ <code>hypo</code></li>
+<li><code>NA</code> ↔ <code>NR</code></li>
+</ul>
+</li>
+<li>Unmapped gene gap: cross-reference all genes in <code>ewas_atlas.csv</code> against validated <code>symbol</code> and <code>synonyms</code> columns from <code>annotated_genes.xlsx</code> <em>and</em> the nearest gene (<code>unique_gene_name</code>) from <code>ewas_res_groupsig_128.xlsx</code></li>
+</ul>
+</li>
+<li>Data integration logic
+<ul>
+<li>Formatting: traits are aggregated into a single cell, separated by <code>; \n</code>, in the format: <code>[trait], [rank_score], [correlation], [pmid]</code>, sorted by descending rank score, then alphabetically by trait</li>
+<li>Columns: results partitioned into <code>ewas_atlas_traits</code>, <code>ewas_unmapped_gene</code> (established symbols), and <code>ewas_unmapped_regions</code> (decimal-named clone/LncRNA loci; &quot;AP003039.3&quot; vs. &quot;NTM&quot;). Established symbols table can be found in Table 1, while uncharacterized regions are in <em>Appendix C</em> Table C.1</li>
+<li>Example <code>ewas_atlas_traits</code> output</li>
+</ul>
+<pre class="hljs"><code><div>preterm birth, 0.9, hyper, 1239847;
+allergies, 0.8, hypo, 10923874;
+Alzheimer, 0.8, NR, 019834
+</div></code></pre>
+</li>
+</ol>
+</details>
+<details>
+<summary>Augmentation</summary>
+<p><strong><a href="https://ngdc.cncb.ac.cn/ewas/atlas">EWAS Atlas</a></strong> &amp; <strong><a href="https://www.disgenet.org/">DisGeNET</a></strong>:<br>
+<code>annotated_genes.xlsx</code> → <code>annotated_genes.xlsx[                           sheets = 'annotated_genes',   # original                                    'ewas_atlas',        # copy of data/ewas_atlas.csv                                    'augmented',         # NEW: combined sheet                                    'ewas_res_groupsig_128'                           ]</code></p>
+<ol>
+<li>Comprehensive join
+<ul>
+<li>Joins the provided <code>ewas_res_groupsig_128.xlsx</code> chromosomal coordinates and probe IDs to new augmented sheet</li>
+<li>Logic: right join provided CpG list to ensure every probe is retained regardless of gene annotation</li>
+<li>Primary join on the <code>input</code> column to handle gene name discrepancies between raw data (nearest genes) and validated symbols (via Entrez → HGNC queries in above section)</li>
+</ul>
+</li>
+<li>EWAS Atlas enrichment
+<ul>
+<li>Cross-references CpG probe IDs with the EWAS Atlas dataset to identify additional trait associations and unmapped genes/loci</li>
+<li>Logic: empty associations are left as nulls to maintain clarity in the sheet, associations without a rank, and subsequently a rank score, are given a placeholder score of <code>0.000</code></li>
+</ul>
+</li>
+<li>Broad-spectrum DisGeNET: pulls all gene-disease associations without psychiatric filtering to provide broad phenotypic context in the <code>disgenet_disease</code> column</li>
+<li>Columns added: <code>cpg</code>, <code>cpg_chr</code>, <code>cpg_start</code>, <code>cpg_end</code>, <code>ewas_atlas_traits</code>, <code>ewas_unmapped_gene</code>, <code>ewas_unmapped_regions</code>, <code>disgenet_disease</code></li>
+</ol>
+</details>
+<br>
+<br>
+<h2 id="findings">Findings</h2>
+<h3 style="margin-top: 10px; margin-bottom: 0px">DISTAL GENE-CPG UNMAPPED ASSOCIATIONS</h3>
+<p>A critical finding during the augmentation phase was the identification of CpG-gene associations via EWAS Atlas that were previously unmapped to genes from proximity identification. Established CpG-gene associations (e.g., GSE1, CNTD2) were recorded and displayed in Table 1; uncharacterized long non-coding RNA (lncRNA) loci or genomic regions named using the Human Genome Project clone system (e.g., <code>AP003039.3</code>) can be found in <em>Appendix C</em>.<br>
+A primary example is <em>cg02255242</em>, associated with the gene <em>FMN1</em>. The probe <em>cg02255242</em> is located at <code>chr15:33128710–33128712</code>, approximately 70.9kb from the FMN1 transcription start site (<code>33057746</code>). Despite this distance, EWAS Atlas identifies a validated association from a single study characterized by 100% hypermethylation in the gene body. According to EWAS Atlas, FMN1 is broadly implicated in the epigenetic landscape, associated with 42 unique probes and 36 traits; notably, these include high-priority conditions such as Alzheimer’s disease (ranked 3rd; 5 associations) and Mild Cognitive Impairment (tied for 1st; 6 associations).</p>
+<p style="margin-top: 20px;"><b>Table 1: Unmapped Gene Against Known Synonyms and Originating Input</b></p>
+<table style="border-collapse: collapse; width: 100%; border-top: 1px solid black; border-bottom: 1px solid black;">
+  <thead>
+    <tr style="border-bottom: 1px solid black;">
+      <th style="text-align: left;">CpG</th>
+      <th style="text-align: left;">EWAS Atlas Genes</th>
+      <th style="text-align: left;">Unmapped Genes</th>
+      <th style="text-align: left;">Synonym</th>
+      <th style="text-align: left;">Nearest Gene, Original Input</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>cg15035382</td><td>CNTD2</td><td>CNTD2</td><td></td><td>CNTD2</td></tr>
+    <tr><td>cg26456563</td><td>CNTD2</td><td>CNTD2</td><td></td><td>CNTD2</td></tr>
+    <tr><td>cg10957166</td><td>AC084018.1;RHOF;RP11-347I19.7;RP11-347I19.8</td><td>RHOF</td><td></td><td>LOC338799</td></tr>
+    <tr><td>cg24315757</td><td>MAGI1;MAGI1-AS1;MAGI1-IT1</td><td>MAGI1-IT1</td><td></td><td>MAGI1-AS1, MAGI1</td></tr>
+    <tr><td>cg10638439</td><td>HCP5;MICA;Y_RNA</td><td>Y_RNA</td><td></td><td>MICA</td></tr>
+    <tr><td>cg10260205</td><td>PCBP3;PRED62</td><td>PRED62</td><td></td><td>PCBP3</td></tr>
+    <tr><td>cg25857471</td><td>DPCR1;SFTA2</td><td><u>SFTA2</u></td><td></td><td>DPCR1</td></tr>
+    <tr><td>cg02255242</td><td>FMN1</td><td><u>FMN1</u></td><td></td><td></td></tr>
+    <tr><td>cg16185115</td><td>GSE1</td><td><u>GSE1</u></td><td></td><td></td></tr>
+    <tr><td>cg04732357</td><td>ANKRD36C</td><td><u>ANKRD36C</u></td><td></td><td></td></tr>
+    <tr><td>cg21088344</td><td>SLFN12L</td><td><u>SLFN12L</u></td><td></td><td></td></tr>
+    <tr><td>cg16910670</td><td>NADSYN1</td><td><u>NADSYN1</u></td><td></td><td></td></tr>
+    <tr><td>cg13796823</td><td>SAMD3;TMEM200A</td><td><u>SAMD3</u></td><td></td><td></td></tr>
+    <tr><td>cg13796823</td><td>SAMD3;TMEM200A</td><td><u>TMEM200A</u></td><td></td><td></td></tr>
+  </tbody>
+</table>
+<p style="font-size: 0.9em;">Genes (<i>Unmapped Genes</i>) extracted from EWAS Atlas by provided CpG ProbeID via REST API were cross-referenced against known gene aliases from previous annotation (<i>Synonym</i>) and initial suspected genes by proximity(<i>Nearest Gene</i>, <i>Original Input</i>). Underlined genes (<i>SFTA2</i>, <i>FMN1</i>, <i>GSE1</i>, <i>ANKRD36C</i>, <i>SLFN12L</i>, <i>NADSYN1</i>, <i>SAMD3</i>, <i>TMEM200A</i>) are not listed in error (<i>CNTD2</i>, <i>RHOF</i>), possible noise (<i>MAGI1-IT1</i>, <i>Y_RNA</i>), or deprecated (<i>PRED62</i>), and thus serve as a potentially significant expansions for exploration. Genes with cross-referenced synonyms accounted for in <code>annotated_genes.xlsx</code> (<i>WBSCR17</i>, <i>DPCR1</i>, <i>PRAMEF23</i>, <i>B3GNTL1</i>, <i>RARS</i>, <i>FAM134B</i>) were removed, while the <i>Synonym</i> variable remained to guide interpretation</p>
+<h3 style="margin-top: 10px; margin-bottom: 0px">MISCELLANEOUS FINDINGS</h3>
+<p>Although selection was based solely on genomic proximity while exploring the UCSC screening data (<code>data/ewas_ucsc_annotated.xlsx</code>), the two closest traits of 765 interestingly ranged from a classical biological phenotype to an educational attainment proxy, namely the highest mathematics course completed (see below).</p>
+<p style="margin-top: 20px;"><b>Table 2: Proximal Traits Identified via UCSC Screening</b></p>
+<table style="border-collapse: collapse; width: 100%; border-top: 1px solid black; border-bottom: 1px solid black;">
+  <thead>
+    <tr style="border-bottom: 1px solid black;">
+      <th style="text-align: left;">CpG ID</th>
+      <th style="text-align: left;">Distance (bp)</th>
+      <th style="text-align: left;">PubMed ID</th>
+      <th style="text-align: left;">Trait</th>
+      <th style="text-align: left;">Region</th>
+      <th style="text-align: left;">Genes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>cg06941159</td><td>6</td><td>30038396</td><td>Highest math class taken (MTAG)</td><td>16p11.2</td><td>Intergenic</td></tr>
+    <tr><td>cg20910361</td><td>8</td><td>36224396</td><td>Height</td><td>4q31.21</td><td></td></tr>
+  </tbody>
+</table>
+<p style="font-size: 0.9em;">Top associations identified by genomic proximity within 10bp to the query CpG sites using UCSC screening data (<code>data/ewas_ucsc_annotated.xlsx</code>). Traits range from behavioral proxies (<i>Highest math class taken</i>) to physical phenotypes (<i>Height</i>). <i>Distance</i> represents the offset in base pairs from the CpG site. <i>Genes</i> are noted as <i>Intergenic</i> when the CpG falls outside defined gene bodies within the specified <i>Region</i>.</p>
+<p>Because multiple genes are now linked to the same CpG, filtering by CpG in <code>annotated_genes.xlsx, sheet = 'augmented'</code> can yield interesting, albeit expected results. Genes <em>UGTA10</em> and <em>UGT1A8</em> are both close enough to <em>cg00922271</em> to be listed as a unique gene, and their disease association profiles are expectedly similar from DISGENET data (see below).</p>
+<p style="margin-top: 20px;"><b>Table 3: DisGeNET Disease Profiles for Co-Located Genes</b></p>
+<table style="border-collapse: collapse; width: 100%; border-top: 1px solid black; border-bottom: 1px solid black;">
+  <thead>
+    <tr style="border-bottom: 1px solid black;">
+      <th style="text-align: left;">CpG</th>
+      <th style="text-align: left;">Symbol</th>
+      <th style="text-align: left;">DisGeNET Diseases (Score)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td style="vertical-align: top;">cg00922271</td>
+        <td style="vertical-align: top;">UGT1A10</td>
+        <td>Gilbert Disease, 0.75;<br>Increased bilirubin level (finding), 0.65;<br>Crigler Najjar syndrome, type 1, 0.6;<br>Crigler-Najjar syndrome, 0.55;<br>BILIRUBIN, SERUM LEVEL OF, QUANTITATIVE TRAIT LOCUS 1, 0.4;<br>Crigler Najjar syndrome, type 2, 0.4;<br>GILBERT SYNDROME, SUSCEPTIBILITY TO, 0.4;<br>Lucey-Driscoll syndrome (disorder), 0.4</td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top;">cg00922271</td>
+        <td style="vertical-align: top;">UGT1A8</td>
+        <td>Diarrhea, 0.5;<br>Gilbert Disease, 0.45;<br>Crigler Najjar syndrome, type 2, 0.4;<br>BILIRUBIN, SERUM LEVEL OF, QUANTITATIVE TRAIT LOCUS 1, 0.4;<br>Crigler-Najjar syndrome, 0.4;<br>Lucey-Driscoll syndrome (disorder), 0.4;<br>Crigler Najjar syndrome, type 1, 0.4;<br>Increased bilirubin level (finding), 0.4;<br>Diarrheal disorder, 0.4;<br>GILBERT SYNDROME, SUSCEPTIBILITY TO, 0.4</td>
+    </tr>
+  </tbody>
+</table>
+<p style="font-size: 0.9em;">Comparison of selected disease association profiles for <i>UGT1A10</i> and <i>UGT1A8</i>, two genes linked to the same CpG probe (<i>cg00922271</i>) in the augmented dataset (<code>annotated_genes.xlsx</code>). Disease associations were retrieved from DisGeNET and ordered by association score. The overlap in phenotypes (e.g., <i>Gilbert Disease</i>, <i>Crigler-Najjar syndrome</i>) highlights the functional similarity of these clustered genes.</p>
+<h2 id="discussion">Discussion</h2>
+<p>This research involves the synthesis of multi-omic data from disparate public repositories. While every effort was made to ensure accuracy and completeness, several methodological considerations and limitations must be acknowledged to guide interpretations.</p>
+<p>The bioinformatics landscape is characterized by high volatility in dataset availability and API accessibility. During the course of this project, several key resources (e.g., specific web-endpoints for the NHGRI-EBI GWAS Catalog) became unavailable or shifted to API-only access. This volatility extends to gene identifiers themselves; for instance, the unmapped gene <em>PRED62</em> (associated with <code>cg10260205</code>) could not be indexed via HGNC or Entrez. Manual tracing through the <a href="https://exphewas.statgen.org/">ExPheWas Browser</a> identified it as Ensembl ID <em>ENSG00000268040</em>, which was revealed to be a deprecated identifier archived in February 2014. Additionally, automated extraction logic occasionally yielded &quot;ghost&quot; associations: <code>cg10957166</code> returned a multitude of genes (e.g., <em>AC084018.1</em>; <em>RHOF</em>; <em>RP11-347I19.7</em>; <em>RP11-347I19.8</em>) via the EWAS Atlas logic, yet manual validation via the browser confirmed zero associated genes. Consequently, the results presented here represent a specific point-in-time snapshot, and future reproduction efforts may encounter similar discrepancies.</p>
+<p>Beyond temporal volatility, the associations identified via the EWAS Atlas, GWAS Catalog, and PubMed mining are primarily descriptive. While a high correlation or frequent literature co-occurrence suggests a potential biological link, these metrics do not imply direct mechanistic causation. Epigenetic signals (CpG methylation) and genomic variants (SNPs) often act in complex regulatory networks where proximity to a gene’s transcription start site does not always equate to functional regulation.</p>
+<p>This distinction is underscored by the discovery of distal associations, like <em>FMN1</em>, which demonstrates that relying solely on &quot;nearest gene&quot; mapping can overlook biologically relevant signals. For example, <code>cg02255242</code> is located at <code>chr15:33128710–33128712</code>, approximately 70.9kb from the <em>FMN1</em> start site (<code>33057746</code>). Despite this significant distance, EWAS Atlas contains association of our probe to <em>FMN1</em> from 1 study, which showed 100% hypermethylation in the gene body. More importantly, <em>FMN1</em> is associated with 42 probes and 36 traits via EWAS Atlas, including high-priority conditions like Alzheimer’s disease (ranked 3rd; 5 associations) and Mild Cognitive Impairment (tied for 1st; 6 associations). This finding effectively transforms our approach from proximity scanning to capturing genes with identifiable, validated EWAS-associated links.</p>
+<p>Similar interpretative caution is needed for DisGeNET association scores and the <code>rank_score</code> metric utilized in the EWAS Atlas integration. The <code>rank_score</code> is restricted to associations where an explicit rank was reported in the source study, which excludes contextual information for traits with large total association counts but unreported ranks. A pertinent example is the aforementioned <code>cg02255242</code>: while it has a hypermethylated association with &quot;infertility&quot; in PMID 25753583, it lacks a rank among the study's 2,751 associations, leaving it without a score in our augmented dataset.</p>
+<p>These evidentiary constraints are further influenced by statistical thresholds. To facilitate a broad-spectrum view, associations were included even when p-values exceeded traditional significance thresholds; in the current augmented set, only 11 hits were below 1e-04, and only one was below 1e-01. While this decision broadens the capture to include potentially relevant traits (e.g., Alzheimer's, diabetes), it introduces the risk that traits of lower clinical relevance to this study (e.g., bariatric surgery, Gulf War illness) could be misinterpreted without strict statistical context.</p>
+<p>Search parameters were also shaped by dataset accessibility and bias. Early gene annotations utilized a specific set of psychiatric keywords (see <em>Appendix A</em>). Manual exploration revealed that broader terms (e.g., &quot;Diseases of mental health&quot;) might yield additional hits in repositories like the Harmonizome. Furthermore, the decision to rely on HGNC as a fallback mechanism for gene resolution introduced specific extraction errors. For instance, <em>CNTD2</em> was incorrectly resolved to <em>ARAP</em> (aliases: <em>CENTD2</em>, <em>cnt-d2</em>) via Entrez, whereas HGNC correctly identifies it as <em>CCNP</em> (aliases: <em>CNTD2</em>). While HGNC is authoritative for established genes, it fails on loci like <em>LOC338799</em> (requiring prefix removal processing) and the aforementioned, deprecated <em>PRED662</em>. The decision to prioritize capture via Entrez without a secondary verification step compromised specificity.</p>
+<p>Finally, a gap analysis reveals that a non-zero number of genes exhibit significant psychiatric associations in DisGeNET but remain absent from the GWAS Catalog or Harmonizome results. This indicates a potential refinement in earlier extraction logic and that, while the pipeline is effective at capturing well-established links, the &quot;dark matter&quot; of gene-disease associations requires further investigation. Conversely, there exists expected gene-disease associations that are not indexed in DisGeNET. While the curated database serves as a high-fidelity filter, distinguishing established links from low-confidence predictions, this exclusivity introduces a bias against less-characterized or complex genomic entities. Specifically, a subset of genes (<code>misc/disgenet_missing_associations.csv</code>) returned no data during the enrichment phase. This void arises from two distinct scenarios: genes that are indexed but lack associations within the specific curated subset, and those that are entirely absent from the DisGeNET index (e.g., <em>KLRC4-KLRK1</em>). Crucially, the current extraction logic does not differentiate between these two states, effectively flattening a database gap and a biological null result into a single error class. This data requires further exploration but suggests the pipeline’s reliance on the curated DisGeNET subset may be overly conservative, potentially discarding novel candidates that simply lack the historical literature density required for curation.</p>
+<p><strong>Immediate Data Validation Required</strong></p>
+<ul>
+<li>Rectify Entrez-HGNC resolution: the reliance on Entrez for gene annotation and resolution (e.g., <em>CNTD2</em> resolving to <em>ARAP</em>) requires a new verification layer. Future logic must confirm Entrez results against HGNC rather than accepting the first Entrez result as absolute.</li>
+<li>Investigate ghost associations: the anomaly with <code>cg10957166</code> (yielding <em>AC084018.1</em>, <em>RHOF</em>, etc., despite no browser evidence), while seemingly isolated, must be investigated to determine if this is an API parsing error or a database inconsistency</li>
+</ul>
+<p><strong>Future Strategic Improvements</strong></p>
+<ul>
+<li>Reprocess and annotate newly-identified CpG-gene associations to increase granularity and accuracy of data, and potentially illuminate clinically-relevant psychiatric associations.</li>
+<li>Adjusting the 5kb window in the UCSC neighboring GWAS screening to better capture distal regulatory elements.</li>
+<li>Direct processing of raw summary statistics from curated <a href="https://pgc.unc.edu">Psychiatric Genomics Consortium</a> (PGC) studies to enhance annotation accuracy beyond literature-level metadata. <a href="https://pgc.unc.edu/for-researchers/download-results/">Downloadable study data</a> are available, categorized by psychiatric condition, but require more complex data processing than I felt was relevant.
+<br></li>
+</ul>
+<h2 id="appendix"><em>Appendix</em></h2>
+<h3 style="margin: 0px">A. Psychiatric Keywords (GWAS & Harmonizome)</h3>
+Specific keywords used to filter trait and disease labels across the GWAS Catalog and Harmonizome datasets; matches are case-sensitive and inclusive of substrings
+<details>
+<summary>Keywords by Category</summary>
+<pre class="hljs"><code><div><span class="hljs-meta"># core psych disorders</span>
+<span class="hljs-string">"schizophrenia"</span>,
+<span class="hljs-string">"psychosis"</span>,
+<span class="hljs-string">"psychotic"</span>,
+<span class="hljs-string">"bipolar"</span>,
+<span class="hljs-string">"mania"</span>,
+<span class="hljs-string">"mood disorder"</span>,
+<span class="hljs-string">"depression"</span>,
+<span class="hljs-string">"depressive"</span>,
+<span class="hljs-string">"major depressive"</span>,
+<span class="hljs-string">"unipolar"</span>,
+<span class="hljs-string">"dysthymia"</span>,
+
+<span class="hljs-meta"># neurodevelopmental / autism / adhd</span>
+<span class="hljs-string">"autism"</span>,
+<span class="hljs-string">"asperger"</span>,
+<span class="hljs-string">"pervasive developmental"</span>,
+<span class="hljs-string">"adhd"</span>,
+<span class="hljs-string">"attention deficit"</span>,
+<span class="hljs-string">"hyperactivity"</span>,
+<span class="hljs-string">"conduct disorder"</span>,
+<span class="hljs-string">"oppositional defiant"</span>,
+<span class="hljs-string">"disruptive behavior"</span>,
+
+<span class="hljs-meta"># anxiety / ocd / ptsd / stress</span>
+<span class="hljs-string">"anxiety"</span>,
+<span class="hljs-string">"panic disorder"</span>,
+<span class="hljs-string">"agoraphobia"</span>,
+<span class="hljs-string">"social phobia"</span>,
+<span class="hljs-string">"obsessive-compulsive"</span>,
+<span class="hljs-string">"obsessive compulsive"</span>,
+<span class="hljs-string">"ocd"</span>,
+<span class="hljs-string">"post-traumatic stress"</span>,
+<span class="hljs-string">"posttraumatic stress"</span>,
+<span class="hljs-string">"ptsd"</span>,
+<span class="hljs-string">"stress-related"</span>,
+<span class="hljs-string">"stress related"</span>,
+
+<span class="hljs-meta"># eating / substance</span>
+<span class="hljs-string">"eating disorder"</span>,
+<span class="hljs-string">"anorexia nervosa"</span>,
+<span class="hljs-string">"bulimia"</span>,
+<span class="hljs-string">"binge eating"</span>,
+<span class="hljs-string">"substance use"</span>,
+<span class="hljs-string">"substance-use"</span>,
+<span class="hljs-string">"substance abuse"</span>,
+<span class="hljs-string">"drug dependence"</span>,
+<span class="hljs-string">"alcohol dependence"</span>,
+<span class="hljs-string">"alcohol-use disorder"</span>,
+<span class="hljs-string">"nicotine dependence"</span>,
+
+<span class="hljs-meta"># other psych/neuropsychiatric baskets</span>
+<span class="hljs-string">"personality disorder"</span>,
+<span class="hljs-string">"somatoform"</span>,
+<span class="hljs-string">"tic disorder"</span>,
+<span class="hljs-string">"tourette"</span>,
+<span class="hljs-string">"neuropsychiatric"</span>,
+<span class="hljs-string">"mental disorder"</span>,
+<span class="hljs-string">"mental or behavioural"</span>,
+<span class="hljs-string">"mental or behavioral"</span>
+</div></code></pre>
+</details>
+<h3 style="margin-top: 10px; margin-bottom: 0px">B. Mental Health MeSH, Title, & Genetic Terms (PubMed)</h3>
+Medical Subject Headings (MeSH) and fallback title keywords used to identify relevant literature from gene queries via NCBI E-utilities and classify as genetic
+<details>
+<summary>MeSH Terms by Category</summary>
+<pre class="hljs"><code><div>MESH_TERMS: List[str] = [
+# core mood disorders
+<span class="hljs-string">"Depressive Disorder"</span>,
+<span class="hljs-string">"Depressive Disorder, Major"</span>,
+<span class="hljs-string">"Bipolar Disorder"</span>,
+<span class="hljs-string">"Cyclothymic Disorder"</span>,
+# psychotic disorders
+<span class="hljs-string">"Schizophrenia"</span>,
+<span class="hljs-string">"Psychotic Disorders"</span>,
+<span class="hljs-string">"Schizoaffective Disorder"</span>,
+# anxiety, trauma, stress
+<span class="hljs-string">"Anxiety Disorders"</span>,
+<span class="hljs-string">"Panic Disorder"</span>,
+<span class="hljs-string">"Phobic Disorders"</span>,
+<span class="hljs-string">"Obsessive-Compulsive Disorder"</span>,
+<span class="hljs-string">"Stress Disorders, Post-Traumatic"</span>,
+# neurodevelopmental
+<span class="hljs-string">"Autism Spectrum Disorder"</span>,
+<span class="hljs-string">"Attention Deficit Disorder with Hyperactivity"</span>,
+<span class="hljs-string">"Intellectual Disability"</span>,
+# substance use
+<span class="hljs-string">"Substance-Related Disorders"</span>,
+<span class="hljs-string">"Alcohol-Related Disorders"</span>,
+<span class="hljs-string">"Opioid-Related Disorders"</span>,
+<span class="hljs-string">"Cocaine-Related Disorders"</span>,
+# self-harm/suicide
+<span class="hljs-string">"Suicide"</span>,
+<span class="hljs-string">"Suicidal Ideation"</span>,
+# broad
+<span class="hljs-string">"Mental Disorders"</span>,
+<span class="hljs-string">"Mental Health"</span>,
+]
+</div></code></pre>
+</details>
+<details>
+<summary>Title Keywords</summary>
+<pre class="hljs"><code><div>TITLE_TERMS: List[str] = [
+<span class="hljs-string">"schizophrenia"</span>,
+<span class="hljs-string">"bipolar"</span>,
+<span class="hljs-string">"depressi"</span>,     # depression, depressive
+<span class="hljs-string">"mania"</span>,
+<span class="hljs-string">"psychosis"</span>,
+<span class="hljs-string">"psychotic"</span>,
+<span class="hljs-string">"autism"</span>,
+<span class="hljs-string">"asperger"</span>,
+<span class="hljs-string">"adhd"</span>,
+<span class="hljs-string">"attention-deficit"</span>,
+<span class="hljs-string">"anxiety"</span>,
+<span class="hljs-string">"panic disorder"</span>,
+<span class="hljs-string">"ptsd"</span>,
+<span class="hljs-string">"post-traumatic"</span>,
+<span class="hljs-string">"suicide"</span>,
+<span class="hljs-string">"suicidal"</span>,
+<span class="hljs-string">"substance use"</span>,
+<span class="hljs-string">"substance-use"</span>,
+<span class="hljs-string">"addiction"</span>,
+<span class="hljs-string">"alcohol use"</span>,
+<span class="hljs-string">"alcohol-use"</span>,
+<span class="hljs-string">"mental disorder"</span>,
+<span class="hljs-string">"mental health"</span>,
+]
+</div></code></pre>
+</details>
+<details>
+<summary>Genetic Keywords</summary>
+<pre class="hljs"><code><div>GENETIC_MESH_TERMS: List[str] = [
+<span class="hljs-string">"Polymorphism, Genetic"</span>,
+<span class="hljs-string">"Genetic Variation"</span>,
+<span class="hljs-string">"Genome-Wide Association Study"</span>,
+<span class="hljs-string">"Genotype"</span>,
+<span class="hljs-string">"Genetic Predisposition to Disease"</span>,
+]
+</div></code></pre>
+</details>
+<h3 style="margin-top: 10px; margin-bottom: 0px">C. Uncharacterized Genomic Regions (EWAS Atlas)</h3>
+Detailed list of CpG sites associated with uncharacterized loci, including long non-coding RNA (lncRNA) and genomic regions named using the Human Genome Project clone system (e.g., RP11, AC nomenclature)
+<p style="margin-top: 20px;"><b>Table C.1: Uncharacterized Genomic Regions (EWAS Atlas)</b></p>
+<table style="border-collapse: collapse; width: 100%; border-top: 1px solid black; border-bottom: 1px solid black;">
+  <thead>
+    <tr style="border-bottom: 1px solid black;">
+      <th style="text-align: left;">CpG ID</th>
+      <th style="text-align: left;">Associated Loci (Atlas)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>cg01267120</td><td>AL157871.2, RP11-638I2.6</td></tr>
+    <tr><td>cg01334824</td><td>RP11-100M12.3</td></tr>
+    <tr><td>cg02282594</td><td>RP11-298I3.1</td></tr>
+    <tr><td>cg02780130</td><td>RP11-283I3.2</td></tr>
+    <tr><td>cg02834909</td><td>RP11-316F12.1</td></tr>
+    <tr><td>cg04070200</td><td>AC007879.5</td></tr>
+    <tr><td>cg05406088</td><td>RP11-321F6.1</td></tr>
+    <tr><td>cg05715076</td><td>RP11-543C4.1</td></tr>
+    <tr><td>cg05860956</td><td>RP11-283I3.2</td></tr>
+    <tr><td>cg06941159</td><td>RP11-22P6.2</td></tr>
+    <tr><td>cg07252486</td><td>AP003039.3</td></tr>
+    <tr><td>cg09535960</td><td>RP11-177H13.2</td></tr>
+    <tr><td>cg09911534</td><td>RP11-622C24.2</td></tr>
+    <tr><td>cg10075163</td><td>RP11-283I3.2</td></tr>
+    <tr><td>cg10957166</td><td>AC084018.1, RP11-347I19.7, RP11-347I19.8</td></tr>
+    <tr><td>cg11340603</td><td>RP1-78O14.1</td></tr>
+    <tr><td>cg12658972</td><td>RP11-95P2.3</td></tr>
+    <tr><td>cg12790145</td><td>RP11-283I3.2</td></tr>
+    <tr><td>cg13303179</td><td>RP11-316F12.1</td></tr>
+    <tr><td>cg13689053</td><td>AP000688.14</td></tr>
+    <tr><td>cg14545602</td><td>AC005498.3</td></tr>
+    <tr><td>cg15501526</td><td>RP11-526P5.2</td></tr>
+    <tr><td>cg15587955</td><td>RP11-1080G15.1</td></tr>
+    <tr><td>cg16469117</td><td>AC007092.1</td></tr>
+    <tr><td>cg17240725</td><td>AC073846.5</td></tr>
+    <tr><td>cg20188212</td><td>RP11-283I3.2</td></tr>
+    <tr><td>cg23102195</td><td>CTD-2269E23.4</td></tr>
+    <tr><td>cg23184739</td><td>AC110781.3</td></tr>
+    <tr><td>cg24468780</td><td>RP11-112J1.2</td></tr>
+    <tr><td>cg24947255</td><td>XXbac-BPG181B23.6</td></tr>
+    <tr><td>cg25329573</td><td>RP11-283I3.2</td></tr>
+  </tbody>
+</table>
+<p style="font-size: 0.9em;">List of CpG sites associated with uncharacterized loci, including long non-coding RNA (lncRNA) and genomic regions named using the Human Genome Project clone system</p>
+</body>
+</html>

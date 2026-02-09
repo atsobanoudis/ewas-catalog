@@ -195,23 +195,26 @@ CpG probe ID → trait associations (`data/ewas_atlas.csv`)
     - Formatting: traits are aggregated into a single cell, separated by `; \n`, in the format: `[trait], [rank_score], [correlation], [pmid]`, sorted by descending rank score, then alphabetically by trait
     - Columns: results partitioned into `ewas_atlas_traits`, `ewas_unmapped_gene` (established symbols), and `ewas_unmapped_regions` (decimal-named clone/LncRNA loci; "AP003039.3" vs. "NTM"). Established symbols table can be found in Table 1, while uncharacterized regions are in *Appendix C* Table C.1
     - Example `ewas_atlas_traits` output
-    ```
-    preterm birth, 0.9, hyper, 1239847;
-    allergies, 0.8, hypo, 10923874;
-    Alzheimer, 0.8, NR, 019834
-    ```
+        ```
+        preterm birth, 0.9, hyper, 1239847;
+        allergies, 0.8, hypo, 10923874;
+        Alzheimer, 0.8, NR, 019834
+        ```
 </details>
 
 <details>
 <summary>Augmentation</summary>
 
 **[EWAS Atlas](https://ngdc.cncb.ac.cn/ewas/atlas)** & **[DisGeNET](https://www.disgenet.org/)**:\
-`annotated_genes.xlsx` → `annotated_genes.xlsx[
-                          sheets = 'annotated_genes',   # original
-                                   'ewas_atlas',        # copy of data/ewas_atlas.csv
-                                   'augmented',         # NEW: combined sheet
-                                   'ewas_res_groupsig_128'
-                          ]`
+`annotated_genes.xlsx` → 
+```python
+annotated_genes.xlsx[
+    sheets = "annotated_genes",   # original
+             "ewas_atlas",        # copy of data/ewas_atlas.csv
+             "augmented",         # NEW: combined sheet
+             "ewas_res_groupsig_128"
+]
+```
 
 1. Comprehensive join
     - Joins the provided `ewas_res_groupsig_128.xlsx` chromosomal coordinates and probe IDs to new augmented sheet
@@ -265,11 +268,67 @@ A primary example is *cg02255242*, associated with the gene *FMN1*. The probe *c
 </table>
 <p style="font-size: 0.9em;">Genes (<i>Unmapped Genes</i>) extracted from EWAS Atlas by provided CpG ProbeID via REST API were cross-referenced against known gene aliases from previous annotation (<i>Synonym</i>) and initial suspected genes by proximity(<i>Nearest Gene</i>, <i>Original Input</i>). Underlined genes (<i>SFTA2</i>, <i>FMN1</i>, <i>GSE1</i>, <i>ANKRD36C</i>, <i>SLFN12L</i>, <i>NADSYN1</i>, <i>SAMD3</i>, <i>TMEM200A</i>) are not listed in error (<i>CNTD2</i>, <i>RHOF</i>), possible noise (<i>MAGI1-IT1</i>, <i>Y_RNA</i>), or deprecated (<i>PRED62</i>), and thus serve as a potentially significant expansions for exploration. Genes with cross-referenced synonyms accounted for in <code>annotated_genes.xlsx</code> (<i>WBSCR17</i>, <i>DPCR1</i>, <i>PRAMEF23</i>, <i>B3GNTL1</i>, <i>RARS</i>, <i>FAM134B</i>) were removed, while the <i>Synonym</i> variable remained to guide interpretation</p>
 
+<h3 style="margin-top: 10px; margin-bottom: 0px">PSYCHIATRIC AND EPIGENETIC ASSOCIATIONS</h3>
+
+A synthesis of the DisGeNET and EWAS Atlas integrations highlights genes with strong evidence for psychiatric disorders and significant epigenetic trait clustering. Table 2 details genes with the highest confidence scores (Score > 0.5) for psychiatric conditions, led by <i>KCNN3</i> for Schizophrenia. Table 3 illustrates the "pleiotropic load" of these genes, ranking them by the count (traits ≥5) of distinct epigenetic traits associated with their linked CpGs. Notably, <i>BICDL3P</i> and <i>ARAP1</i> exhibit high trait counts, suggesting they may act as broader epigenetic hubs beyond their specific disease associations.
+
+<p style="margin-top: 20px;"><b>Table 2: Top Psychiatric Associations (DisGeNET)</b></p>
+<table style="border-collapse: collapse; width: 100%; border-top: 1px solid black; border-bottom: 1px solid black;">
+  <thead>
+    <tr style="border-bottom: 1px solid black;">
+      <th style="text-align: left;">Gene</th>
+      <th style="text-align: left;">Disease</th>
+      <th style="text-align: left;">Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>KCNN3</td><td>Schizophrenia</td><td>0.9</td></tr>
+    <tr><td>MAD1L1</td><td>Schizophrenia</td><td>0.8</td></tr>
+    <tr><td>VIPR2</td><td>Schizophrenia</td><td>0.75</td></tr>
+    <tr><td>JMJD1C</td><td>Intellectual Disability</td><td>0.65</td></tr>
+    <tr><td>JMJD1C</td><td>Autism Spectrum Disorders</td><td>0.65</td></tr>
+    <tr><td>JMJD1C</td><td>Autistic Disorder</td><td>0.65</td></tr>
+    <tr><td>MAGI1</td><td>Bipolar Disorder</td><td>0.65</td></tr>
+    <tr><td>THSD7A</td><td>Bipolar Disorder</td><td>0.65</td></tr>
+    <tr><td>BCR</td><td>Bipolar Disorder</td><td>0.6</td></tr>
+    <tr><td>BCR</td><td>Unipolar Depression</td><td>0.6</td></tr>
+    <tr><td>BCR</td><td>Major Depressive Disorder</td><td>0.6</td></tr>
+    <tr><td>KCNN3</td><td>Bipolar Disorder</td><td>0.6</td></tr>
+    <tr><td>MAGI1</td><td>Schizophrenia</td><td>0.6</td></tr>
+    <tr><td>SLC6A12</td><td>Schizophrenia</td><td>0.6</td></tr>
+    <tr><td>SYT1</td><td>Neurodevelopmental Disorders</td><td>0.6</td></tr>
+  </tbody>
+</table>
+<p style="font-size: 0.9em;">Genes with the strongest evidence for psychiatric disorders (Score &gt; 0.5) extracted from DisGeNET (<code>data/disgenet_gda.csv</code>). The <i>Score</i> represents the confidence level of the gene-disease association, with higher values indicating stronger evidence from curated sources. <i>KCNN3</i> shows the highest association with <i>Schizophrenia</i>.</p>
+
+<p style="margin-top: 20px;"><b>Table 3: Top Epigenetic Trait Clusters (EWAS Atlas)</b></p>
+<table style="border-collapse: collapse; width: 100%; border-top: 1px solid black; border-bottom: 1px solid black;">
+  <thead>
+    <tr style="border-bottom: 1px solid black;">
+      <th style="text-align: left;">CpG</th>
+      <th style="text-align: left;">Gene</th>
+      <th style="text-align: left;">Trait Count</th>
+      <th style="text-align: left;">Top Traits</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>cg17240725</td><td>BICDL3P</td><td>8</td><td>ancestry, 0.874, hypo, 30563547;<br> papillary thyroid carcinoma, 0.378, hypo, 28469731;<br> colorectal laterally spreading tumor, 0.330, hypo, 30183087;<br> papillary thyroid carcinoma, 0.285, hypo, 28938489;<br> leukoaraiosis (LA), 0.241, hypo, 29875652;<br> Alzheimer’s Disease, 0.051, hypo, 37388929;<br> papillary thyroid carcinoma, 0.000, hypo, 31328658;<br> ancestry, 0.000, NR, 31399127</td></tr>
+    <tr><td>cg15035382</td><td>ARAP1</td><td>7</td><td>Sex-specific DNA methylation, 0.388, hyper, 37300819;<br> Sex-specific DNA methylation, 0.378, hyper, 37300819;<br> gestational diabetes mellitus, 0.211, hyper, 29596946;<br> sexually dimorphic, 0.161, hyper, 37608375;<br> gender, 0.112, hypo, 26553366;<br> infant sex, 0.088, hypo, 34569420;<br> infant sex, 0.060, hypo, 34569420</td></tr>
+    <tr><td>cg09535960</td><td>LOXL2</td><td>6</td><td>alcohol consumption, 0.600, hyper, 27843151;<br> papillary thyroid carcinoma, 0.263, hypo, 28469731;<br> adenoma, 0.224, hypo, 30183087;<br> papillary thyroid carcinoma, 0.203, hypo, 28938489;<br> prostate cancer, 0.188, hyper, 29740534;<br> papillary thyroid carcinoma, 0.000, hypo, 31328658</td></tr>
+    <tr><td>cg14906510</td><td></td><td>6</td><td>down syndrome, 0.939, hypo, 29601581;<br> ancestry, 0.927, hyper, 30563547;<br> Alzheimer’s Disease, 0.618, hyper, 37388929;<br> bariatric surgery, 0.442, hyper, 37834223;<br> bariatric surgery, 0.442, hyper, 37834223;<br> Alzheimer's disease (AD), 0.007, hypo, 37388929</td></tr>
+    <tr><td>cg05715076</td><td></td><td>5</td><td>Alzheimer’s Disease, 0.608, hyper, 37388929;<br> ancestry, 0.323, hypo, 33108347;<br> mild cognitive impairment, 0.105, hyper, 37388929;<br> ancestry, 0.081, hyper, 30563547;<br> ankylosing spondylitis, 0.066, hyper, 31128893</td></tr>
+    <tr><td>cg09506675</td><td>GPR85</td><td>5</td><td>Alzheimer’s Disease, 0.505, hyper, 37388929;<br> perinatally-acquired HIV, 0.487, hyper, 31324826;<br> maternal smoking, 0.361, hyper, 27040690;<br> mild cognitive impairment, 0.174, hyper, 37388929;<br> maternal smoking, 0.072, hyper, 31536415</td></tr>
+    <tr><td>cg16744531</td><td>B3GNT3</td><td>5</td><td>perinatally-acquired HIV, 0.993, hyper, 31324826;<br> aging, 0.950, hypo, 29064478;<br> acute myelocytic leukemia (AML), 0.542, hypo, 39052947;<br> respiratory allergies (RA), 0.000, hypo, 26999364;<br> pre- and post-lenalidomide treatm ..., 0.000, NR, 33903952</td></tr>
+    <tr><td>cg27031099</td><td></td><td>5</td><td>systemic lupus erythematosus (SLE), 0.862, hypo, 29437559;<br> systemic lupus erythematosus (SLE), 0.804, hypo, 31428085;<br> Parkinson's disease (PD), 0.785, hypo, 28851441;<br> air pollution (NO2), 0.467, hyper, 29410382;<br> smoking, 0.170, hypo, 31552803</td></tr>
+  </tbody>
+</table>
+<p style="font-size: 0.9em;">Genes with the highest number of associated traits in EWAS studies. <i>Trait Count</i> indicates the number of unique traits associated with the gene via CpG probes. <i>Top Traits</i> lists a selection of these traits with their association details (trait, rank score, methylation status, PMID).</p>
+
 <h3 style="margin-top: 10px; margin-bottom: 0px">MISCELLANEOUS FINDINGS</h3>
 
-Although selection was based solely on genomic proximity while exploring the UCSC screening data (`data/ewas_ucsc_annotated.xlsx`), the two closest traits of 765 interestingly ranged from a classical biological phenotype to an educational attainment proxy, namely the highest mathematics course completed (see Table 2).
+Although selection was based solely on genomic proximity while exploring the UCSC screening data (`data/ewas_ucsc_annotated.xlsx`), the two closest traits of 765 interestingly ranged from a classical biological phenotype to an educational attainment proxy, namely the highest mathematics course completed (see Table 4).
 
-<p style="margin-top: 20px;"><b>Table 2: Proximal Traits Identified via UCSC Screening</b></p>
+<p style="margin-top: 20px;"><b>Table 4: Proximal Traits Identified via UCSC Screening</b></p>
 <table style="border-collapse: collapse; width: 100%; border-top: 1px solid black; border-bottom: 1px solid black;">
   <thead>
     <tr style="border-bottom: 1px solid black;">
@@ -288,8 +347,8 @@ Although selection was based solely on genomic proximity while exploring the UCS
 </table>
 <p style="font-size: 0.9em;">Top associations identified by genomic proximity within 10bp to the query CpG sites using UCSC screening data (<code>data/ewas_ucsc_annotated.xlsx</code>). Traits range from behavioral proxies (<i>Highest math class taken</i>) to physical phenotypes (<i>Height</i>). <i>Distance</i> represents the offset in base pairs from the CpG site. <i>Genes</i> are noted as <i>Intergenic</i> when the CpG falls outside defined gene bodies within the specified <i>Region</i>.</p>
 
-Because multiple genes are now linked to the same CpG, filtering by CpG in `annotated_genes.xlsx, sheet = 'augmented'` can yield interesting, albeit expected results. Genes *UGTA10* and *UGT1A8* are both close enough to *cg00922271* to be listed as a unique gene, and their disease association profiles are expectedly similar from DISGENET data (see Table 3).
-<p style="margin-top: 20px;"><b>Table 3: DisGeNET Disease Profiles for Co-Located Genes</b></p>
+Because multiple genes are now linked to the same CpG, filtering by CpG in `annotated_genes.xlsx, sheet = 'augmented'` can yield interesting, albeit expected results. Genes *UGTA10* and *UGT1A8* are both close enough to *cg00922271* to be listed as a unique gene, and their disease association profiles are expectedly similar from DISGENET data (see Table 5).
+<p style="margin-top: 20px;"><b>Table 5: DisGeNET Disease Profiles for Co-Located Genes</b></p>
 <table style="border-collapse: collapse; width: 100%; border-top: 1px solid black; border-bottom: 1px solid black;">
   <thead>
     <tr style="border-bottom: 1px solid black;">
@@ -321,7 +380,7 @@ The bioinformatics landscape is characterized by high volatility in dataset avai
 
 Beyond temporal volatility, the associations identified via the EWAS Atlas, GWAS Catalog, and PubMed mining are primarily descriptive. While a high correlation or frequent literature co-occurrence suggests a potential biological link, these metrics do not imply direct mechanistic causation. Epigenetic signals (CpG methylation) and genomic variants (SNPs) often act in complex regulatory networks where proximity to a gene’s transcription start site does not always equate to functional regulation.
 
-This distinction is underscored by the discovery of distal associations, like *FMN1*, which demonstrates that relying solely on "nearest gene" mapping can overlook biologically relevant signals. For example, `cg02255242` is located at `chr15:33128710–33128712`, approximately 70.9kb from the *FMN1* start site (`33057746`). Despite this significant distance, EWAS Atlas contains association of our probe to *FMN1* from 1 study, which showed 100% hypermethylation in the gene body. More importantly, *FMN1* is associated with 42 probes and 36 traits via EWAS Atlas, including high-priority conditions like Alzheimer’s disease (ranked 3rd; 5 associations) and Mild Cognitive Impairment (tied for 1st; 6 associations). This finding effectively transforms our approach from proximity scanning to capturing genes with identifiable, validated EWAS-associated links.
+This distinction is underscored by the discovery of unmapped associations, like *FMN1*, which demonstrates that relying on proximity mapping can overlook biologically relevant signals. For example, `cg02255242` is located at `chr15:33128710–33128712`, approximately 70.9kb from the *FMN1* start site (`33057746`). Despite this significant distance, EWAS Atlas contains association of our probe to *FMN1* from 1 study, which showed 100% hypermethylation in the gene body. More importantly, *FMN1* is associated with 42 probes and 36 traits via EWAS Atlas, including high-priority conditions like Alzheimer’s disease (ranked 3rd; 5 associations) and Mild Cognitive Impairment (tied for 1st; 6 associations). This finding effectively transforms our approach from proximity scanning to capturing genes with identifiable, validated EWAS-associated links.
 
 Similar interpretative caution is needed for DisGeNET association scores and the `rank_score` metric utilized in the EWAS Atlas integration. The `rank_score` is restricted to associations where an explicit rank was reported in the source study, which excludes contextual information for traits with large total association counts but unreported ranks. A pertinent example is the aforementioned `cg02255242`: while it has a hypermethylated association with "infertility" in PMID 25753583, it lacks a rank among the study's 2,751 associations, leaving it without a score in our augmented dataset.
 

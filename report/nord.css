@@ -1,0 +1,85 @@
+html {
+  color-scheme: light dark;
+}
+
+.vscode-light pre, .vscode-dark pre {
+  background-color: var(--code-block-bg) !important;
+  color: var(--inline-code) !important;
+}
+
+/* Default variables, overridden by media queries */
+:root {
+  --bg: #ECEFF4;
+  --fg: #2E3440;
+  --muted: #4C566A;
+  --accent: #5E81AC;
+  --link: #5E81AC;
+  --code-bg: #E5E9F0;
+  --code-block-bg: #E5E9F0;
+  --inline-code: #BF616A;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #2E3440;
+    --fg: #D8DEE9;
+    --muted: #4C566A;
+    --accent: #88C0D0;
+    --link: #81A1C1;
+    --code-bg: #3B4252;
+    --code-block-bg: #3B4252;
+    --inline-code: #EBCB8B;
+  }
+}
+
+/* Body */
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+}
+
+h1, h2, h3 {
+  color: var(--fg);
+}
+
+a {
+  color: var(--link);
+}
+
+/* Inline code (inside paragraphs, lists, tables) */
+body p code,
+body li code,
+body td code {
+  color: var(--inline-code) !important;
+  background: var(--code-bg);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-family: "Fira Code", monospace;
+  font-size: 0.95em;
+}
+
+/* Code blocks */
+/* Tightened Code Blocks for PDF Export */
+body pre {
+  background-color: var(--code-block-bg) !important;
+  /* Force a smaller internal gap */
+  padding: 8px 12px !important;  
+  /* Force a smaller external gap */
+  margin: 10px 0 !important;     
+  border-radius: 6px !important;
+  overflow: hidden !important; /* Prevents scrollbars appearing in PDFs */
+}
+
+body pre code {
+  display: inline-block !important; /* Prevents extra block-level vertical space */
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+  background: transparent !important;
+}
