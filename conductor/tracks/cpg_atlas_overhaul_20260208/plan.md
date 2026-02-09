@@ -1,20 +1,21 @@
 # Implementation Plan: Enhanced CpG Integration & Report Overhaul
 
-## Phase 1: Data Augmentation Logic [checkpoint: 7f89e3c]
-- [x] Task: Update `original_annotation/modules/cpg_integration.py` to implement refined EWAS Atlas logic. [7f89e3c]
+## Phase 1: Data Augmentation Logic [checkpoint: b688562]
+- [x] Task: Update `original_annotation/modules/cpg_integration.py` to implement refined EWAS Atlas logic. [b688562]
     - [x] Implement `rank_score` calculation and correlation mapping.
     - [x] Implement robust synonym checking for unmapped genes.
-    - [x] Create function to generate `ewas_unmapped_gene` string (Established/Unestablished split).
-    - [x] Create function to generate diagnostic tables (Unaccounted Genes vs Appendix C Source).
-- [x] Task: Update `augment_living_file.py` to use the comprehensive join and new Atlas features. [7f89e3c]
+    - [x] Separate `ewas_unmapped_gene` (Established) and `ewas_unmapped_regions` (Unestablished/Decimal).
+    - [x] Remove prefixes from unmapped column strings and handle empty associations as nulls.
+    - [x] Create diagnostic tables (Unaccounted Genes vs Appendix C Source).
+- [x] Task: Update `augment_living_file.py` to use the comprehensive join and new Atlas features. [b688562]
     - [x] Switch to a comprehensive join (Outer/Right) to preserve all master CpGs.
-    - [x] Integrate the new `ewas_unmapped_gene` column generation.
-    - [x] Output `unaccounted_genes.csv` (Filtered: No Decimals).
-    - [x] Output `appendix_c_source.csv` (Filtered: Decimals Only).
+    - [x] Integrate the new `ewas_unmapped_gene` and `ewas_unmapped_regions` columns.
+    - [x] Fix duplicate `disgenet_diseases` column issue.
+    - [x] Output `unaccounted_genes.csv` (Filtered: No Decimals) and `appendix_c_source.csv` (Filtered: Decimals Only).
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Data Augmentation Logic' (Protocol in workflow.md)
 
 ## Phase 2: Documentation Overhaul
-- [ ] Task: Update `REPORT.md` - Detailed Workflow.
+- [~] Task: Update `REPORT.md` - Detailed Workflow.
     - [ ] Add `rank_score`, correlation mapping, and unmapped gene logic to the EWAS Atlas section.
 - [ ] Task: Update `REPORT.md` - Interesting Findings.
     - [ ] Insert the **FMN1 Case Study** with placeholders for specific stats.
