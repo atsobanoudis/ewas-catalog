@@ -1,5 +1,5 @@
 # General Workflow
-This project provides a comprehensive bioinformatics pipeline for annotating gene lists derived from epigenetic studies, specifically targeting psychiatric research. The final output is a multi-layered dataset (`annotated_genes.xlsx`), with the `Augmented` sheet serving as the combined genetic-epigenetic annotation.
+This project provides a comprehensive bioinformatics pipeline for annotating gene lists derived from epigenetic studies, specifically targeting psychiatric research. The final output is a multi-layered dataset (`annotated_genes.xlsx`), with the `augmented` sheet serving as the combined genetic-epigenetic annotation
 
 <h3 style="margin: 0px">1. Core Annotation (Foundation)</h3>
 
@@ -160,21 +160,26 @@ gene symbol → Gene-Evidence Associations (`data/disgenet_gea.csv`)
 **[NGDC EWAS Atlas](https://ngdc.cncb.ac.cn/ewas/atlas)** ([REST API](https://ngdc.cncb.ac.cn/ewas/api)):\
 CpG probe ID → trait associations (`data/ewas_atlas.csv`)
 
-1. **Query API** per CpG `probeID` in `ewas_res_groupsig_128.xlsx`:
-    - Resolve symbols from `relatedTranscription` as `genes`.
-    - Capture `cpgIsland` status as `cpg_island`.
-    - Flatten `associationList`, containing `trait`, `correlation`, `rank`, `pmid`.
-2. **Methodological Refinement** (Post-Capture):
-    - **Rank Scoring:** Calculate `rank_score = rank / total_associations` (3 decimal places). If rank is missing, default to `0.000` for output readability.
-    - **Correlation Mapping:** Map raw values: `pos` → `hyper`, `neg` → `hypo`, `NA` → `NR`.
-    - **Unmapped Gene Gap Analysis:** Cross-reference all genes in `ewas_atlas.csv` against the validated `symbol` and `synonyms` columns of the core annotation.
-3. **Data Integration Logic:**
-    - **Formatting:** Traits are aggregated into a single cell, separated by `; \n`, in the format: `[trait], [rank_score], [correlation], [pmid]`.
-    - **Sorting:** Associations are ordered by `rank_score` descending, then alphabetically by trait.
-    - **Column Generation:** Results are partitioned into `ewas_atlas_traits`, `ewas_unmapped_gene` (established symbols), and `ewas_unmapped_regions` (decimal-named clone/LncRNA loci).
-4. **Diagnostic Export:** 
-    - `unaccounted_genes.csv`: List of uncaptured genes (no decimals) with their original nearest-gene mapping and synonym status.
-    - `appendix_c_source.csv`: List of uncaptured genomic regions (decimal-named).
+1. Query API per CpG `probeID` in `ewas_res_groupsig_128.xlsx`:
+    - Resolve symbols from relatedTranscription as `genes`
+    - Capture cpgIsland status as `cpg_island`
+    - Flatten `associationList`, containing `trait`, `correlation`, `rank`, `pmid`
+2. Methodological refining
+    - Rank scoring: calculate `rank_score = rank / total_associations` (3 decimal places). If rank is missing, empty value for output readability
+    - Correlation (methylation) mapping:
+        - `pos` ↔ `hyper`
+        - `neg` ↔ `hypo`
+        - `NA` ↔ `NR`
+    - Unmapped gene gap: cross-reference all genes in `ewas_atlas.csv` against validated `symbol` and `synonyms` columns from `annotated_genes.xlsx` *and* the nearest gene (`unique_gene_name`) from `ewas_res_groupsig_128.xlsx`
+3. Data integration logic
+    - Formatting: traits are aggregated into a single cell, separated by `; \n`, in the format: `[trait], [rank_score], [correlation], [pmid]`, sorted by descending rank score, then alphabetically by trait
+    - Columns: results partitioned into `ewas_atlas_traits`, `ewas_unmapped_gene` (established symbols), and `ewas_unmapped_regions` (decimal-named clone/LncRNA loci; "AP003039.3" vs. "NTM"). Established symbols table can be found in #Findings section, while regions are in *Appendix C*
+    - Example `ewas_atlas_traits` output
+    ```
+    preterm birth, 0.9, hyper, 1239847;
+    allergies, 0.8, hypo, 10923874;
+    Alzheimer, 0.8, NR, 019834
+    ```
 </details>
 
 <details>
@@ -195,37 +200,67 @@ CpG coordinates (`ewas_res_groupsig_128.xlsx`) → Track annotations (`data/ewas
 <summary>Augmentation</summary>
 
 **[EWAS Atlas](https://ngdc.cncb.ac.cn/ewas/atlas)** & **[DisGeNET](https://www.disgenet.org/)**:\
-`annotated_genes.xlsx` (living file) + `ewas_res_groupsig_128.xlsx` → `annotated_genes.xlsx` (Augmented sheet)
+`annotated_genes.xlsx` → `annotated_genes.xlsx[
+                          sheets = 'annotated_genes',   # original
+                                   'ewas_atlas',        # copy of data/ewas_atlas.csv
+                                   'augmented',         # NEW: combined sheet
+                                   'ewas_res_groupsig_128'
+                          ]`
 
-1. **Comprehensive Join**
-    - Joins the PI-provided `ewas_res_groupsig_128.xlsx` chromosomal coordinates and probe IDs to the existing annotated gene list.
-    - Logic: **Right Join** on the PI's CpG list to ensure every probe provided is retained, even if it lacks a current gene mapping.
-    - Key: Primary join on the `input` column to handle gene name discrepancies between raw data and validated symbols.
-2. **EWAS Atlas Enrichment**
-    - Cross-references CpG probe IDs with the EWAS Atlas dataset to identify additional trait associations and unmapped loci.
-    - Logic: Empty associations are left as nulls to maintain clarity in the living document.
-3. **Broad-Spectrum DisGeNET**
-    - Pulls all gene-disease associations without psychiatric filtering to provide broad phenotypic context.
-    - Note: The `disgenet_disease` column contains these broad extractions.
-4. **Columns Added**: `cpg`, `cpg_chr`, `cpg_start`, `cpg_end`, `ewas_atlas_traits`, `ewas_unmapped_gene`, `ewas_unmapped_regions`, `disgenet_disease`
+1. Comprehensive join
+    - Joins the provided `ewas_res_groupsig_128.xlsx` chromosomal coordinates and probe IDs to new augmented sheet
+    - Logic: right join provided CpG list to ensure every probe is retained regardless of gene annotation
+    - Primary join on the `input` column to handle gene name discrepancies between raw data (nearest genes) and validated symbols (via Entrez → HGNC queries in above section)
+2. EWAS Atlas enrichment
+    - Cross-references CpG probe IDs with the EWAS Atlas dataset to identify additional trait associations and unmapped genes/loci
+    - Logic: empty associations are left as nulls to maintain clarity in the sheet, associations without a rank, and subsequently a rank score, are given a placeholder score of `0.000`
+3. Broad-spectrum DisGeNET: pulls all gene-disease associations without psychiatric filtering to provide broad phenotypic context in the `disgenet_disease` column
+4. Columns added: `cpg`, `cpg_chr`, `cpg_start`, `cpg_end`, `ewas_atlas_traits`, `ewas_unmapped_gene`, `ewas_unmapped_regions`, `disgenet_disease`
 </details>
 
 
 <br>
 <br>
 
-# Interesting findings
-Because multiple genes are now linked to the same CpG, filtering by CpG can yield interesting, albeit expected results. Genes *UGTA10* and *UGT1A8* are both close enough to *cg00922271* to be listed as a unique gene, and their disease association profiles are expectedly similar from DISGENET data (see below).
+# Findings
+
+<h3 style="margin-top: 10px; margin-bottom: 0px">DISTAL GENE-CPG UNMAPPED ASSOCIATIONS</h3>
+
+A critical finding during the augmentation phase was the identification of gene associations that were previously unmapped from proximity identification (see Table 1). A primary example is *cg02255242*, which the EWAS Atlas associates with the gene *FMN1*. The probe *cg02255242* is located at `chr15:33128710–33128712`, approximately 70.9kb from the FMN1 transcription start site (`33057746`). Despite this distance, EWAS Atlas identifies a validated association from a single study characterized by 100% hypermethylation in the gene body. According to EWAS Atlas, FMN1 is broadly implicated in the epigenetic landscape, associated with 42 unique probes and 36 traits; notably, these include high-priority conditions such as Alzheimer’s disease (ranked 3rd; 5 associations) and Mild Cognitive Impairment (tied for 1st; 6 associations).
+
+| CpG        | EWAS Atlas Genes                                  | Unmapped Genes | Synonym | Nearest Gene, Original Input |
+|------------|---------------------------------------------|-----------------|------------|----------------------------|
+| cg15035382 | CNTD2                                       | CNTD2           |            | CNTD2                      |
+| cg26456563 | CNTD2                                       | CNTD2           |            | CNTD2                      |
+| cg10957166 | AC084018.1;RHOF;RP11-347I19.7;RP11-347I19.8 | RHOF            |            | LOC338799                  |
+| cg24315757 | MAGI1;MAGI1-AS1;MAGI1-IT1                   | MAGI1-IT1       |            | MAGI1-AS1, MAGI1           |
+| cg10638439 | HCP5;MICA;Y_RNA                             | Y_RNA           |            | MICA                       |
+| cg10260205 | PCBP3;PRED62                                | PRED62          |            | PCBP3                      |
+| cg25857471 | DPCR1;SFTA2                                 | **SFTA2**           |            | DPCR1                      |
+| cg02255242 | FMN1                                        | **FMN1**            |            |                            |
+| cg16185115 | GSE1                                        | **GSE1**            |            |                            |
+| cg04732357 | ANKRD36C                                    | **ANKRD36C**        |            |                            |
+| cg21088344 | SLFN12L                                     | **SLFN12L**         |            |                            |
+| cg16910670 | NADSYN1                                     | **NADSYN1**         |            |                            |
+| cg13796823 | SAMD3;TMEM200A                              | **SAMD3**           |            |                            |
+| cg13796823 | SAMD3;TMEM200A                              | **TMEM200A**        |            |                            |
+
+<h3 style="margin-top: 10px; margin-bottom: 0px">MISCELLANEOUS FINDING</h3>
+
+Although selection was based solely on genomic proximity while exploring the UCSC screening data (`data/ewas_ucsc_annotated.xlsx`), the two closest traits of 765 interestingly ranged from a classical biological phenotype to an educational attainment proxy, namely the highest mathematics course completed (see below).
+
+| cpg_id      | distance | pubMedID | trait                              | region    | genes       |
+|-------------|----------|----------|------------------------------------|-----------|-------------|
+| cg06941159  | 6        | 30038396 | Highest math class taken (MTAG)    | 16p11.2   | Intergenic  |
+| cg20910361  | 8        | 36224396 | Height                             | 4q31.21   |             |
+<br>
+
+Because multiple genes are now linked to the same CpG, filtering by CpG in `annotated_genes.xlsx, sheet = 'augmented'` can yield interesting, albeit expected results. Genes *UGTA10* and *UGT1A8* are both close enough to *cg00922271* to be listed as a unique gene, and their disease association profiles are expectedly similar from DISGENET data (see below).
 | cpg        | symbol  | disgenet_diseases |
 |------------|---------|------------------|
 | cg00922271 | UGT1A10 | Gilbert Disease, 0.75;<br>Increased bilirubin level (finding), 0.65;<br>Crigler Najjar syndrome, type 1, 0.6;<br>Crigler-Najjar syndrome, 0.55;<br>BILIRUBIN, SERUM LEVEL OF, QUANTITATIVE TRAIT LOCUS 1, 0.4;<br>Crigler Najjar syndrome, type 2, 0.4;<br>GILBERT SYNDROME, SUSCEPTIBILITY TO, 0.4;<br>Lucey-Driscoll syndrome (disorder), 0.4 |
 | cg00922271 | UGT1A8  | Diarrhea, 0.5;<br>Gilbert Disease, 0.45;<br>Crigler Najjar syndrome, type 2, 0.4;<br>BILIRUBIN, SERUM LEVEL OF, QUANTITATIVE TRAIT LOCUS 1, 0.4;<br>Crigler-Najjar syndrome, 0.4;<br>Lucey-Driscoll syndrome (disorder), 0.4;<br>Crigler Najjar syndrome, type 1, 0.4;<br>Increased bilirubin level (finding), 0.4;<br>Diarrheal disorder, 0.4;<br>GILBERT SYNDROME, SUSCEPTIBILITY TO, 0.4 |
 
-### Discovery of Distal Gene-CpG Associations (FMN1 Case Study)
-A critical finding during the augmentation phase was the identification of gene associations that significantly exceed standard proximity-based windows. A primary example is **cg02255242**, which the EWAS Atlas robustly associates with the gene **FMN1**. 
-- **Genomic Context:** FMN1 is located at [[INSERT_DETAIL: FMN1_START]] - [[INSERT_DETAIL: FMN1_END]] on chromosome 15, while cg02255242 resides at 33,128,710 - 33,128,712. This represents a distal association of approximately **70.9kb**, which would be missed by traditional 5kb or 10kb proximity scans.
-- **Evidence Profile:** EWAS Atlas reports a [[INSERT_DETAIL: FMN1_PERCENT_BODY]]% body mapping for this CpG-gene pair with a 100% hypermethylated correlation based on current data.
-- **Trait Overlap:** FMN1 itself is linked to high-impact traits including **Alzheimer's Disease** (5 associations), **Smoking**, **Mild Cognitive Impairment**, and **Down Syndrome**. This discovery validates the shift from "Nearest Gene" identification to "EWAS-Associated Gene" capture.
 
 ### Uncaptured Genes and Genomic Loci
 The gap analysis between EWAS Atlas and our core annotation identified several "uncaptured" genes that warrant further exploration.
@@ -233,23 +268,76 @@ The gap analysis between EWAS Atlas and our core annotation identified several "
 - **Uncharacterized Loci (Appendix C):** A significant number of probes are associated with uncharacterized long non-coding RNA (lncRNA) loci or genomic regions named using the Human Genome Project clone system (e.g., `AP003039.3`). These represent potential "dark matter" in the psychiatric epigenome.
 
 
+
+<table>
+  <caption>
+    <strong>Table 1.</strong> Mapping of CpG sites to EWAS genes and curated gene identifiers.
+    <br>
+    <span style="font-size: 0.9em;">
+      CpG identifiers were mapped to EWAS-reported genes, uncaptured genes, known synonyms, and nearest loci from the original dataset.
+    </span>
+  </caption>
+
+  <thead>
+    <tr>
+      <th>cpg</th>
+      <th>ewas_genes</th>
+      <th>uncaptured_gene</th>
+      <th>synonym_of</th>
+      <th>nearest_from_original_data</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>cg00240732</td>
+      <td>WBSCR17</td>
+      <td>WBSCR17</td>
+      <td>GALNT17</td>
+      <td>WBSCR17</td>
+    </tr>
+    <tr>
+      <td>cg25857471</td>
+      <td>DPCR1;SFTA2</td>
+      <td>DPCR1</td>
+      <td>MUCL3</td>
+      <td>DPCR1</td>
+    </tr>
+    <!-- remaining rows -->
+  </tbody>
+</table>
+
+<p style="font-size: 0.85em; margin-top: 0.5em;">
+  <strong>Notes:</strong> Gene symbols follow HGNC nomenclature. Semicolon-separated values indicate multiple EWAS-annotated genes.
+</p>
+
 # Considerations and Methodological Limitations
 
-This research involves the synthesis of multi-omic data from disparate public repositories. While every effort was made to ensure accuracy and completeness, several methodological considerations and limitations must be acknowledged.
+This research involves the synthesis of multi-omic data from disparate public repositories. While every effort was made to ensure accuracy and completeness, several methodological considerations and limitations must be acknowledged to guide interpretations.
 
-### 1. Shift from Proximity to Association
-The discovery of distal associations (e.g., FMN1 at 70.9kb) demonstrates that relying solely on "nearest gene" mapping can overlook biologically relevant and validated signals. This highlights a paradigm shift in our approach: capturing genes with identifiable EWAS-associated links to our CpG sites of interest provides a more comprehensive view of the epigenetic landscape than simple genomic proximity.
+The bioinformatics landscape is characterized by high volatility in dataset availability and API accessibility. During the course of this project, several key resources (e.g., specific web-endpoints for the NHGRI-EBI GWAS Catalog) became unavailable or shifted to API-only access. This volatility extends to gene identifiers themselves; for instance, the unmapped gene *PRED62* (associated with `cg10260205`) could not be indexed via HGNC or Entrez. Manual tracing through the [ExPheWas Browser](https://exphewas.statgen.org/) identified it as Ensembl ID *ENSG00000268040*, which was revealed to be a deprecated identifier archived in February 2014. Additionally, automated extraction logic occasionally yielded "ghost" associations: `cg10957166` returned a multitude of genes (e.g., *AC084018.1*; *RHOF*; *RP11-347I19.7*; *RP11-347I19.8*) via the EWAS Atlas logic, yet manual validation via the browser confirmed zero associated genes. Consequently, the results presented here represent a specific point-in-time snapshot, and future reproduction efforts may encounter similar discrepancies.
 
-### 2. Rank-Based Scoring and Contextual Gaps
-The `rank_score` metric utilized in the EWAS Atlas integration is limited to associations where an explicit rank was reported in the source study. This necessarily excludes contextual information for traits with large total association counts but unreported ranks (e.g., **cg02255242** and its hypermethylated association with infertility, which lacks a rank among 2,751 associations in PMID 25753583).
+Beyond temporal volatility, the associations identified via the EWAS Atlas, GWAS Catalog, and PubMed mining are primarily descriptive. While a high correlation or frequent literature co-occurrence suggests a potential biological link, these metrics do not imply direct mechanistic causation. Epigenetic signals (CpG methylation) and genomic variants (SNPs) often act in complex regulatory networks where proximity to a gene’s transcription start site does not always equate to functional regulation.
 
-### 3. Statistical Context and Trait Broadening
-To facilitate a broad-spectrum view, associations were included even when p-values exceeded traditional significance thresholds. In the current augmented set, only [[INSERT_DETAIL: COUNT_SIG_P]] hits were below 1e-04. While many of these "lower significance" traits (e.g., bariatric surgery) may be of less immediate clinical relevance, the decision to broaden the capture could lead to misinterpretation without the relevant statistical context.
+This distinction is underscored by the discovery of distal associations, like *FMN1*, which demonstrates that relying solely on "nearest gene" mapping can overlook biologically relevant signals. For example, `cg02255242` is located at `chr15:33128710–33128712`, approximately **70.9kb** from the *FMN1* start site (`33057746`). Despite this significant distance, EWAS Atlas contains association of our probe to *FMN1* from 1 study, which showed 100% hypermethylation in the gene body. More importantly, *FMN1* is associated with 42 probes and 36 traits via EWAS Atlas, including high-priority conditions like Alzheimer’s disease (ranked 3rd; 5 associations) and Mild Cognitive Impairment (tied for 1st; 6 associations). This finding effectively transforms our approach from proximity scanning to capturing genes with identifiable, validated EWAS-associated links.
 
-### 4. Data Provenance and Snapshot Volatility
-The bioinformatics landscape is characterized by high volatility in dataset availability and API accessibility. Results presented here represent a specific point-in-time snapshot. Future efforts to reproduce these results may encounter discrepancies due to database versioning or the deprecation of legacy web services (e.g., the recent shifts in the NHGRI-EBI GWAS Catalog).
+Similar interpretative caution is needed for DisGeNET association scores and the `rank_score` metric utilized in the EWAS Atlas integration. The `rank_score` is restricted to associations where an explicit rank was reported in the source study, which excludes contextual information for traits with large total association counts but unreported ranks. A pertinent example is the aforementioned `cg02255242`: while it has a hypermethylated association with "infertility" in PMID 25753583, it lacks a rank among the study's 2,751 associations, leaving it without a score in our augmented dataset.
 
+These evidentiary constraints are further influenced by statistical thresholds. To facilitate a broad-spectrum view, associations were included even when p-values exceeded traditional significance thresholds; in the current augmented set, only **11 hits were below 1e-04**, and only one was below 1e-01. While this decision broadens the capture to include potentially relevant traits (e.g., Alzheimer's, diabetes), it introduces the risk that traits of lower clinical relevance to this study (e.g., bariatric surgery, Gulf War illness) could be misinterpreted without strict statistical context.
 
+Search parameters were also shaped by dataset accessibility and bias. Early gene annotations utilized a specific set of psychiatric keywords (see *Appendix A*). Manual exploration revealed that broader terms (e.g., "Diseases of mental health") might yield additional hits in repositories like the Harmonizome. Furthermore, the decision to rely on HGNC as a fallback mechanism for gene resolution introduced specific extraction errors. For instance, *CNTD2* was incorrectly resolved to *ARAP* (aliases: *CENTD2*, *cnt-d2*) via Entrez, whereas HGNC correctly identifies it as *CCNP* (aliases: *CNTD2*). While HGNC is authoritative for established genes, it fails on loci like *LOC338799* (requiring prefix removal processing) and the aforementioned, deprecated *PRED662*. The decision to prioritize capture via Entrez without a secondary verification step compromised specificity.
+
+Finally, a gap analysis reveals that a non-zero number of genes exhibit significant psychiatric associations in DisGeNET but remain absent from the GWAS Catalog or Harmonizome results. This indicates a potential refinement in earlier extraction logic and that, while the pipeline is effective at capturing well-established links, the "dark matter" of gene-disease associations requires further investigation.
+
+**Immediate Data Validation Required**
+
+* Rectify Entrez-HGNC resolution: the reliance on Entrez for gene annotation and resolution (e.g., *CNTD2* resolving to *ARAP*) requires a new verification layer. Future logic must confirm Entrez results against HGNC rather than accepting the first Entrez result as absolute.
+* Investigate ghost associations: the anomaly with `cg10957166` (yielding *AC084018.1*, *RHOF*, etc., despite no browser evidence), while seemingly isolated, must be investigated to determine if this is an API parsing error or a database inconsistency
+
+**Future Strategic Improvements**
+
+* Adjusting the 5kb window in the UCSC neighboring GWAS screening to better capture distal regulatory elements.
+* Direct processing of raw summary statistics from curated [Psychiatric Genomics Consortium](https://pgc.unc.edu) (PGC) studies to enhance annotation accuracy beyond literature-level metadata. [Downloadable study data](https://pgc.unc.edu/for-researchers/download-results/) are available, categorized by psychiatric condition, but require more complex data processing than I felt was relevant.
 <br>
 
 # *Appendix*
@@ -411,38 +499,38 @@ GENETIC_MESH_TERMS: List[str] = [
 </details>
 
 <h3 style="margin-top: 10px; margin-bottom: 0px">C. Uncharacterized Genomic Regions (EWAS Atlas)</h3>
-Detailed list of CpG sites associated with uncharacterized loci, including long non-coding RNA (lncRNA) and genomic regions named using the Human Genome Project clone system (e.g., RP11, AC nomenclature).
+Detailed list of CpG sites associated with uncharacterized loci, including long non-coding RNA (lncRNA) and genomic regions named using the Human Genome Project clone system (e.g., RP11, AC nomenclature)
 
-| CpG ID | Associated Loci (Atlas) |
-|---|---|
-| cg07252486 | AP003039.3 |
-| cg12790145 | RP11-283I3.2 |
-| cg02780130 | RP11-283I3.2 |
-| cg25329573 | RP11-283I3.2 |
-| cg09911534 | RP11-622C24.2 |
-| cg16469117 | AC007092.1 |
-| cg17240725 | AC073846.5 |
-| cg04070200 | AC007879.5 |
-| cg06941159 | RP11-22P6.2 |
-| cg13689053 | AP000688.14 |
-| cg12658972 | RP11-95P2.3 |
-| cg01267120 | AL157871.2, RP11-638I2.6 |
-| cg02834909 | RP11-316F12.1 |
-| cg05406088 | RP11-321F6.1 |
-| cg02282594 | RP11-298I3.1 |
-| cg05860956 | RP11-283I3.2 |
-| cg01334824 | RP11-100M12.3 |
-| cg24468780 | RP11-112J1.2 |
-| cg15587955 | RP11-1080G15.1 |
-| cg24947255 | XXbac-BPG181B23.6 |
-| cg14545602 | AC005498.3 |
-| cg23102195 | CTD-2269E23.4 |
-| cg11340603 | RP1-78O14.1 |
-| cg23184739 | AC110781.3 |
-| cg13303179 | RP11-316F12.1 |
-| cg10075163 | RP11-283I3.2 |
-| cg20188212 | RP11-283I3.2 |
-| cg15501526 | RP11-526P5.2 |
-| cg05715076 | RP11-543C4.1 |
-| cg09535960 | RP11-177H13.2 |
+| CpG ID     | Associated Loci (Atlas)                  |
+| ---------- | ---------------------------------------- |
+| cg01267120 | AL157871.2, RP11-638I2.6                 |
+| cg01334824 | RP11-100M12.3                            |
+| cg02282594 | RP11-298I3.1                             |
+| cg02780130 | RP11-283I3.2                             |
+| cg02834909 | RP11-316F12.1                            |
+| cg04070200 | AC007879.5                               |
+| cg05406088 | RP11-321F6.1                             |
+| cg05715076 | RP11-543C4.1                             |
+| cg05860956 | RP11-283I3.2                             |
+| cg06941159 | RP11-22P6.2                              |
+| cg07252486 | AP003039.3                               |
+| cg09535960 | RP11-177H13.2                            |
+| cg09911534 | RP11-622C24.2                            |
+| cg10075163 | RP11-283I3.2                             |
 | cg10957166 | AC084018.1, RP11-347I19.7, RP11-347I19.8 |
+| cg11340603 | RP1-78O14.1                              |
+| cg12658972 | RP11-95P2.3                              |
+| cg12790145 | RP11-283I3.2                             |
+| cg13303179 | RP11-316F12.1                            |
+| cg13689053 | AP000688.14                              |
+| cg14545602 | AC005498.3                               |
+| cg15501526 | RP11-526P5.2                             |
+| cg15587955 | RP11-1080G15.1                           |
+| cg16469117 | AC007092.1                               |
+| cg17240725 | AC073846.5                               |
+| cg20188212 | RP11-283I3.2                             |
+| cg23102195 | CTD-2269E23.4                            |
+| cg23184739 | AC110781.3                               |
+| cg24468780 | RP11-112J1.2                             |
+| cg24947255 | XXbac-BPG181B23.6                        |
+| cg25329573 | RP11-283I3.2                             |
