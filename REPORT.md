@@ -1,11 +1,13 @@
 # General Workflow
-This project provides a comprehensive bioinformatics pipeline for annotating gene lists derived from epigenetic studies, specifically targeting psychiatric research. The final output is a multi-layered dataset (`annotated_genes.xlsx`), with the **Augmented** sheet serving as the primary living document.
+This project provides a comprehensive bioinformatics pipeline for annotating gene lists derived from epigenetic studies, specifically targeting psychiatric research. The final output is a multi-layered dataset (`annotated_genes.xlsx`), with the `Augmented` sheet serving as the combined genetic-epigenetic annotation.
 
 <h3 style="margin: 0px">1. Core Annotation (Foundation)</h3>
+
 - **Gene Metadata:** Resolving gene identifiers (Symbols, LOC IDs) to standardized HGNC, Entrez, and Ensembl IDs via NCBI Datasets.
 - **Functional Synthesis:** Aggregating biological summaries and "FUNCTION" comments from NCBI, UniProt, and HGNC into a unified functional description.
 
 <h3 style="margin: 0px">2. Evidence Integration (Multi-Omic)</h3>
+
 - **Psychiatric Associations:** Identifying gene-disease links across four major evidence streams:
     - **GWAS Catalog:** Significant SNP-trait associations filtered for psychiatric phenotypes.
     - **Harmonizome:** Cross-database (CTD, GAD, etc.) disease associations enriched for mental health keywords.
@@ -13,6 +15,7 @@ This project provides a comprehensive bioinformatics pipeline for annotating gen
     - **DisGeNET:** Integration of curated psychiatric disease-gene associations, providing both association scores and supporting evidence.
 
 <h3 style="margin: 0px">3. Epigenetic Context & Augmentation (Final State)</h3>
+
 - **CpG-to-Gene Mapping:** Explicitly linking CpG probe IDs and chromosomal coordinates back to the annotated gene list.
 - **EWAS Atlas Integration:** Pulling trait associations directly associated with the CpG probes to provide a primary epigenetic signal.
 - **Broad Association Mapping:** Expanding the dataset beyond psychiatric traits to include a broad-spectrum view of all known gene-disease associations (via DisGeNET), allowing for a comprehensive analysis of pleiotropy and non-psychiatric context.
@@ -157,22 +160,23 @@ gene symbol → Gene-Evidence Associations (`data/disgenet_gea.csv`)
 **[NGDC EWAS Atlas](https://ngdc.cncb.ac.cn/ewas/atlas)** ([REST API](https://ngdc.cncb.ac.cn/ewas/api)):\
 CpG probe ID → trait associations (`data/ewas_atlas.csv`)
 
-1. Query API per CpG `probeID` in `ewas_res_groupsig_128.xlsx`:
-    - Resolve symbols from relatedTranscription as `genes`
-    - Capture cpgIsland status as `cpg_island`
-    - Flatten `associationList`, containing `trait`, `correlation`, `rank`, `pmid`
-        - `correlation`: hypermethylated (`pos`), hypomethylated (`neg`), not reported (`NA`)
-        - `rank`: rank in study
-2. Query API per `pmid` in resulted associations
-    - Count `total_associations`
-    - Capture CpG-of-interest p-value as `p`
-3. Generate `ewas_atlas.csv`:
-    - Logic: One row per trait association; metadata preserved for null-association probes
-    - Headers:
-        ```text
-        cpg, genes, cpg_island, trait, correlation, p, rank, pmid, total_associations
-        ```
+1. **Query API** per CpG `probeID` in `ewas_res_groupsig_128.xlsx`:
+    - Resolve symbols from `relatedTranscription` as `genes`.
+    - Capture `cpgIsland` status as `cpg_island`.
+    - Flatten `associationList`, containing `trait`, `correlation`, `rank`, `pmid`.
+2. **Methodological Refinement** (Post-Capture):
+    - **Rank Scoring:** Calculate `rank_score = rank / total_associations` (3 decimal places). If rank is missing, default to `0.000` for output readability.
+    - **Correlation Mapping:** Map raw values: `pos` → `hyper`, `neg` → `hypo`, `NA` → `NR`.
+    - **Unmapped Gene Gap Analysis:** Cross-reference all genes in `ewas_atlas.csv` against the validated `symbol` and `synonyms` columns of the core annotation.
+3. **Data Integration Logic:**
+    - **Formatting:** Traits are aggregated into a single cell, separated by `; \n`, in the format: `[trait], [rank_score], [correlation], [pmid]`.
+    - **Sorting:** Associations are ordered by `rank_score` descending, then alphabetically by trait.
+    - **Column Generation:** Results are partitioned into `ewas_atlas_traits`, `ewas_unmapped_gene` (established symbols), and `ewas_unmapped_regions` (decimal-named clone/LncRNA loci).
+4. **Diagnostic Export:** 
+    - `unaccounted_genes.csv`: List of uncaptured genes (no decimals) with their original nearest-gene mapping and synonym status.
+    - `appendix_c_source.csv`: List of uncaptured genomic regions (decimal-named).
 </details>
+
 <details>
 <summary>UCSC Screen</summary>
 
@@ -193,17 +197,19 @@ CpG coordinates (`ewas_res_groupsig_128.xlsx`) → Track annotations (`data/ewas
 **[EWAS Atlas](https://ngdc.cncb.ac.cn/ewas/atlas)** & **[DisGeNET](https://www.disgenet.org/)**:\
 `annotated_genes.xlsx` (living file) + `ewas_res_groupsig_128.xlsx` → `annotated_genes.xlsx` (Augmented sheet)
 
-1. **Mapping Integration**
+1. **Comprehensive Join**
     - Joins the PI-provided `ewas_res_groupsig_128.xlsx` chromosomal coordinates and probe IDs to the existing annotated gene list.
-    - Logic: Primary join on the `input` column to handle gene name discrepancies between raw data and validated symbols.
+    - Logic: **Right Join** on the PI's CpG list to ensure every probe provided is retained, even if it lacks a current gene mapping.
+    - Key: Primary join on the `input` column to handle gene name discrepancies between raw data and validated symbols.
 2. **EWAS Atlas Enrichment**
-    - Cross-references CpG probe IDs with the EWAS Atlas dataset to identify additional trait associations.
-    - Format: `[Trait];\n[Next Trait]` (semicolon and newline delimited).
+    - Cross-references CpG probe IDs with the EWAS Atlas dataset to identify additional trait associations and unmapped loci.
+    - Logic: Empty associations are left as nulls to maintain clarity in the living document.
 3. **Broad-Spectrum DisGeNET**
     - Pulls all gene-disease associations without psychiatric filtering to provide broad phenotypic context.
-    - Note: The `disgenet_diseases` column contains these broad extractions.
-4. **Columns Added**: `cpg`, `cpg_chr`, `cpg_start`, `cpg_end`, `ewas_atlas_traits`, `ewas_atlas_pmids`, `disgenet_diseases`
+    - Note: The `disgenet_disease` column contains these broad extractions.
+4. **Columns Added**: `cpg`, `cpg_chr`, `cpg_start`, `cpg_end`, `ewas_atlas_traits`, `ewas_unmapped_gene`, `ewas_unmapped_regions`, `disgenet_disease`
 </details>
+
 
 <br>
 <br>
@@ -215,33 +221,34 @@ Because multiple genes are now linked to the same CpG, filtering by CpG can yiel
 | cg00922271 | UGT1A10 | Gilbert Disease, 0.75;<br>Increased bilirubin level (finding), 0.65;<br>Crigler Najjar syndrome, type 1, 0.6;<br>Crigler-Najjar syndrome, 0.55;<br>BILIRUBIN, SERUM LEVEL OF, QUANTITATIVE TRAIT LOCUS 1, 0.4;<br>Crigler Najjar syndrome, type 2, 0.4;<br>GILBERT SYNDROME, SUSCEPTIBILITY TO, 0.4;<br>Lucey-Driscoll syndrome (disorder), 0.4 |
 | cg00922271 | UGT1A8  | Diarrhea, 0.5;<br>Gilbert Disease, 0.45;<br>Crigler Najjar syndrome, type 2, 0.4;<br>BILIRUBIN, SERUM LEVEL OF, QUANTITATIVE TRAIT LOCUS 1, 0.4;<br>Crigler-Najjar syndrome, 0.4;<br>Lucey-Driscoll syndrome (disorder), 0.4;<br>Crigler Najjar syndrome, type 1, 0.4;<br>Increased bilirubin level (finding), 0.4;<br>Diarrheal disorder, 0.4;<br>GILBERT SYNDROME, SUSCEPTIBILITY TO, 0.4 |
 
+### Discovery of Distal Gene-CpG Associations (FMN1 Case Study)
+A critical finding during the augmentation phase was the identification of gene associations that significantly exceed standard proximity-based windows. A primary example is **cg02255242**, which the EWAS Atlas robustly associates with the gene **FMN1**. 
+- **Genomic Context:** FMN1 is located at [[INSERT_DETAIL: FMN1_START]] - [[INSERT_DETAIL: FMN1_END]] on chromosome 15, while cg02255242 resides at 33,128,710 - 33,128,712. This represents a distal association of approximately **70.9kb**, which would be missed by traditional 5kb or 10kb proximity scans.
+- **Evidence Profile:** EWAS Atlas reports a [[INSERT_DETAIL: FMN1_PERCENT_BODY]]% body mapping for this CpG-gene pair with a 100% hypermethylated correlation based on current data.
+- **Trait Overlap:** FMN1 itself is linked to high-impact traits including **Alzheimer's Disease** (5 associations), **Smoking**, **Mild Cognitive Impairment**, and **Down Syndrome**. This discovery validates the shift from "Nearest Gene" identification to "EWAS-Associated Gene" capture.
 
-**EWAS Atlas** results for `cg09420691` is only associated with `body mass index (BMI)` trait, despite its related gene, `PRDM15` being associated with `Mental Disorders` at 100% (**DISGENET**) and is the only relevant association from this dataset, suggesting.. what?
+### Uncaptured Genes and Genomic Loci
+The gap analysis between EWAS Atlas and our core annotation identified several "uncaptured" genes that warrant further exploration.
+- **Unaccounted Genes:** We identified [[INSERT_DETAIL: COUNT_UNACCOUNTED]] established symbols present in the EWAS Atlas but missing from our initial mapping (see `unaccounted_genes.csv`).
+- **Uncharacterized Loci (Appendix C):** A significant number of probes are associated with uncharacterized long non-coding RNA (lncRNA) loci or genomic regions named using the Human Genome Project clone system (e.g., `AP003039.3`). These represent potential "dark matter" in the psychiatric epigenome.
 
-Although selection was based solely on genomic proximity, the two closest traits of 765 interestingly ranged from a classical biological phenotype to an educational attainment proxy, namely the highest mathematics course completed (see below).
-
-| cpg_id      | distance | pubMedID | trait                              | region    | genes       |
-|-------------|----------|----------|------------------------------------|-----------|-------------|
-| cg06941159  | 6        | 30038396 | Highest math class taken (MTAG)    | 16p11.2   | Intergenic  |
-| cg20910361  | 8        | 36224396 | Height                             | 4q31.21   |             |
 
 # Considerations and Methodological Limitations
 
-This research involves the synthesis of multi-omic data from disparate public repositories. While every effort was made to ensure accuracy and completeness, several methodological considerations and limitations must be acknowledged to guide future interpretations.
+This research involves the synthesis of multi-omic data from disparate public repositories. While every effort was made to ensure accuracy and completeness, several methodological considerations and limitations must be acknowledged.
 
-The bioinformatics landscape is characterized by high volatility in dataset availability and API accessibility. During the course of this project, several key resources (e.g., specific web-endpoints for the NHGRI-EBI GWAS Catalog) became unavailable or shifted to API-only access. Consequently, the results presented here represent a specific point-in-time snapshot of these databases. Future efforts to reproduce these results may encounter discrepancies due to database versioning or the deprecation of legacy web services.
+### 1. Shift from Proximity to Association
+The discovery of distal associations (e.g., FMN1 at 70.9kb) demonstrates that relying solely on "nearest gene" mapping can overlook biologically relevant and validated signals. This highlights a paradigm shift in our approach: capturing genes with identifiable EWAS-associated links to our CpG sites of interest provides a more comprehensive view of the epigenetic landscape than simple genomic proximity.
 
-Beyond temporal volatility, the associations identified via the EWAS Atlas, GWAS Catalog, and PubMed mining are primarily descriptive. While a high correlation or frequent literature co-occurrence suggests a potential biological link, these metrics do not imply direct mechanistic causation. Epigenetic signals (CpG methylation) and genomic variants (SNPs) often act in complex regulatory networks where proximity to a gene does not always equate to functional regulation of that specific gene.
+### 2. Rank-Based Scoring and Contextual Gaps
+The `rank_score` metric utilized in the EWAS Atlas integration is limited to associations where an explicit rank was reported in the source study. This necessarily excludes contextual information for traits with large total association counts but unreported ranks (e.g., **cg02255242** and its hypermethylated association with infertility, which lacks a rank among 2,751 associations in PMID 25753583).
 
-Similar interpretative caution is needed for DisGeNET association scores, which are composite metrics derived from multiple evidence streams, including curated literature and animal models. While a high score (e.g., >0.6) indicates strong evidence, the interpretation of these scores should be context-dependent. Discrepancies between DisGeNET and other sources (like the GWAS Catalog) highlight the inherent gaps in current knowledge bases and the limitations of automated metadata extraction.
+### 3. Statistical Context and Trait Broadening
+To facilitate a broad-spectrum view, associations were included even when p-values exceeded traditional significance thresholds. In the current augmented set, only [[INSERT_DETAIL: COUNT_SIG_P]] hits were below 1e-04. While many of these "lower significance" traits (e.g., bariatric surgery) may be of less immediate clinical relevance, the decision to broaden the capture could lead to misinterpretation without the relevant statistical context.
 
-These evidentiary constraints are further influenced by search strategy and keyword sensitivity. Early gene annotations utilized a specific set of psychiatric keywords (see *Appendix A*). Manual exploration revealed that broader terms (e.g., "Diseases of mental health") might yield additional hits in repositories like the Harmonizome. The current extraction, while robust, may not be exhaustive for all potential neuropsychiatric phenotypes. This limitation was partially mitigated in the later "Augmentation" phase by incorporating broad-spectrum DisGeNET extractions to capture pleiotropic effects.
+### 4. Data Provenance and Snapshot Volatility
+The bioinformatics landscape is characterized by high volatility in dataset availability and API accessibility. Results presented here represent a specific point-in-time snapshot. Future efforts to reproduce these results may encounter discrepancies due to database versioning or the deprecation of legacy web services (e.g., the recent shifts in the NHGRI-EBI GWAS Catalog).
 
-Search parameters were also shaped by dataset accessibility and bias. Initial data capture favored databases with robust user interfaces (UIs) to facilitate rapid validation of the extraction logic. While later phases transitioned to more comprehensive API-driven access (e.g., DisGeNET API), the original selection of datasets may reflect an inherent bias toward well-documented, accessible resources. Future work should prioritize direct integration with API-only repositories like the MRC-IEU OpenGWAS to further enhance reproducibility.
-
-Finally, a gap analysis reveals that a non-zero number of genes exhibit significant psychiatric associations in DisGeNET but remain absent from the GWAS Catalog or Harmonizome results. This indicates that while the pipeline is effective at capturing well-established links, the "dark matter" of gene-disease associations requires further investigation; future iterations could benefit from:
-- Adjusting the 5kb window in the UCSC neighboring GWAS screening to better capture distal regulatory elements.
-- Direct processing of raw summary statistics from curated [Psychiatric Genomics Consortium](https://pgc.unc.edu) (PGC) studies to enhance annotation accuracy beyond literature-level metadata. [Downloadable study data](https://pgc.unc.edu/for-researchers/download-results/) are available, categorized by psychiatric condition, but require more complex data processing than I felt was relevant.
 
 <br>
 
@@ -402,3 +409,40 @@ GENETIC_MESH_TERMS: List[str] = [
 ]
 ```
 </details>
+
+<h3 style="margin-top: 10px; margin-bottom: 0px">C. Uncharacterized Genomic Regions (EWAS Atlas)</h3>
+Detailed list of CpG sites associated with uncharacterized loci, including long non-coding RNA (lncRNA) and genomic regions named using the Human Genome Project clone system (e.g., RP11, AC nomenclature).
+
+| CpG ID | Associated Loci (Atlas) |
+|---|---|
+| cg07252486 | AP003039.3 |
+| cg12790145 | RP11-283I3.2 |
+| cg02780130 | RP11-283I3.2 |
+| cg25329573 | RP11-283I3.2 |
+| cg09911534 | RP11-622C24.2 |
+| cg16469117 | AC007092.1 |
+| cg17240725 | AC073846.5 |
+| cg04070200 | AC007879.5 |
+| cg06941159 | RP11-22P6.2 |
+| cg13689053 | AP000688.14 |
+| cg12658972 | RP11-95P2.3 |
+| cg01267120 | AL157871.2, RP11-638I2.6 |
+| cg02834909 | RP11-316F12.1 |
+| cg05406088 | RP11-321F6.1 |
+| cg02282594 | RP11-298I3.1 |
+| cg05860956 | RP11-283I3.2 |
+| cg01334824 | RP11-100M12.3 |
+| cg24468780 | RP11-112J1.2 |
+| cg15587955 | RP11-1080G15.1 |
+| cg24947255 | XXbac-BPG181B23.6 |
+| cg14545602 | AC005498.3 |
+| cg23102195 | CTD-2269E23.4 |
+| cg11340603 | RP1-78O14.1 |
+| cg23184739 | AC110781.3 |
+| cg13303179 | RP11-316F12.1 |
+| cg10075163 | RP11-283I3.2 |
+| cg20188212 | RP11-283I3.2 |
+| cg15501526 | RP11-526P5.2 |
+| cg05715076 | RP11-543C4.1 |
+| cg09535960 | RP11-177H13.2 |
+| cg10957166 | AC084018.1, RP11-347I19.7, RP11-347I19.8 |
