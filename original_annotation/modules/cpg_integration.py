@@ -8,21 +8,11 @@ def expand_cpg_gene_mappings(df: pd.DataFrame) -> pd.DataFrame:
     Expands rows where 'unique_gene_name' contains multiple genes separated by commas.
     Also handles NaN values by labeling them as 'unmapped'.
     """
-    # Create a copy to avoid modifying the original
     expanded_df = df.copy()
-    
-    # Fill NaN values in unique_gene_name
     expanded_df['unique_gene_name'] = expanded_df['unique_gene_name'].fillna('unmapped')
-    
-    # Convert unique_gene_name to list by splitting on comma
     expanded_df['gene'] = expanded_df['unique_gene_name'].str.split(',')
-    
-    # Explode the 'gene' list into separate rows
     expanded_df = expanded_df.explode('gene')
-    
-    # Clean up whitespace
     expanded_df['gene'] = expanded_df['gene'].str.strip()
-    
     return expanded_df
 
 def load_pi_cpg_mappings(file_path: str = "ewas_res_groupsig_128.xlsx") -> pd.DataFrame:
@@ -39,72 +29,73 @@ def attach_ewas_atlas_traits(mapping_df: pd.DataFrame, atlas_df: pd.DataFrame) -
     Implements rank scoring, correlation mapping, and strict formatting.
     """
     # 1. Map Correlations
-    # pos → hyper; neg → hypo; NA → NR
     corr_map = {'pos': 'hyper', 'neg': 'hypo'}
     atlas_df = atlas_df.copy()
     atlas_df['correlation_mapped'] = atlas_df['correlation'].map(corr_map).fillna('NR')
     
-    # 2. Calculate Rank Score
-    # rank_score = rank / total_associations (only if rank exists)
+    # 2. Calculate Rank Score (Numeric only if rank exists)
     def calc_rank_score(row):
         try:
             if pd.notna(row['rank']) and pd.notna(row['total_associations']) and row['total_associations'] != 0:
                 score = float(row['rank']) / float(row['total_associations'])
-                return f"{score:.3f}"
+                return score
         except:
             pass
-        return "0.000"
+        return None
     
-    atlas_df['rank_score'] = atlas_df.apply(calc_rank_score, axis=1)
+    atlas_df['rank_score_num'] = atlas_df.apply(calc_rank_score, axis=1)
     
     # 3. Aggregation and Formatting
     def aggregate_traits(group):
         rows = []
         for _, row in group.iterrows():
             trait = str(row['trait']).strip()
-            score = row['rank_score']
+            if not trait or trait.lower() == 'nan':
+                continue
+                
+            # Get numeric score or default to 0.0 for formatting
+            raw_score = row['rank_score_num']
+            display_score = f"{raw_score:.3f}" if pd.notna(raw_score) else "0.000"
+            
             corr = row['correlation_mapped']
-            pmid = str(int(row['pmid'])) if pd.notna(row['pmid']) else "NA"
+            
+            if pd.notna(row['pmid']):
+                try:
+                    pmid = str(int(float(row['pmid'])))
+                except:
+                    pmid = str(row['pmid'])
+            else:
+                pmid = "NA"
             
             rows.append({
                 'trait': trait,
-                'score': score,
-                'formatted': f"{trait}, {score}, {corr}, {pmid}"
+                'score_sort': raw_score if pd.notna(raw_score) else -1.0, # Put 0.000 hits at bottom
+                'formatted': f"{trait}, {display_score}, {corr}, {pmid}"
             })
             
-        # Sort by rank_score descending, then trait alphabetical
-        rows.sort(key=lambda x: (x['score'], x['trait']), reverse=[True, False])
+        # Sort by score descending, then trait alphabetical
+        rows.sort(key=lambda x: (x['score_sort'], x['trait']), reverse=[True, False])
         
         trait_str = ";\n".join([r['formatted'] for r in rows]) if rows else None
-        
-        return pd.Series({
-            'ewas_atlas_traits': trait_str
-        })
+        return pd.Series({'ewas_atlas_traits': trait_str})
 
     atlas_grouped = atlas_df.groupby('cpg').apply(aggregate_traits, include_groups=False).reset_index()
-    
-    # Merge with mapping_df
     result_df = pd.merge(mapping_df, atlas_grouped, on='cpg', how='left')
-    
-    # No more n/a strings - leave as actual nulls/NaN
-    
     return result_df
 
-def analyze_unmapped_genes(atlas_df: pd.DataFrame, living_df: pd.DataFrame):
+def analyze_unmapped_genes(atlas_df: pd.DataFrame, living_df: pd.DataFrame, original_mapping_df: pd.DataFrame):
     """
     Identifies genes in EWAS Atlas that are NOT in the living file symbols.
     Cross-checks with synonyms and separates established vs unestablished (decimals).
     """
-    # 1. Prepare set of symbols and synonyms map
     existing_symbols = set(living_df['symbol'].dropna().astype(str).unique())
     
-    synonyms_map = {} # synonym -> original_symbol
+    synonyms_map = {}
     for _, row in living_df.iterrows():
         symbol = row['symbol']
         synonyms_raw = row.get('synonyms')
         if pd.notna(synonyms_raw):
             try:
-                # Handle both JSON lists and string lists
                 if isinstance(synonyms_raw, str):
                     if synonyms_raw.startswith('['):
                         synonyms = json.loads(synonyms_raw)
@@ -118,13 +109,14 @@ def analyze_unmapped_genes(atlas_df: pd.DataFrame, living_df: pd.DataFrame):
             except:
                 pass
 
-    # 2. Extract genes per CpG from Atlas
-    # ewas_atlas has 'cpg' and 'genes' (semicolon separated)
+    original_data_map = original_mapping_df.set_index('cpg')['unique_gene_name'].to_dict()
+
     cpg_genes = atlas_df[['cpg', 'genes']].drop_duplicates()
     
-    unmapped_records = [] # For diagnostic table
-    cpg_unmapped_strings = {} # For main XL column
-    appendix_c_source = [] # For decimal genes
+    unmapped_records = []
+    cpg_unmapped_genes = {}
+    cpg_unmapped_regions = {}
+    appendix_c_source = []
     
     for _, row in cpg_genes.iterrows():
         cpg = row['cpg']
@@ -133,61 +125,54 @@ def analyze_unmapped_genes(atlas_df: pd.DataFrame, living_df: pd.DataFrame):
             continue
             
         full_atlas_genes = [g.strip() for g in str(genes_str).split(';') if g.strip()]
-        
-        unmapped_established = []
-        unmapped_unestablished = []
+        established = []
+        unestablished = []
         
         for gene in full_atlas_genes:
-            # Check if decimal (Unestablished)
             is_decimal = '.' in gene
-            
             if is_decimal:
                 appendix_c_source.append({'cpg': cpg, 'genes': gene})
-                # We still process it for unmapped status? 
-                # Spec: "exclude genes with decimals in them [from unaccounted_genes.csv]... create a separate table for those in appendix C"
-                # Spec: "subset the genes that are not present anywhere in annotated_genes symbol... separate the list of genes by with-decimal"
             
             if gene in existing_symbols:
                 continue
                 
-            # Check synonyms
             parent_symbol = synonyms_map.get(gene)
             
-            # Diagnostic Record (Filtered decimals out later)
+            # Diagnostic Record
+            orig_val = original_data_map.get(cpg, "")
+            if isinstance(orig_val, str) and orig_val.lower() == 'unmapped':
+                orig_val = ""
+            elif pd.isna(orig_val):
+                orig_val = ""
+
             unmapped_records.append({
                 'cpg': cpg,
                 'ewas_genes': genes_str,
                 'uncaptured_gene': gene,
-                'synonym_of': parent_symbol if parent_symbol else "None",
+                'synonym_of': parent_symbol if parent_symbol else "",
+                'nearest_from_original_data': orig_val,
                 'is_decimal': is_decimal
             })
             
             if not parent_symbol:
-                # Truly unmapped (not symbol, not synonym)
                 if is_decimal:
-                    unmapped_unestablished.append(gene)
+                    unestablished.append(gene)
                 else:
-                    unmapped_established.append(gene)
+                    established.append(gene)
         
-        # Format the main XL column string
-        if unmapped_established or unmapped_unestablished:
-            parts = []
-            if unmapped_established:
-                parts.append(f"Established: {', '.join(sorted(unmapped_established))}")
-            if unmapped_unestablished:
-                parts.append(f"Unestablished: {', '.join(sorted(unmapped_unestablished))}")
-            cpg_unmapped_strings[cpg] = "; ".join(parts)
+        if established:
+            cpg_unmapped_genes[cpg] = ";\n".join(sorted(established))
+        if unestablished:
+            cpg_unmapped_regions[cpg] = ";\n".join(sorted(unestablished))
 
-    # 3. Finalize dataframes
     unaccounted_df = pd.DataFrame(unmapped_records)
     if not unaccounted_df.empty:
-        # Filter OUT decimals from diagnostic table
         unaccounted_df = unaccounted_df[unaccounted_df['is_decimal'] == False].drop(columns=['is_decimal'])
     else:
-        unaccounted_df = pd.DataFrame(columns=['cpg', 'ewas_genes', 'uncaptured_gene', 'synonym_of'])
+        unaccounted_df = pd.DataFrame(columns=['cpg', 'ewas_genes', 'uncaptured_gene', 'synonym_of', 'nearest_from_original_data'])
         
     appendix_c_df = pd.DataFrame(appendix_c_source).drop_duplicates()
     if appendix_c_df.empty:
         appendix_c_df = pd.DataFrame(columns=['cpg', 'genes'])
 
-    return cpg_unmapped_strings, unaccounted_df, appendix_c_df
+    return cpg_unmapped_genes, cpg_unmapped_regions, unaccounted_df, appendix_c_df

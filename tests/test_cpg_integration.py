@@ -101,6 +101,13 @@ def test_analyze_unmapped_genes():
     }
     living_df = pd.DataFrame(living_data)
     
+    # Original mapping data
+    mapping_data = {
+        'cpg': ['cg1', 'cg2'],
+        'unique_gene_name': ['GENE1', 'ALIAS1']
+    }
+    mapping_df = pd.DataFrame(mapping_data)
+    
     # Atlas data
     atlas_data = {
         'cpg': ['cg1', 'cg1', 'cg2', 'cg2', 'cg2'],
@@ -108,19 +115,20 @@ def test_analyze_unmapped_genes():
     }
     atlas_df = pd.DataFrame(atlas_data)
     
-    unmapped_col, unaccounted_df, appendix_c_df = analyze_unmapped_genes(atlas_df, living_df)
+    unmapped_genes, unmapped_regions, unaccounted_df, appendix_c_df = analyze_unmapped_genes(atlas_df, living_df, mapping_df)
+
     
-    # unmapped_col for cg1: NEWGENE (Established)
-    assert unmapped_col['cg1'] == 'Established: NEWGENE'
+    # unmapped_genes for cg1: NEWGENE
+    assert unmapped_genes['cg1'] == 'NEWGENE'
     
-    # unmapped_col for cg2: ANOTHER (Established), DECIMAL.1 (Unestablished)
+    # unmapped_genes for cg2: ANOTHER
     # ALIAS1 should be found in synonyms of GENE1
-    assert 'Established: ANOTHER' in unmapped_col['cg2']
-    assert 'Unestablished: DECIMAL.1' in unmapped_col['cg2']
+    assert unmapped_genes['cg2'] == 'ANOTHER'
     
-    # unaccounted_df: should have NEWGENE, ANOTHER, and ALIAS1 (if we want to track aliases)
-    # Spec: "uncaptured_gene is specific gene that isn't found in annotated_genes symbol, then synonym_of is if there are any hits"
-    # Filtered out decimals from unaccounted_df as requested later
+    # unmapped_regions for cg2: DECIMAL.1
+    assert unmapped_regions['cg2'] == 'DECIMAL.1'
+    
+    # unaccounted_df: should have NEWGENE, ANOTHER, and ALIAS1
     assert 'NEWGENE' in unaccounted_df['uncaptured_gene'].values
     assert 'ALIAS1' in unaccounted_df['uncaptured_gene'].values
     assert 'DECIMAL.1' not in unaccounted_df['uncaptured_gene'].values
@@ -131,3 +139,4 @@ def test_analyze_unmapped_genes():
     
     # appendix_c_df: should have DECIMAL.1
     assert 'DECIMAL.1' in appendix_c_df['genes'].iloc[0]
+
